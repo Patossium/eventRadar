@@ -6,7 +6,7 @@ namespace eventRadar.Data.Repositories
 {
     public interface ILocationRepository
     {
-        Task CreaterAsync(Location location);
+        Task CreateAsync(Location location);
         Task DeleteAsync(Location location);
         Task UpdateAsync(Location location);
         Task<Location?> GetAsync(int locationId);

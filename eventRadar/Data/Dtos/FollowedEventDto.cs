@@ -1,6 +1,8 @@
-﻿namespace eventRadar.Data.Dtos
+﻿using eventRadar.Models;
+
+namespace eventRadar.Data.Dtos
 {
-    public record FollowedEventDto(int Id, int UserId, int LocationId);
-    public record CreateFollowedEventDto(int UserId, int LocationId);
-    public record UpdateFollowedEventDto(int UserId, int LocationId);
+    public record FollowedEventDto(int Id, int UserId, User User, int EventId, Event Event);
+    public record CreateFollowedEventDto(int UserId, User User, int EventId, Event Event);
+    public record UpdateFollowedEventDto(int UserId, User User, int EventId, Event Event);
 }

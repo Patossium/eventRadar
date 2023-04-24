@@ -9,8 +9,8 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(FollowedLocation followedLocation);
         Task UpdateAsync(FollowedLocation followedLocation);
         Task DeleteAsync(FollowedLocation followedLocation);
-        Task<FollowedLocation?> GetAsync(int followedLocationId);
-        Task<IReadOnlyList<FollowedLocation>> GetManyAsync();
+        Task<FollowedLocation?> GetAsync(User user, int followedLocationId);
+        Task<IReadOnlyList<FollowedLocation>> GetManyAsync(User user);
     }
     public class FollowedLocationRepository : IFollowedLocationRepository
     {
@@ -19,13 +19,13 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<FollowedLocation?> GetAsync(int followedLocationId)
+        public async Task<FollowedLocation?> GetAsync(User user, int followedLocationId)
         {
-            return await _webDbContext.FollowedLocations.FirstOrDefaultAsync(o => o.Id == followedLocationId);
+            return await _webDbContext.FollowedLocations.Where(o => o.User == user).FirstOrDefaultAsync(o => o.Id == followedLocationId);
         }
-        public async Task<IReadOnlyList<FollowedLocation>> GetManyAsync()
+        public async Task<IReadOnlyList<FollowedLocation>> GetManyAsync(User user)
         {
-            return await _webDbContext.FollowedLocations.ToListAsync();
+            return await _webDbContext.FollowedLocations.Where(o => o.User == user).ToListAsync();
         }
         public async Task CreateAsync(FollowedLocation followedLocation)
         {

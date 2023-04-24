@@ -9,8 +9,8 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(FollowedEvent followedEvent);
         Task DeleteAsync(FollowedEvent followedEvent);
         Task UpdateAsync(FollowedEvent followedEvent);
-        Task<FollowedEvent?> GetAsync(int followedEventId);
-        Task<IReadOnlyList<FollowedEvent>> GetManyAsync();
+        Task<FollowedEvent?> GetAsync(User user, int followedEventId);
+        Task<IReadOnlyList<FollowedEvent>> GetManyAsync(User user);
     }
     public class FollowedEventRepository : IFollowedEventRepository
     {
@@ -19,13 +19,13 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<FollowedEvent?> GetAsync(int followedEventId)
+        public async Task<FollowedEvent?> GetAsync(User user, int followedEventId)
         {
-            return await _webDbContext.FollowedEvents.FirstOrDefaultAsync(o => o.Id == followedEventId);
+            return await _webDbContext.FollowedEvents.Where(o => o.User == user).FirstOrDefaultAsync( o => o.Id == followedEventId);
         }
-        public async Task<IReadOnlyList<FollowedEvent>> GetManyAsync()
+        public async Task<IReadOnlyList<FollowedEvent>> GetManyAsync(User user)
         {
-            return await _webDbContext.FollowedEvents.ToListAsync();
+            return await _webDbContext.FollowedEvents.Where(o => o.User == user).ToListAsync();
         }
         public async Task CreateAsync(FollowedEvent followedEvent)
         {

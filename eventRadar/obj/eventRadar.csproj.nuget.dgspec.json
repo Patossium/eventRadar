@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\p4t0s\\source\\repos\\eventRadar\\eventRadar\\eventRadar.csproj": {}
+    "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj": {}
   },
   "projects": {
-    "C:\\Users\\p4t0s\\source\\repos\\eventRadar\\eventRadar\\eventRadar.csproj": {
+    "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\p4t0s\\source\\repos\\eventRadar\\eventRadar\\eventRadar.csproj",
+        "projectUniqueName": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj",
         "projectName": "eventRadar",
-        "projectPath": "C:\\Users\\p4t0s\\source\\repos\\eventRadar\\eventRadar\\eventRadar.csproj",
+        "projectPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj",
         "packagesPath": "C:\\Users\\p4t0s\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\p4t0s\\source\\repos\\eventRadar\\eventRadar\\obj\\",
+        "outputPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\p4t0s\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,6 +57,8 @@
               "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.5, )"
             },

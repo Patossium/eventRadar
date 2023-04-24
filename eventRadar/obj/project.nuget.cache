@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pAD6J8OoGeSD5B5Qk+rjQrdSDJeBRg33Vpb95k75JIDnfLVVOKrLZPynU0WxWaXeSkvL1o4ZWcA/ajqJQ2KL0A==",
+  "dgSpecHash": "L1MKOoPpWHRNic6MPUC2mxiYJ8J1IY1Y8Gv2ozeV/xk/mnqMhEs/Pl2/O09A/BCif2ALxQYBAstaGSHYzu44sg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\p4t0s\\source\\repos\\eventRadar\\eventRadar\\eventRadar.csproj",
+  "projectFilePath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\p4t0s\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\p4t0s\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
