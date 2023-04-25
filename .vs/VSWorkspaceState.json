@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\eventRadar",
+    "\\eventRadar\\Auth",
+    "\\eventRadar\\Auth\\Model",
+    "\\eventRadar\\Controllers",
+    "\\eventRadar\\Data",
+    "\\eventRadar\\Data\\Dtos",
+    "\\eventRadar\\Data\\Models"
+  ],
+  "SelectedNode": "\\eventRadar\\Controllers\\FollowedEventController.cs",
+  "PreviewInSolutionExplorer": false
+}

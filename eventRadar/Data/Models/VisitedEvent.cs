@@ -6,12 +6,12 @@ using eventRadar.Auth.Model;
 
 namespace eventRadar.Models
 {
-    public class FollowedLocation : IUserOwnedResource
+    public class VisitedEvent : IUserOwnedResource
     {
+        public int Id { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-        public Location Location { get; set; }
-        public int LocationId { get; set; }
-        public int Id { get; set; }
+        public Event Event { get; set; }
+        public int EventId { get; set; }
     }
 }

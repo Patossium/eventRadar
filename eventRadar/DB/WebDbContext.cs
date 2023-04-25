@@ -28,5 +28,6 @@ namespace eventRadar
         public DbSet<Location> Locations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Website> Websites { get; set; }
+        public DbSet<VisitedEvent> VisitedEvents { get; set; }
     }
 }

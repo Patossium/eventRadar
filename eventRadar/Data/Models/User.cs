@@ -2,28 +2,16 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace eventRadar.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-
-        [Required(ErrorMessage = "Privaloma įvesti vardą")]
+        [Required]
         public string Name { get; set; }
-
-        [Required(ErrorMessage = "Privaloma įvesti elektroninio pašto adresą")]
-        public string Email { get; set; }
-
-        [Required(ErrorMessage = "Privaloma įvesti salptažodį")]
-        public string Password { get; set; }
-
-        [Required(ErrorMessage = "Privaloma įvesti pavardę")]
-        public string Lastname { get; set; }
-
-        [Required(ErrorMessage = "Privaloma įvesti slapyvardį")]
-        public string Username { get; set; }
-        public bool Administrator { get; set; }
+        [Required]
+        public string Surname { get; set; }
         public bool Blocked { get; set; }
     }
 }

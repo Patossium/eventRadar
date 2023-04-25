@@ -1,8 +1,8 @@
-﻿using eventRadar.Models;
+﻿using eventRadar.Auth.Model;
+using eventRadar.Models;
 
 namespace eventRadar.Data.Dtos
 {
-    public record FollowedUserDto(int id, int UserId, User User, int FollowedUserId, User Followed_User);
-    public record CreateFollowedUserDto(int UserId, User User, int FollowedUserId, User Followed_User);
-    public record UpdateFollowedUserDto(int UserId, User User, int FollowedUserId, User Followed_User);
+    public record FollowedUserDto(int id, int UserId, User User, User Followed_User, int Followed_UserId);
+    public record CreateFollowedUserDto();
 }
