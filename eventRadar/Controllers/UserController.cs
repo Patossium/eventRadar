@@ -23,7 +23,7 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<UserDto>> GetMany()
         {
             var user = await _userRepository.GetManyAsync();
-            return user.Select(o => new UserDto(o.Id, o.Name, o.Email, o.Password, o.Lastname, o.Administrator, o.Blocked));
+            return user.Select(o => new UserDto(o.Id, o.Username, o.Email, o.Password,o.Name, o.Surname, o.Blocked));
         }
 
         [HttpGet()]
@@ -35,58 +35,37 @@ namespace eventRadar.Controllers
             {
                 return NotFound();
             }
-            return new UserDto(user.Id, user.Name, user.Email, user.Password, user.Lastname, user.Username, user.Administrator, user.Blocked);
+            return new UserDto(user.Id, user.Username, user.Email, user.Password, user.Name, user.Surname, user.Blocked);
         }
 
-        [HttpPost]
-        [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<UserDto>> Create(CreateUserDto createUserDto)
-        {
-            var user = new User
-            {
-                Name = createUserDto.Name,
-                Email = createUserDto.Email,
-                Password = createUserDto.Password,
-                Lastname = createUserDto.Lastname,
-                Administrator = createUserDto.Administrator,
-                Blocked = createUserDto.Blocked
-            };
-            await _userRepository.CreateAsync(user);
-            return Created("", new UserDto(user.Id, user.Name, user.Email, user.Password, user.Username, user.Administrator, user.Blocked));
-        }
         [HttpPut]
         [Route("{userId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<UserDto>> Update(int userId, UpdateUserDto updateUserDto)
+        public async Task<ActionResult<UserDto>> BlockUser(int userId, UpdateUserDto updateUserDto)
         {
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
                 return NotFound();
 
-            user.Name = updateUserDto.Name;
-            user.Email = updateUserDto.Email;
-            user.Password = updateUserDto.Password;
-            user.Username = updateUserDto.Username;
-            user.Administrator = updateUserDto.Adminsitrator;
-            user.Blocked = updateUserDto.Blocked;
+            user.Blocked = true;
 
             await _userRepository.UpdateAsync(user);
-            return Ok(new UserDto(userId, user.Name, user.Email, user.Password, user.Lastname, user.Username, user.Administrator, user.Blocked));
+            return Ok(new UserDto(userId, user.Username, user.Email, user.Password, user.Name, user.Surname, user.Blocked));
         }
 
-        [HttpDelete]
+        [HttpPut]
         [Route("{userId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(int userId)
+        public async Task<ActionResult<UserDto>> UnblockUser(int userId, UpdateUserDto updateUserDto)
         {
             var user = await _userRepository.GetAsync(userId);
-
-            if(user == null)
+            if (user == null)
                 return NotFound();
 
-            await _userRepository.DeleteAsync(user);
+            user.Blocked = false;
 
-            return NoContent();
+            await _userRepository.UpdateAsync(user);
+            return Ok(new UserDto(userId, user.Username, user.Email, user.Password, user.Name, user.Surname, user.Blocked));
         }
     }
 }
