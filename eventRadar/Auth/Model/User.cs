@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace eventRadar.Models
+namespace eventRadar.Auth.Model
 {
     public class User : IdentityUser
     {

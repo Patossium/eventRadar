@@ -1,5 +1,4 @@
 ﻿using eventRadar.Auth.Model;
-using eventRadar.Models;
 
 namespace eventRadar.Data.Dtos
 {

@@ -1,5 +1,5 @@
-﻿using eventRadar.Controllers;
-using eventRadar.Models;
+﻿using eventRadar.Auth.Model;
+using eventRadar.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 namespace eventRadar.Data.Repositories

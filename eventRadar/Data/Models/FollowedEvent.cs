@@ -6,7 +6,7 @@ using eventRadar.Auth.Model;
 
 namespace eventRadar.Models
 {
-	public class FollowedEvent : IUserOwnedResource
+    public class FollowedEvent : IUserOwnedResource
 	{
 		public string Id { get; set; }
 		public string UserId { get; set; }

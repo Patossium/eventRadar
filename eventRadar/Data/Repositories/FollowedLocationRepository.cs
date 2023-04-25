@@ -1,10 +1,11 @@
-﻿using eventRadar.Controllers;
+﻿using eventRadar.Auth.Model;
+using eventRadar.Controllers;
 using eventRadar.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace eventRadar.Data.Repositories
 {
-   public interface IFollowedLocationRepository
+    public interface IFollowedLocationRepository
     {
         Task CreateAsync(FollowedLocation followedLocation);
         Task DeleteAsync(FollowedLocation followedLocation);
