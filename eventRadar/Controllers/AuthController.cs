@@ -32,7 +32,7 @@ namespace eventRadar.Controllers
             var user = await _userManager.FindByNameAsync(registerUserDto.Username);
             if(user != null)
             {
-                return BadRequest("Request invalid");
+                return BadRequest("Vartotojas su šiuo slapyvardžiu jau egzistuoja");
             }
 
             var newUser = new User
@@ -40,9 +40,38 @@ namespace eventRadar.Controllers
                 Email = registerUserDto.Email,
                 UserName = registerUserDto.Username,
                 Name = registerUserDto.Name,
-                Surname = registerUserDto.,
+                Surname = registerUserDto.Surname,
+                Blocked = false
+            };
+            var createUserResult = await _userManager.CreateAsync(newUser, registerUserDto.Password);
+            if (!createUserResult.Succeeded)
+                return BadRequest("Nepavyko sukurti vartotojo");
 
-            }
+            await _userManager.AddToRoleAsync(newUser, SystemRoles.SystemUser);
+
+            return CreatedAtAction(nameof(Register), new NewUserDto(newUser.Id, newUser.UserName, newUser.Email, newUser.Name, newUser.Surname, newUser.Blocked));
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult> Login(LoginDto loginDto)
+        {
+            var user = await _userManager.FindByNameAsync(loginDto.Username);
+            if (user == null)
+                return BadRequest("Neteisingi prisijungimo duomenys");
+
+            var isPasswordValid = await _userManager.CheckPasswordAsync(user, loginDto.Password);
+            if (!isPasswordValid)
+                return BadRequest("Neteisingi prisijungimo duomenys");
+
+            if (user.Blocked == true)
+                return BadRequest("Naudotojas yra užblokuotas");
+
+            //user is valid
+            var roles = await _userManager.GetRolesAsync(user);
+            var accessToken = _jwtTokenService.CreateAccessToken(user.UserName, int.Parse(user.Id), roles);
+
+            return Ok(new SuccessfullLoginDto(accessToken));
         }
     }
 }

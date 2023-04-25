@@ -9,6 +9,6 @@
     "\\eventRadar\\Data\\Dtos",
     "\\eventRadar\\Data\\Models"
   ],
-  "SelectedNode": "\\eventRadar\\Controllers\\FollowedEventController.cs",
+  "SelectedNode": "\\eventRadar\\Auth\\Model\\AuthDtos.cs",
   "PreviewInSolutionExplorer": false
 }

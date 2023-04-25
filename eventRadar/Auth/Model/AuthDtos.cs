@@ -4,9 +4,9 @@ namespace eventRadar.Auth.Model
 {
     public class AuthDtos
     {
-        public record RegisterUserDto([Required] string Username, [EmailAddress][Required] string Email, [Required] string Password, [Required] string Name, [Required] string Surname);
+        public record RegisterUserDto([Required] string Username, [EmailAddress][Required] string Email, [Required] string Password, [Required] string Name, [Required] string Surname, bool Blocked);
         public record LoginDto(string Username, string Password);
-        public record UserDto(string Id, string  Username, string Email, string Name, string Lastname);
+        public record NewUserDto(string Id, string  Username, string Email, string Name, string Surname, bool Blocked);
         public record SuccessfullLoginDto(string AccessToken);
     }
 }
