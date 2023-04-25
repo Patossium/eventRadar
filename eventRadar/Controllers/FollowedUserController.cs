@@ -27,7 +27,7 @@ namespace eventRadar.Controllers
             _followedUserRepository = followedUserRepository;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FollowedUserDto>>> GetMany(int userId, int followedUserId)
+        public async Task<ActionResult<IEnumerable<FollowedUserDto>>> GetMany(string userId, string followedUserId)
         {
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
@@ -42,7 +42,7 @@ namespace eventRadar.Controllers
         }
         [HttpGet()]
         [Route("{followedUserId}", Name = "GetFollowedUser")]
-        public async Task<ActionResult<FollowedUserDto>> Get(int userId, int followedUserId)
+        public async Task<ActionResult<FollowedUserDto>> Get(string userId, string followedUserId)
         {
             var user = await _userRepository.GetAsync(userId);
             if(user == null)
@@ -56,7 +56,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<FollowedUserDto>> Create(int userId, int followedUserId, CreateFollowedUserDto createFollowedUserDto)
+        public async Task<ActionResult<FollowedUserDto>> Create(string userId, string followedUserId, CreateFollowedUserDto createFollowedUserDto)
         {
             var user = _userRepository.GetAsync(userId);
             if(user == null || user.Result == null) 
@@ -68,7 +68,7 @@ namespace eventRadar.Controllers
 
             var followedUser = new FollowedUser
             {
-                UserId = int.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)),
+                UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub),
                 Followed_User = initialFollowedUser.Result
             };
 
@@ -79,7 +79,7 @@ namespace eventRadar.Controllers
 
         [HttpDelete]
         [Route("{followedUserId}")]
-        public async Task<ActionResult> Remove(int userId, int initialFollowedUserId, int followedUserId)
+        public async Task<ActionResult> Remove(string userId, string initialFollowedUserId, string followedUserId)
         {
             var user = await _userRepository.GetAsync(userId);
             if(user == null)

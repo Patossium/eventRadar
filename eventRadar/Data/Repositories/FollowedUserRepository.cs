@@ -8,7 +8,7 @@ namespace eventRadar.Data.Repositories
     {
         Task CreateAsync(FollowedUser followedUser);
         Task DeleteAsync(FollowedUser followedUser);
-        Task<FollowedUser?> GetAsync(User user, int followedUserID);
+        Task<FollowedUser?> GetAsync(User user, string followedUserID);
         Task<IReadOnlyList<FollowedUser>> GetManyAsync(User user);
     }
     public class FollowedUserRepository : IFollowedUserRepository
@@ -18,7 +18,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<FollowedUser?> GetAsync(User user, int followedUserId)
+        public async Task<FollowedUser?> GetAsync(User user, string followedUserId)
         {
             return await _webDbContext.FollowedUsers.Where(o => o.User == user).FirstOrDefaultAsync(o => o.Id == followedUserId);
         }

@@ -28,7 +28,7 @@ namespace eventRadar.Controllers
         }
         [HttpGet()]
         [Route("{locationId}", Name = "GetLocation")]
-        public async Task<ActionResult<LocationDto>> Get(int locationId)
+        public async Task<ActionResult<LocationDto>> Get(string locationId)
         {
             var location = await _locationRepository.GetAsync(locationId);
 
@@ -52,7 +52,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{locationId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<LocationDto>> Update(int locationId, UpdateLocationDto updateLocationDto)
+        public async Task<ActionResult<LocationDto>> Update(string locationId, UpdateLocationDto updateLocationDto)
         {
             var location = await _locationRepository.GetAsync(locationId);
 
@@ -72,7 +72,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{locationId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(int locationId)
+        public async Task<ActionResult> Remove(string locationId)
         {
             var location = await _locationRepository.GetAsync(locationId);
 

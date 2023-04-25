@@ -10,7 +10,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(Category category);
         Task DeleteAsync(Category category);
         Task UpdateAsync(Category category);
-        Task<Category?> GetAsync(int categoryId);
+        Task<Category?> GetAsync(string categoryId);
         Task<IReadOnlyList<Category>> GetManyAsync();
     }
     public class CategoryRepository : ICategoryRepository
@@ -20,7 +20,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<Category?> GetAsync(int categoryId)
+        public async Task<Category?> GetAsync(string categoryId)
         {
             return await _webDbContext.Categories.FirstOrDefaultAsync(o => o.Id == categoryId);
         }

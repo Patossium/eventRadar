@@ -3,6 +3,6 @@ using eventRadar.Models;
 
 namespace eventRadar.Data.Dtos
 {
-    public record FollowedUserDto(int id, int UserId, User User, User Followed_User, int Followed_UserId);
+    public record FollowedUserDto(string id, string UserId, User User, User Followed_User, string Followed_UserId);
     public record CreateFollowedUserDto();
 }

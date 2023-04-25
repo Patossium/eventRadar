@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.github",
     "\\eventRadar",
     "\\eventRadar\\Auth",
     "\\eventRadar\\Auth\\Model",
@@ -9,6 +10,6 @@
     "\\eventRadar\\Data\\Dtos",
     "\\eventRadar\\Data\\Models"
   ],
-  "SelectedNode": "\\eventRadar\\Auth\\Model\\AuthDtos.cs",
+  "SelectedNode": "\\eventRadar\\Data\\Dtos\\LocationDto.cs",
   "PreviewInSolutionExplorer": false
 }

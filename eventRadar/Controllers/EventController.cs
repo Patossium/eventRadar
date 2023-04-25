@@ -25,7 +25,7 @@ namespace eventRadar.Controllers
         }
         [HttpGet()]
         [Route("{eventId}", Name = "GetEvent")]
-        public async Task<ActionResult<EventDto>> Get(int eventId)
+        public async Task<ActionResult<EventDto>> Get(string eventId)
         {
             var eventObject = await _eventRepository.GetAsync(eventId);
             if (eventObject == null)
@@ -62,7 +62,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{eventId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<EventDto>> Update(int eventID, UpdateEventDto updateEventDto)
+        public async Task<ActionResult<EventDto>> Update(string eventID, UpdateEventDto updateEventDto)
         {
             var eventObject = await _eventRepository.GetAsync(eventID);
 
@@ -87,7 +87,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{eventId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(int eventId)
+        public async Task<ActionResult> Remove(string eventId)
         {
             var eventObject = await _eventRepository.GetAsync(eventId);
 

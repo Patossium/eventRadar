@@ -29,7 +29,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<VisitedEventDto>>> GetMany(int userId, int eventId)
+        public async Task<ActionResult<IEnumerable<VisitedEventDto>>> GetMany(string userId, string eventId)
         {
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
@@ -46,7 +46,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{visitedEventId}", Name = "GetVisitedEvent")]
-        public async Task<ActionResult<VisitedEventDto>> Get(int userId, int eventId, int visitedEventId)
+        public async Task<ActionResult<VisitedEventDto>> Get(string userId, string eventId, string visitedEventId)
         {
             var user = await _userRepository.GetAsync(userId);
             if(user == null)
@@ -64,7 +64,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<VisitedEventDto>> Create(int userId, int eventId, CreateVisitedEventDto createVisitedEventDto)
+        public async Task<ActionResult<VisitedEventDto>> Create(string userId, string eventId, CreateVisitedEventDto createVisitedEventDto)
         {
             var user = _userRepository.GetAsync(userId);
             if(user == null || user.Result == null) 
@@ -76,7 +76,7 @@ namespace eventRadar.Controllers
 
             var visitedEvent = new VisitedEvent
             {
-                UserId = int.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)),
+                UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub),
                 Event = eventObject.Result,
                 User = user.Result,
                 EventId = eventId
@@ -89,7 +89,7 @@ namespace eventRadar.Controllers
 
         [HttpDelete]
         [Route("{visitedEventId}")]
-        public async Task<ActionResult> Remove(int userId, int eventId, int visitedEventId)
+        public async Task<ActionResult> Remove(string userId, string eventId, string visitedEventId)
         {
             var user = await _userRepository.GetAsync(userId);
             if(user == null)

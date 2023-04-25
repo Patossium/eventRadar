@@ -9,7 +9,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(ChangedEvent changedEvent);
         Task UpdateAsync(ChangedEvent changedEvent);
         Task DeleteAsync(ChangedEvent changedEvent);
-        Task<ChangedEvent?> GetAsync(int changedEventId);
+        Task<ChangedEvent?> GetAsync(string changedEventId);
         Task<IReadOnlyList<ChangedEvent>> GetManyAsync();
     }
     public class ChangedEventRepository : IChangedEventRepository
@@ -19,7 +19,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<ChangedEvent?> GetAsync(int changedEventId)
+        public async Task<ChangedEvent?> GetAsync(string changedEventId)
         {
             return await _webDbContext.ChangedEvents.FirstOrDefaultAsync(o => o.Id == changedEventId);
         }

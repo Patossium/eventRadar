@@ -8,10 +8,10 @@ namespace eventRadar.Models
 {
     public class FollowedLocation : IUserOwnedResource
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
         public Location Location { get; set; }
-        public int LocationId { get; set; }
-        public int Id { get; set; }
+        public string LocationId { get; set; }
+        public string Id { get; set; }
     }
 }

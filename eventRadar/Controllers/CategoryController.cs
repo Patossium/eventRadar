@@ -28,7 +28,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{cateogryId}", Name = "GetCategory")]
-        public async Task<ActionResult<CategoryDto>> Get(int categoryId)
+        public async Task<ActionResult<CategoryDto>> Get(string categoryId)
         {
             var category = await _categoryRepository.GetAsync(categoryId);
             if(category == null)
@@ -52,7 +52,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{categoryId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<CategoryDto>> Update(int categoryId, UpdateCategoryDto updateCategoryDto)
+        public async Task<ActionResult<CategoryDto>> Update(string categoryId, UpdateCategoryDto updateCategoryDto)
         {
             var category = await _categoryRepository.GetAsync(categoryId);
 
@@ -72,7 +72,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{categoryId}")]
         [Authorize(Roles =SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(int categoryId)
+        public async Task<ActionResult> Remove(string categoryId)
         {
             var category = await _categoryRepository.GetAsync(categoryId);
 

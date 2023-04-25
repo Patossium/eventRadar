@@ -8,7 +8,7 @@ namespace eventRadar.Data.Repositories
     {
         Task CreateAsync(Event eventObject);
         Task DeleteAsync(Event eventObject);
-        Task<Event?> GetAsync(int eventId);
+        Task<Event?> GetAsync(string eventId);
         Task<IReadOnlyList<Event>> GetManyAsync();
         Task UpdateAsync(Event eventObject);
     }
@@ -20,7 +20,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<Event?> GetAsync(int eventId)
+        public async Task<Event?> GetAsync(string eventId)
         {
             return await _webDbContext.Events.FirstOrDefaultAsync(o => o.Id == eventId);
         }

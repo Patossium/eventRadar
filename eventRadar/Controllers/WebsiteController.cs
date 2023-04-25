@@ -29,7 +29,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{websiteId}", Name = "GetWebsite")]
-        public async Task<ActionResult<WebsiteDto>> Get(int websiteId)
+        public async Task<ActionResult<WebsiteDto>> Get(string websiteId)
         {
             var website = await _websiteRepository.GetAsync(websiteId);
             if(website == null)
@@ -56,7 +56,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{websiteId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<WebsiteDto>> Update(int websiteId, UpdateWebsiteDto updateWebsiteDto)
+        public async Task<ActionResult<WebsiteDto>> Update(string websiteId, UpdateWebsiteDto updateWebsiteDto)
         {
             var website = await _websiteRepository.GetAsync(websiteId);
 
@@ -81,7 +81,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{websiteId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(int websiteId)
+        public async Task<ActionResult> Remove(string websiteId)
         {
             var website = await _websiteRepository.GetAsync(websiteId);
 

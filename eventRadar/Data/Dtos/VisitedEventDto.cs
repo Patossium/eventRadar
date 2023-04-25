@@ -3,6 +3,6 @@ using eventRadar.Models;
 
 namespace eventRadar.Data.Dtos
 {
-    public record VisitedEventDto(int Id, int UserId, User User, Event Event, int EventId);
+    public record VisitedEventDto(string Id, string UserId, User User, Event Event, string EventId);
     public record CreateVisitedEventDto();
 }

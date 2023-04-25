@@ -9,7 +9,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(Website website);
         Task UpdateAsync(Website website);
         Task DeleteAsync(Website website);
-        Task<Website?> GetAsync(int websiteId);
+        Task<Website?> GetAsync(string websiteId);
         Task<IReadOnlyList<Website>> GetManyAsync();
     }
     public class WebsiteRepository : IWebsiteRepository
@@ -19,7 +19,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<Website?> GetAsync(int websiteId)
+        public async Task<Website?> GetAsync(string websiteId)
         {
             return await _webDbContext.Websites.FirstOrDefaultAsync(o => o.Id == websiteId);
         }

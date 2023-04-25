@@ -27,8 +27,8 @@ namespace eventRadar.Controllers
         }
 
         [HttpGet()]
-        [Route("{changedEventId", Name = "GetChangedEvent")]
-        public async Task<ActionResult<ChangedEventDto>> Get(int changedEventId)
+        [Route("{changedEventId}", Name = "GetChangedEvent")]
+        public async Task<ActionResult<ChangedEventDto>> Get(string changedEventId)
         {
             var changedEvent = await _changedEventRepository.GetAsync(changedEventId);
             if(changedEvent == null)
@@ -51,7 +51,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{changedEventId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<ChangedEventDto>> Update(int changedEventId, UpdateChangedEventDto updateChangedEventDto)
+        public async Task<ActionResult<ChangedEventDto>> Update(string changedEventId, UpdateChangedEventDto updateChangedEventDto)
         {
             var changedEvent = await _changedEventRepository.GetAsync(changedEventId);
 
@@ -71,7 +71,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{changedEventId}")]
         [Authorize(Roles =SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(int changedEventId)
+        public async Task<ActionResult> Remove(string changedEventId)
         {
             var changedEvent = await _changedEventRepository.GetAsync(changedEventId);
 

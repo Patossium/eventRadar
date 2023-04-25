@@ -8,10 +8,10 @@ namespace eventRadar.Models
 {
     public class FollowedUser
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
+        public string Id { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
-        public int FollowedUserId { get; set; }
+        public string FollowedUserId { get; set; }
         public User Followed_User { get; set; }
     }
 }
