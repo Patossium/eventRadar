@@ -13,9 +13,13 @@ namespace eventRadar.Controllers
     public class EventController : ControllerBase
     {
         private readonly IEventRepository _eventRepository;
-        public EventController(IEventRepository eventRepository)
+        private readonly ILocationRepository _locationRepository;
+        private readonly ICategoryRepository _categoryRepository;
+        public EventController(IEventRepository eventRepository, ILocationRepository locationRepository, ICategoryRepository categoryRepository)
         {
             _eventRepository = eventRepository;
+            _locationRepository = locationRepository;
+            _categoryRepository = categoryRepository;
         }
         [HttpGet]
         public async Task<IEnumerable<EventDto>> GetMany()

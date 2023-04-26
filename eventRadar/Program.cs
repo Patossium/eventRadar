@@ -37,12 +37,12 @@ builder.Services.AddAuthentication(configureOptions: options =>
         options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]));
     });
 
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IBlacklistedPageRepository, BlacklistedPageRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IChangedEventRepository, ChangedEventRepository>();
 builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddTransient<IFollowedEventRepository, FollowedEventRepository>();
-builder.Services.AddTransient<IFollowedLocationRepository, FollowedLocationRepository>();
 builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 builder.Services.AddTransient<IVisitedEventRepository, VisitedEventRepository>();
 builder.Services.AddTransient<IWebsiteRepository, WebsiteRepository>();

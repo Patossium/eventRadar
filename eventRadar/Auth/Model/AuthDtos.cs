@@ -8,5 +8,6 @@ namespace eventRadar.Auth.Model
         public record LoginDto(string Username, string Password);
         public record NewUserDto(string Id, string  Username, string Email, string Name, string Surname, bool Blocked);
         public record SuccessfullLoginDto(string AccessToken);
+        public record BlockDto (string Username, string Email, string Name, string Surname, bool Blocked);
     }
 }

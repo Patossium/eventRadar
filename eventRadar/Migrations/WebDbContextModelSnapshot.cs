@@ -193,8 +193,9 @@ namespace eventRadar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Date")
                         .IsRequired()
@@ -204,8 +205,9 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -226,10 +228,6 @@ namespace eventRadar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("Events");
                 });
@@ -256,30 +254,6 @@ namespace eventRadar.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("FollowedEvents");
-                });
-
-            modelBuilder.Entity("eventRadar.Models.FollowedLocation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("FollowedLocations");
                 });
 
             modelBuilder.Entity("eventRadar.Models.Location", b =>
@@ -397,25 +371,6 @@ namespace eventRadar.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("eventRadar.Models.Event", b =>
-                {
-                    b.HasOne("eventRadar.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eventRadar.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Location");
-                });
-
             modelBuilder.Entity("eventRadar.Models.FollowedEvent", b =>
                 {
                     b.HasOne("eventRadar.Models.Event", "Event")
@@ -431,25 +386,6 @@ namespace eventRadar.Migrations
                         .IsRequired();
 
                     b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("eventRadar.Models.FollowedLocation", b =>
-                {
-                    b.HasOne("eventRadar.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eventRadar.Auth.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Location");
 
                     b.Navigation("User");
                 });

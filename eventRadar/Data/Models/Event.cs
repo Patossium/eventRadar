@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eventRadar.Models
 {
@@ -15,7 +16,7 @@ namespace eventRadar.Models
         public double Price { get; set; }
         public string TicketLink { get; set; }
         public bool Updated { get; set; }
-        public Location Location { get; set; }
-        public Category Category { get; set; }
+        public string Location { get; set; }
+        public string Category { get; set; }
     }
 }

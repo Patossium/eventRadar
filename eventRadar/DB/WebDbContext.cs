@@ -19,7 +19,6 @@ namespace eventRadar
         public DbSet<ChangedEvent> ChangedEvents { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<FollowedEvent> FollowedEvents { get; set; }
-        public DbSet<FollowedLocation> FollowedLocations { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Website> Websites { get; set; }

@@ -72,5 +72,18 @@ namespace eventRadar.Controllers
 
             return Ok(new SuccessfullLoginDto(accessToken));
         }
+        [HttpPut]
+        [Route("user/{userId}/block")]
+        public async Task<ActionResult<AuthDtos>> BlockUser(string userId, BlockUserDto blockUserDto)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return NotFound();
+
+            user.Blocked = true;
+
+            await _userManager.UpdateAsync(user);
+            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.Blocked));
+        }
     }
 }
