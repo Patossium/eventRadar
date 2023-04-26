@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Security;
 
 namespace eventRadar.Auth.Model
 {
@@ -13,5 +15,8 @@ namespace eventRadar.Auth.Model
         [Required]
         public string Surname { get; set; }
         public bool Blocked { get; set; }
+        [NotMapped]
+        public string NormalizedUserName { get; set; }
+
     }
 }

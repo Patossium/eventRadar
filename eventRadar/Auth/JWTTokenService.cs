@@ -10,7 +10,7 @@ namespace eventRadar.Auth
 {
     public interface IJwtTokenService
     {
-        string CreateAccessToken(string username, int userId, IEnumerable<string> userRoles);
+        string CreateAccessToken(string username, string userId, IEnumerable<string> userRoles);
     }
     public class JwtTokenService : IJwtTokenService
     {
@@ -24,7 +24,7 @@ namespace eventRadar.Auth
             _issuer = configuration["JWT:ValidIssuer"];
             _audience = configuration["JWT:ValidAudience"];
         }
-        public string CreateAccessToken(string username, int userId, IEnumerable<string> userRoles)
+        public string CreateAccessToken(string username, string userId, IEnumerable<string> userRoles)
         {
             var authClaims = new List<Claim>
             {

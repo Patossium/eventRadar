@@ -68,7 +68,7 @@ namespace eventRadar.Controllers
 
             //user is valid
             var roles = await _userManager.GetRolesAsync(user);
-            var accessToken = _jwtTokenService.CreateAccessToken(user.UserName, int.Parse(user.Id), roles);
+            var accessToken = _jwtTokenService.CreateAccessToken(user.UserName, user.Id, roles);
 
             return Ok(new SuccessfullLoginDto(accessToken));
         }
