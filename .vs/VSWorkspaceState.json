@@ -10,6 +10,6 @@
     "\\eventRadar\\Data\\Dtos",
     "\\eventRadar\\Data\\Models"
   ],
-  "SelectedNode": "\\eventRadar\\Auth\\Model\\Users.cs",
+  "SelectedNode": "\\eventRadar\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

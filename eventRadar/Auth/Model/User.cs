@@ -15,8 +15,5 @@ namespace eventRadar.Auth.Model
         [Required]
         public string Surname { get; set; }
         public bool Blocked { get; set; }
-        [NotMapped]
-        public string NormalizedUserName { get; set; }
-
     }
 }

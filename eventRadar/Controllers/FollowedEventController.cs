@@ -29,7 +29,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FollowedEventDto>>> GetMany(string userId, string eventId)
+        public async Task<ActionResult<IEnumerable<FollowedEventDto>>> GetMany(int userId, int eventId)
         {
             var user = await _userRepository.GetAsync(userId);
 
@@ -51,7 +51,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{followedEventId}", Name = "GetFollowedEvent")]
-        public async Task<ActionResult<FollowedEventDto>> Get(string userId, string eventId, string followedEventId)
+        public async Task<ActionResult<FollowedEventDto>> Get(int userId, int eventId, int followedEventId)
         {
             var user = await _userRepository.GetAsync(userId);
 
@@ -72,7 +72,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<FollowedEventDto>> Create(string userId, string eventId, CreateFollowedEventDto createFollowedEventDto)
+        public async Task<ActionResult<FollowedEventDto>> Create(int userId, int eventId, CreateFollowedEventDto createFollowedEventDto)
         {
             var user = _userRepository.GetAsync(userId);
             if(user == null || user.Result == null)
@@ -82,10 +82,11 @@ namespace eventRadar.Controllers
             if(eventObject == null || eventObject.Result == null)
                 return NotFound();
 
-            var followedEvent = new FollowedEvent { 
-                UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub), 
+            var followedEvent = new FollowedEvent {
+                OwnerId = User.FindFirstValue(JwtRegisteredClaimNames.Sub),
                 Event = eventObject.Result,
                 User = user.Result,
+                UserId = user.Id,
                 EventId = eventId
             };
 
@@ -96,7 +97,7 @@ namespace eventRadar.Controllers
 
         [HttpDelete]
         [Route("{folowedEventId}")]
-        public async Task<ActionResult> Remove(string userId, string eventId, string followedEventId)
+        public async Task<ActionResult> Remove(int userId, int eventId, int followedEventId)
         {
             var user = await _userRepository.GetAsync(userId);
             if(user == null) 

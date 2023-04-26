@@ -9,7 +9,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(User user);
-        Task<User?> GetAsync(string userId);
+        Task<User?> GetAsync(int userId);
         Task<IReadOnlyList<User>> GetManyAsync();
     }
     public class UserRepository : IUserRepository
@@ -19,7 +19,7 @@ namespace eventRadar.Data.Repositories
         { 
             _webDbContext = webDbContext;
         }
-        public async Task<User?> GetAsync(string userId)
+        public async Task<User?> GetAsync(int userId)
         {
             return await _webDbContext.Users.FirstOrDefaultAsync(o => o.Id == userId);
         }

@@ -24,7 +24,7 @@ namespace eventRadar.DB
         {
             var newAdminUser = new User()
             {
-                UserName = "admin",
+                UserName = "administratorius",
                 Email = "admin@admin.com"
             };
 

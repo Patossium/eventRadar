@@ -28,7 +28,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{userId}", Name = "GetUser")]
-        public async Task<ActionResult<UserDto>> Get(string userId)
+        public async Task<ActionResult<UserDto>> Get(int userId)
         {
             var user = await _userRepository.GetAsync(userId);
             if(user == null)
@@ -41,7 +41,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{userId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<UserDto>> BlockUser(string userId, BlockUserDto blockUserDto)
+        public async Task<ActionResult<UserDto>> BlockUser(int userId, BlockUserDto blockUserDto)
         {
             var user = await _userRepository.GetAsync(userId);
             if (user == null)
@@ -56,7 +56,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{userId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<UserDto>> UnblockUser(string userId, BlockUserDto blockUserDto)
+        public async Task<ActionResult<UserDto>> UnblockUser(int userId, BlockUserDto blockUserDto)
         {
             var user = await _userRepository.GetAsync(userId);
             if (user == null)

@@ -21,6 +21,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<IEnumerable<WebsiteDto>> GetMany()
         {
             var website = await _websiteRepository.GetManyAsync();
@@ -29,6 +30,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{websiteId}", Name = "GetWebsite")]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<WebsiteDto>> Get(string websiteId)
         {
             var website = await _websiteRepository.GetAsync(websiteId);
@@ -41,11 +43,17 @@ namespace eventRadar.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = SystemRoles.Administrator)]
+        //[Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<WebsiteDto>> Create(CreateWebsiteDto createWebsiteDto)
         {
-            var website = new Website { Url = createWebsiteDto.Url, TitlePath = createWebsiteDto.TitlePath, LocationPath = createWebsiteDto.LocationPath, 
-                PricePath = createWebsiteDto.PricePath, DatePath = createWebsiteDto.DatePath, ImagePath = createWebsiteDto.ImagePath, TicketPath = createWebsiteDto.TicketPath };
+            var website = new Website { 
+                Url = createWebsiteDto.Url, 
+                TitlePath = createWebsiteDto.TitlePath, 
+                LocationPath = createWebsiteDto.LocationPath, 
+                PricePath = createWebsiteDto.PricePath, 
+                DatePath = createWebsiteDto.DatePath, 
+                ImagePath = createWebsiteDto.ImagePath, 
+                TicketPath = createWebsiteDto.TicketPath };
 
             await _websiteRepository.CreateAsync(website);
 

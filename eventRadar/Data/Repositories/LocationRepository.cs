@@ -9,7 +9,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(Location location);
         Task DeleteAsync(Location location);
         Task UpdateAsync(Location location);
-        Task<Location?> GetAsync(string locationId);
+        Task<Location?> GetAsync(int locationId);
         Task<IReadOnlyList<Location>> GetManyAsync();
     }
     public class LocationRepository : ILocationRepository
@@ -19,7 +19,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<Location?> GetAsync(string locationId)
+        public async Task<Location?> GetAsync(int locationId)
         {
             return await _webDbContext.Locations.FirstOrDefaultAsync(o => o.Id == locationId);
         }

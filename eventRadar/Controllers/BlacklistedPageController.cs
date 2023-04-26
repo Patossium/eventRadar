@@ -28,7 +28,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{blacklistedPageId}", Name = "GetBlacklistedPage")]
-        public async Task<ActionResult<BlacklistedPageDto>> Get(string blacklistedPageId)
+        public async Task<ActionResult<BlacklistedPageDto>> Get(int blacklistedPageId)
         {
             var blacklistedPage = await _blacklistedRepository.GetAsync(blacklistedPageId);
             if(blacklistedPage == null)
@@ -52,7 +52,7 @@ namespace eventRadar.Controllers
         [HttpPut]
         [Route("{blacklistedId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<BlacklistedPageDto>> Updated(string blacklistedId, UpdateBlacklistedPageDto updateBlacklistedPageDto)
+        public async Task<ActionResult<BlacklistedPageDto>> Updated(int blacklistedId, UpdateBlacklistedPageDto updateBlacklistedPageDto)
         {
             var blacklistedPage = await _blacklistedRepository.GetAsync(blacklistedId);
 
@@ -72,7 +72,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{blacklistedPageId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(string blacklistedPageId)
+        public async Task<ActionResult> Remove(int blacklistedPageId)
         {
             var blacklistedPage = await _blacklistedRepository.GetAsync(blacklistedPageId);
             if (blacklistedPage == null)

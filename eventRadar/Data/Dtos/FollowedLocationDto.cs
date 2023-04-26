@@ -3,6 +3,6 @@ using eventRadar.Models;
 
 namespace eventRadar.Data.Dtos
 {
-    public record FollowedLocationDto(string Id, string UserId, User User, Location Location, string LocationId);
+    public record FollowedLocationDto(int Id, int UserId, User User, Location Location, int LocationId);
     public record CreateFollowedLocationDto();
 }

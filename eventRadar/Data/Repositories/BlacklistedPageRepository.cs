@@ -8,7 +8,7 @@ namespace eventRadar.Data.Repositories
     {
         Task CreateAsync(BlacklistedPage blacklistedPage);
         Task DeleteAsync(BlacklistedPage blacklistedPage);
-        Task<BlacklistedPage?> GetAsync(string blacklistePageID);
+        Task<BlacklistedPage?> GetAsync(int blacklistePageID);
         Task<IReadOnlyList<BlacklistedPage>> GetManyAsync();
         Task UpdateAsync (BlacklistedPage blacklistedPage);
     }
@@ -19,7 +19,7 @@ namespace eventRadar.Data.Repositories
         {
             _webDbContext = webDbContext;
         }
-        public async Task<BlacklistedPage?> GetAsync (string blacklistedPageId)
+        public async Task<BlacklistedPage?> GetAsync (int blacklistedPageId)
         {
             return await _webDbContext.BlacklistedPages.FirstOrDefaultAsync(o => o.Id == blacklistedPageId);
         }
