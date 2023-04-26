@@ -20,6 +20,7 @@ namespace eventRadar.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<IEnumerable<BlacklistedPageDto>> GetMany()
         {
             var blacklistedPage = await _blacklistedRepository.GetManyAsync();
@@ -28,6 +29,7 @@ namespace eventRadar.Controllers
 
         [HttpGet()]
         [Route("{blacklistedPageId}", Name = "GetBlacklistedPage")]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<BlacklistedPageDto>> Get(int blacklistedPageId)
         {
             var blacklistedPage = await _blacklistedRepository.GetAsync(blacklistedPageId);

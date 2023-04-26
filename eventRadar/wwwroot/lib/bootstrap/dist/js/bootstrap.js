@@ -3721,7 +3721,7 @@
 
       const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW);
       const shadowRoot = findShadowRoot(this._element);
-      const isInTheDom = shadowRoot === null ? this._element.ownerDocument.documentElement.contains(this._element) : shadowRoot.contains(this._element);
+      const isInTheDom = shadowRoot === null ? this._element.UserDocument.documentElement.contains(this._element) : shadowRoot.contains(this._element);
 
       if (showEvent.defaultPrevented || !isInTheDom) {
         return;
@@ -3748,7 +3748,7 @@
       } = this._config;
       Data.set(tip, this.constructor.DATA_KEY, this);
 
-      if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
+      if (!this._element.UserDocument.documentElement.contains(this.tip)) {
         container.append(tip);
         EventHandler.trigger(this._element, this.constructor.Event.INSERTED);
       }

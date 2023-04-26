@@ -2,6 +2,6 @@
 {
     public interface IUserOwnedResource
     {
-        public string OwnerId { get; }
+        public string UserId { get; }
     }
 }

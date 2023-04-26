@@ -72,7 +72,7 @@ namespace eventRadar.Controllers
         [HttpDelete]
         [Route("{categoryId}")]
         [Authorize(Roles =SystemRoles.Administrator)]
-        public async Task<ActionResult> Remove(string categoryId)
+        public async Task<ActionResult> Remove(int categoryId)
         {
             var category = await _categoryRepository.GetAsync(categoryId);
 

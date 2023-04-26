@@ -43,7 +43,6 @@ builder.Services.AddTransient<IChangedEventRepository, ChangedEventRepository>()
 builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddTransient<IFollowedEventRepository, FollowedEventRepository>();
 builder.Services.AddTransient<IFollowedLocationRepository, FollowedLocationRepository>();
-builder.Services.AddTransient<IFollowedUserRepository, FollowedUserRepository>();
 builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 builder.Services.AddTransient<IVisitedEventRepository, VisitedEventRepository>();
 builder.Services.AddTransient<IWebsiteRepository, WebsiteRepository>();
@@ -52,10 +51,10 @@ builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy(PolicyNames.ResourceOwner, policy => policy.Requirements.Add(new ResourceOwnerRequirement()));
+    options.AddPolicy(PolicyNames.ResourceUser, policy => policy.Requirements.Add(new ResourceUserRequirement()));
 });
 
-builder.Services.AddSingleton<IAuthorizationHandler, ResourceOwnerAuthorizationHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, ResourceUserAuthorizationHandler>();
 
 builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
 {

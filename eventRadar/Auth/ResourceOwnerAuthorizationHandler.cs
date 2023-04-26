@@ -6,10 +6,10 @@ using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace eventRadar.Auth
 {
-    public class ResourceOwnerAuthorizationHandler : AuthorizationHandler<ResourceOwnerRequirement, IUserOwnedResource>
+    public class ResourceUserAuthorizationHandler : AuthorizationHandler<ResourceUserRequirement, IUserOwnedResource>
     {
         List<string> tokenBlacklist = new List<string>();
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ResourceOwnerRequirement requirement, IUserOwnedResource resource)
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ResourceUserRequirement requirement, IUserOwnedResource resource)
         {
             if (context.User.IsInRole(SystemRoles.Administrator) || context.User.FindFirstValue(JwtRegisteredClaimNames.Sub) == resource.UserId)
             {
@@ -18,5 +18,5 @@ namespace eventRadar.Auth
             return Task.CompletedTask;
         }
     }
-    public record ResourceOwnerRequirement : IAuthorizationRequirement;
+    public record ResourceUserRequirement : IAuthorizationRequirement;
 }

@@ -2,6 +2,6 @@
 {
     public class PolicyNames
     {
-        public const string ResourceOwner = nameof(ResourceOwner);
+        public const string ResourceUser = nameof(ResourceUser);
     }
 }

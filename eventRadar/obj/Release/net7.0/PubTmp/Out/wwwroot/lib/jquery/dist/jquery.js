@@ -758,7 +758,7 @@ try {
 
 function Sizzle( selector, context, results, seed ) {
 	var m, i, elem, nid, match, groups, newSelector,
-		newContext = context && context.ownerDocument,
+		newContext = context && context.UserDocument,
 
 		// nodeType defaults to 9, since context defaults to document
 		nodeType = context ? context.nodeType : 9;
@@ -1113,7 +1113,7 @@ support = Sizzle.support = {};
  */
 isXML = Sizzle.isXML = function( elem ) {
 	var namespace = elem && elem.namespaceURI,
-		docElem = elem && ( elem.ownerDocument || elem ).documentElement;
+		docElem = elem && ( elem.UserDocument || elem ).documentElement;
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
@@ -1128,7 +1128,7 @@ isXML = Sizzle.isXML = function( elem ) {
  */
 setDocument = Sizzle.setDocument = function( node ) {
 	var hasCompare, subWindow,
-		doc = node ? node.ownerDocument || node : preferredDoc;
+		doc = node ? node.UserDocument || node : preferredDoc;
 
 	// Return early if doc is invalid or already selected
 	// Support: IE 11+, Edge 17 - 18+
@@ -1495,7 +1495,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 		// two documents; shallow comparisons work.
 		// eslint-disable-next-line eqeqeq
-		compare = ( a.ownerDocument || a ) == ( b.ownerDocument || b ) ?
+		compare = ( a.UserDocument || a ) == ( b.UserDocument || b ) ?
 			a.compareDocumentPosition( b ) :
 
 			// Otherwise we know they are disconnected
@@ -1510,7 +1510,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 			// two documents; shallow comparisons work.
 			// eslint-disable-next-line eqeqeq
-			if ( a == document || a.ownerDocument == preferredDoc &&
+			if ( a == document || a.UserDocument == preferredDoc &&
 				contains( preferredDoc, a ) ) {
 				return -1;
 			}
@@ -1519,7 +1519,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 			// two documents; shallow comparisons work.
 			// eslint-disable-next-line eqeqeq
-			if ( b == document || b.ownerDocument == preferredDoc &&
+			if ( b == document || b.UserDocument == preferredDoc &&
 				contains( preferredDoc, b ) ) {
 				return 1;
 			}
@@ -1640,7 +1640,7 @@ Sizzle.contains = function( context, elem ) {
 	// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 	// two documents; shallow comparisons work.
 	// eslint-disable-next-line eqeqeq
-	if ( ( context.ownerDocument || context ) != document ) {
+	if ( ( context.UserDocument || context ) != document ) {
 		setDocument( context );
 	}
 	return contains( context, elem );
@@ -1653,7 +1653,7 @@ Sizzle.attr = function( elem, name ) {
 	// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 	// two documents; shallow comparisons work.
 	// eslint-disable-next-line eqeqeq
-	if ( ( elem.ownerDocument || elem ) != document ) {
+	if ( ( elem.UserDocument || elem ) != document ) {
 		setDocument( elem );
 	}
 
@@ -2706,7 +2706,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 					// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
 					// two documents; shallow comparisons work.
 					// eslint-disable-next-line eqeqeq
-					if ( !context && elem.ownerDocument != document ) {
+					if ( !context && elem.UserDocument != document ) {
 						setDocument( elem );
 						xml = !documentIsHTML;
 					}
@@ -3170,7 +3170,7 @@ var rootjQuery,
 					// Intentionally let the error be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
 						match[ 1 ],
-						context && context.nodeType ? context.ownerDocument || context : document,
+						context && context.nodeType ? context.UserDocument || context : document,
 						true
 					) );
 
@@ -4219,7 +4219,7 @@ function fcamelCase( _all, letter ) {
 function camelCase( string ) {
 	return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
 }
-var acceptData = function( owner ) {
+var acceptData = function( User ) {
 
 	// Accepts only:
 	//  - Node
@@ -4227,7 +4227,7 @@ var acceptData = function( owner ) {
 	//    - Node.DOCUMENT_NODE
 	//  - Object
 	//    - Any
-	return owner.nodeType === 1 || owner.nodeType === 9 || !( +owner.nodeType );
+	return User.nodeType === 1 || User.nodeType === 9 || !( +User.nodeType );
 };
 
 
@@ -4241,10 +4241,10 @@ Data.uid = 1;
 
 Data.prototype = {
 
-	cache: function( owner ) {
+	cache: function( User ) {
 
-		// Check if the owner object already has a cache
-		var value = owner[ this.expando ];
+		// Check if the User object already has a cache
+		var value = User[ this.expando ];
 
 		// If not, create one
 		if ( !value ) {
@@ -4253,18 +4253,18 @@ Data.prototype = {
 			// We can accept data for non-element nodes in modern browsers,
 			// but we should not, see #8335.
 			// Always return an empty object.
-			if ( acceptData( owner ) ) {
+			if ( acceptData( User ) ) {
 
 				// If it is a node unlikely to be stringify-ed or looped over
 				// use plain assignment
-				if ( owner.nodeType ) {
-					owner[ this.expando ] = value;
+				if ( User.nodeType ) {
+					User[ this.expando ] = value;
 
 				// Otherwise secure it in a non-enumerable property
 				// configurable must be true to allow the property to be
 				// deleted when data is removed
 				} else {
-					Object.defineProperty( owner, this.expando, {
+					Object.defineProperty( User, this.expando, {
 						value: value,
 						configurable: true
 					} );
@@ -4274,16 +4274,16 @@ Data.prototype = {
 
 		return value;
 	},
-	set: function( owner, data, value ) {
+	set: function( User, data, value ) {
 		var prop,
-			cache = this.cache( owner );
+			cache = this.cache( User );
 
-		// Handle: [ owner, key, value ] args
+		// Handle: [ User, key, value ] args
 		// Always use camelCase key (gh-2257)
 		if ( typeof data === "string" ) {
 			cache[ camelCase( data ) ] = value;
 
-		// Handle: [ owner, { properties } ] args
+		// Handle: [ User, { properties } ] args
 		} else {
 
 			// Copy the properties one-by-one to the cache object
@@ -4293,14 +4293,14 @@ Data.prototype = {
 		}
 		return cache;
 	},
-	get: function( owner, key ) {
+	get: function( User, key ) {
 		return key === undefined ?
-			this.cache( owner ) :
+			this.cache( User ) :
 
 			// Always use camelCase key (gh-2257)
-			owner[ this.expando ] && owner[ this.expando ][ camelCase( key ) ];
+			User[ this.expando ] && User[ this.expando ][ camelCase( key ) ];
 	},
-	access: function( owner, key, value ) {
+	access: function( User, key, value ) {
 
 		// In cases where either:
 		//
@@ -4316,7 +4316,7 @@ Data.prototype = {
 		if ( key === undefined ||
 				( ( key && typeof key === "string" ) && value === undefined ) ) {
 
-			return this.get( owner, key );
+			return this.get( User, key );
 		}
 
 		// When the key is not a string, or both a key and value
@@ -4325,15 +4325,15 @@ Data.prototype = {
 		//   1. An object of properties
 		//   2. A key and value
 		//
-		this.set( owner, key, value );
+		this.set( User, key, value );
 
 		// Since the "set" path can have two possible entry points
 		// return the expected data based on which path was taken[*]
 		return value !== undefined ? value : key;
 	},
-	remove: function( owner, key ) {
+	remove: function( User, key ) {
 		var i,
-			cache = owner[ this.expando ];
+			cache = User[ this.expando ];
 
 		if ( cache === undefined ) {
 			return;
@@ -4371,15 +4371,15 @@ Data.prototype = {
 			// Webkit & Blink performance suffers when deleting properties
 			// from DOM nodes, so set to undefined instead
 			// https://bugs.chromium.org/p/chromium/issues/detail?id=378607 (bug restricted)
-			if ( owner.nodeType ) {
-				owner[ this.expando ] = undefined;
+			if ( User.nodeType ) {
+				User[ this.expando ] = undefined;
 			} else {
-				delete owner[ this.expando ];
+				delete User[ this.expando ];
 			}
 		}
 	},
-	hasData: function( owner ) {
-		var cache = owner[ this.expando ];
+	hasData: function( User ) {
+		var cache = User[ this.expando ];
 		return cache !== undefined && !jQuery.isEmptyObject( cache );
 	}
 };
@@ -4703,7 +4703,7 @@ var documentElement = document.documentElement;
 
 
 	var isAttached = function( elem ) {
-			return jQuery.contains( elem.ownerDocument, elem );
+			return jQuery.contains( elem.UserDocument, elem );
 		},
 		composed = { composed: true };
 
@@ -4714,8 +4714,8 @@ var documentElement = document.documentElement;
 	// leading to errors. We need to check for `getRootNode`.
 	if ( documentElement.getRootNode ) {
 		isAttached = function( elem ) {
-			return jQuery.contains( elem.ownerDocument, elem ) ||
-				elem.getRootNode( composed ) === elem.ownerDocument;
+			return jQuery.contains( elem.UserDocument, elem ) ||
+				elem.getRootNode( composed ) === elem.UserDocument;
 		};
 	}
 var isHiddenWithinTree = function( elem, el ) {
@@ -4809,7 +4809,7 @@ var defaultDisplayMap = {};
 
 function getDefaultDisplay( elem ) {
 	var temp,
-		doc = elem.ownerDocument,
+		doc = elem.UserDocument,
 		nodeName = elem.nodeName,
 		display = defaultDisplayMap[ nodeName ];
 
@@ -6056,7 +6056,7 @@ function domManip( collection, args, callback, ignored ) {
 	}
 
 	if ( l ) {
-		fragment = buildFragment( args, collection[ 0 ].ownerDocument, false, collection, ignored );
+		fragment = buildFragment( args, collection[ 0 ].UserDocument, false, collection, ignored );
 		first = fragment.firstChild;
 
 		if ( fragment.childNodes.length === 1 ) {
@@ -6090,7 +6090,7 @@ function domManip( collection, args, callback, ignored ) {
 			}
 
 			if ( hasScripts ) {
-				doc = scripts[ scripts.length - 1 ].ownerDocument;
+				doc = scripts[ scripts.length - 1 ].UserDocument;
 
 				// Reenable scripts
 				jQuery.map( scripts, restoreScript );
@@ -6398,7 +6398,7 @@ var getStyles = function( elem ) {
 		// Support: IE <=11 only, Firefox <=30 (#15098, #14150)
 		// IE throws on elements created in popups
 		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
-		var view = elem.ownerDocument.defaultView;
+		var view = elem.UserDocument.defaultView;
 
 		if ( !view || !view.opener ) {
 			view = window;
@@ -8686,7 +8686,7 @@ jQuery.extend( jQuery.event, {
 		}
 
 		// Determine event propagation path in advance, per W3C events spec (#9951)
-		// Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
+		// Bubble up to document, then to window; watch for a global UserDocument var (#9724)
 		if ( !onlyHandlers && !special.noBubble && !isWindow( elem ) ) {
 
 			bubbleType = special.delegateType || type;
@@ -8699,7 +8699,7 @@ jQuery.extend( jQuery.event, {
 			}
 
 			// Only add window if we got to document (e.g., not plain obj or detached DOM)
-			if ( tmp === ( elem.ownerDocument || document ) ) {
+			if ( tmp === ( elem.UserDocument || document ) ) {
 				eventPath.push( tmp.defaultView || tmp.parentWindow || window );
 			}
 		}
@@ -8825,9 +8825,9 @@ if ( !support.focusin ) {
 		jQuery.event.special[ fix ] = {
 			setup: function() {
 
-				// Handle: regular nodes (via `this.ownerDocument`), window
+				// Handle: regular nodes (via `this.UserDocument`), window
 				// (via `this.document`) & document (via `this`).
-				var doc = this.ownerDocument || this.document || this,
+				var doc = this.UserDocument || this.document || this,
 					attaches = dataPriv.access( doc, fix );
 
 				if ( !attaches ) {
@@ -8836,7 +8836,7 @@ if ( !support.focusin ) {
 				dataPriv.access( doc, fix, ( attaches || 0 ) + 1 );
 			},
 			teardown: function() {
-				var doc = this.ownerDocument || this.document || this,
+				var doc = this.UserDocument || this.document || this,
 					attaches = dataPriv.access( doc, fix ) - 1;
 
 				if ( !attaches ) {
@@ -9897,7 +9897,7 @@ jQuery.fn.extend( {
 			}
 
 			// The elements to wrap the target around
-			wrap = jQuery( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
+			wrap = jQuery( html, this[ 0 ].UserDocument ).eq( 0 ).clone( true );
 
 			if ( this[ 0 ].parentNode ) {
 				wrap.insertBefore( this[ 0 ] );
@@ -10512,7 +10512,7 @@ jQuery.fn.extend( {
 
 		// Get document-relative position by adding viewport scroll to viewport-relative gBCR
 		rect = elem.getBoundingClientRect();
-		win = elem.ownerDocument.defaultView;
+		win = elem.UserDocument.defaultView;
 		return {
 			top: rect.top + win.pageYOffset,
 			left: rect.left + win.pageXOffset
@@ -10541,7 +10541,7 @@ jQuery.fn.extend( {
 
 			// Account for the *real* offset parent, which can be the document or its root element
 			// when a statically positioned element is identified
-			doc = elem.ownerDocument;
+			doc = elem.UserDocument;
 			offsetParent = elem.offsetParent || doc.documentElement;
 			while ( offsetParent &&
 				( offsetParent === doc.body || offsetParent === doc.documentElement ) &&

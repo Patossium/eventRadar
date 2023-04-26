@@ -20,7 +20,6 @@ namespace eventRadar
         public DbSet<Event> Events { get; set; }
         public DbSet<FollowedEvent> FollowedEvents { get; set; }
         public DbSet<FollowedLocation> FollowedLocations { get; set; }
-        public DbSet<FollowedUser> FollowedUsers { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Website> Websites { get; set; }
@@ -43,21 +42,6 @@ namespace eventRadar
 
             modelBuilder.Entity<IdentityUser>()
                 .HasKey(u => u.Id);
-
-            modelBuilder.Entity<FollowedUser>()
-                .HasKey(fu => fu.Id);
-
-            modelBuilder.Entity<FollowedUser>()
-                .HasOne(fu => fu.User)
-                .WithMany()
-                .HasForeignKey(fu => fu.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<FollowedUser>()
-                .HasOne(fu => fu.Followed_User)
-                .WithMany()
-                .HasForeignKey(fu => fu.FollowedUserId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

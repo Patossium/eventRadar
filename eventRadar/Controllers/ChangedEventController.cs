@@ -35,7 +35,7 @@ namespace eventRadar.Controllers
             {
                 return NotFound();
             }
-            return new ChangedEventDto(changedEvent.Id, changedEvent.OldInformation, changedEvent.NewInformation, changedEvent.ChangeTime, changedEvet.Event);
+            return new ChangedEventDto(changedEvent.Id, changedEvent.OldInformation, changedEvent.NewInformation, changedEvent.ChangeTime, changedEvent.Event);
         }
 
         [HttpPost]
