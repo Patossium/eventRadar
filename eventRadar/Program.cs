@@ -47,7 +47,6 @@ builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 builder.Services.AddTransient<IVisitedEventRepository, VisitedEventRepository>();
 builder.Services.AddTransient<IWebsiteRepository, WebsiteRepository>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
-//builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddAuthorization(options =>
@@ -76,5 +75,6 @@ var dbContext = scope.ServiceProvider.GetRequiredService<WebDbContext>();
 
 var dbSeeder = app.Services.CreateScope().ServiceProvider.GetRequiredService<AuthDbSeeder>();
 await dbSeeder.SeedAsync();
+
 
 app.Run();
