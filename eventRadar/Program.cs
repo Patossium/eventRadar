@@ -37,9 +37,9 @@ builder.Services.AddAuthentication(configureOptions: options =>
         options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]));
     });
 
-builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IBlacklistedPageRepository, BlacklistedPageRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IChangedEventRepository, ChangedEventRepository>();
 builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddTransient<IFollowedEventRepository, FollowedEventRepository>();
@@ -47,6 +47,7 @@ builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 builder.Services.AddTransient<IVisitedEventRepository, VisitedEventRepository>();
 builder.Services.AddTransient<IWebsiteRepository, WebsiteRepository>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
+//builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddAuthorization(options =>

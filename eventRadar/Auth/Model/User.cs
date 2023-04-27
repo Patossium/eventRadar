@@ -14,6 +14,5 @@ namespace eventRadar.Auth.Model
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-        public bool Blocked { get; set; }
     }
 }

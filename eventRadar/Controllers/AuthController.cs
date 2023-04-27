@@ -40,7 +40,6 @@ namespace eventRadar.Controllers
                 UserName = registerUserDto.Username,
                 Name = registerUserDto.Name,
                 Surname = registerUserDto.Surname,
-                Blocked = false
             };
             var createUserResult = await _userManager.CreateAsync(newUser, registerUserDto.Password);
             if (!createUserResult.Succeeded)
@@ -48,7 +47,7 @@ namespace eventRadar.Controllers
 
             await _userManager.AddToRoleAsync(newUser, SystemRoles.SystemUser);
 
-            return CreatedAtAction(nameof(Register), new NewUserDto(newUser.Id, newUser.UserName, newUser.Email, newUser.Name, newUser.Surname, newUser.Blocked));
+            return CreatedAtAction(nameof(Register), new NewUserDto(newUser.Id, newUser.UserName, newUser.Email, newUser.Name, newUser.Surname));
         }
 
         [HttpPost]
@@ -63,7 +62,8 @@ namespace eventRadar.Controllers
             if (!isPasswordValid)
                 return BadRequest("Neteisingi prisijungimo duomenys");
 
-            if (user.Blocked == true)
+            var isLockedOut = await _userManager.IsLockedOutAsync(user);
+            if (isLockedOut)
                 return BadRequest("Naudotojas yra užblokuotas");
 
             //user is valid
@@ -72,18 +72,31 @@ namespace eventRadar.Controllers
 
             return Ok(new SuccessfullLoginDto(accessToken));
         }
-        [HttpPut]
-        [Route("user/{userId}/block")]
-        public async Task<ActionResult<AuthDtos>> BlockUser(string userId, BlockUserDto blockUserDto)
+        [HttpPost]
+        [Route("users/{userId}/block")]
+        [Authorize(Roles = SystemRoles.Administrator)]
+        public async Task<ActionResult> BlockUser(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) 
+                return NotFound();
+
+            await _userManager.SetLockoutEnabledAsync(user, true);
+
+            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnabled));
+        }
+        [HttpPost]
+        [Route("users/{userId}/unblock")]
+        [Authorize(Roles = SystemRoles.Administrator)]
+        public async Task<ActionResult> UnblockUser(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
                 return NotFound();
 
-            user.Blocked = true;
+            await _userManager.SetLockoutEnabledAsync(user, false);
 
-            await _userManager.UpdateAsync(user);
-            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.Blocked));
+            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnabled));
         }
     }
 }

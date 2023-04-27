@@ -7,7 +7,6 @@ namespace eventRadar.Data.Repositories
     public interface IChangedEventRepository
     {
         Task CreateAsync(ChangedEvent changedEvent);
-        Task UpdateAsync(ChangedEvent changedEvent);
         Task DeleteAsync(ChangedEvent changedEvent);
         Task<ChangedEvent?> GetAsync(int changedEventId);
         Task<IReadOnlyList<ChangedEvent>> GetManyAsync();
@@ -30,11 +29,6 @@ namespace eventRadar.Data.Repositories
         public async Task CreateAsync(ChangedEvent changedEvent)
         {
             _webDbContext.ChangedEvents.Add(changedEvent);
-            await _webDbContext.SaveChangesAsync();
-        }
-        public async Task UpdateAsync (ChangedEvent changedEvent)
-        {
-            _webDbContext.ChangedEvents.Update(changedEvent);
             await _webDbContext.SaveChangesAsync();
         }
         public async Task DeleteAsync (ChangedEvent changedEvent)
