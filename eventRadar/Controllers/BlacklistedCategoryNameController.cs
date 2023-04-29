@@ -77,6 +77,8 @@ namespace eventRadar.Controllers
             if(blacklistedCategory == null)
                 return NotFound();
 
+            await _blacklistedCategoryRepository.DeleteAsync(blacklistedCategory);
+
             return NoContent();
         }
     }
