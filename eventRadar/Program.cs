@@ -47,6 +47,8 @@ builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 builder.Services.AddTransient<IVisitedEventRepository, VisitedEventRepository>();
 builder.Services.AddTransient<IWebsiteRepository, WebsiteRepository>();
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
+builder.Services.AddTransient<IBlacklistedCategoryNameRepository, BlacklistedCategoryNameRepository>();
+builder.Services.AddTransient<ICityRepository, CityRepository>();
 builder.Services.AddScoped<AuthDbSeeder>();
 
 builder.Services.AddAuthorization(options =>

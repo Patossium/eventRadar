@@ -23,11 +23,11 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<CategoryDto>> GetMany()
         {
             var category = await _categoryRepository.GetManyAsync();
-            return category.Select(o => new CategoryDto(o.Id, o.Name, o.WebsiteName));
+            return category.Select(o => new CategoryDto(o.Id, o.Name, o.SourceUrl));
         }
 
         [HttpGet()]
-        [Route("{cateogryId}", Name = "GetCategory")]
+        [Route("{categoryId}", Name = "GetCategory")]
         public async Task<ActionResult<CategoryDto>> Get(int categoryId)
         {
             var category = await _categoryRepository.GetAsync(categoryId);
@@ -35,18 +35,18 @@ namespace eventRadar.Controllers
             {
                 return NotFound();
             }
-            return new CategoryDto(category.Id, category.Name, category.WebsiteName);
+            return new CategoryDto(category.Id, category.Name, category.SourceUrl);
         }
 
         [HttpPost]
         [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<CategoryDto>> Create(CreateCategoryDto createCategoryDto)
         {
-            var category = new Category { Name = createCategoryDto.Name, WebsiteName = createCategoryDto.WebsiteName };
+            var category = new Category { Name = createCategoryDto.Name, SourceUrl = createCategoryDto.SourceUrl};
 
             await _categoryRepository.CreateAsync(category);
 
-            return Created("", new CategoryDto(category.Id, category.Name, category.WebsiteName));
+            return Created("", new CategoryDto(category.Id, category.Name, category.SourceUrl));
         }
 
         [HttpPut]
@@ -62,11 +62,10 @@ namespace eventRadar.Controllers
             }
 
             category.Name = updateCategoryDto.Name;
-            category.WebsiteName = updateCategoryDto.WebsiteName;
 
             await _categoryRepository.UpdateAsync(category);
 
-            return Ok(new CategoryDto(categoryId, category.Name, category.WebsiteName));
+            return Ok(new CategoryDto(categoryId, category.Name, category.SourceUrl));
         }
 
         [HttpDelete]

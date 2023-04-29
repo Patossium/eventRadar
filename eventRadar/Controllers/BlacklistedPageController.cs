@@ -81,6 +81,9 @@ namespace eventRadar.Controllers
             {
                 return NotFound();
             }
+
+            await _blacklistedRepository.DeleteAsync(blacklistedPage);
+
             return NoContent();
         }
     }

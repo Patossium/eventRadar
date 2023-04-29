@@ -25,6 +25,8 @@ namespace eventRadar
         public DbSet<VisitedEvent> VisitedEvents { get; set; }
         public DbSet<IdentityRole> Roles { get; set; }
         public DbSet<IdentityUserRole<string>> IdentityUserRoles { get; set; }
+        public DbSet<BlacklistedCategoryName> BlacklistedCategoryNames { get; set; }
+        public DbSet<City> Cities { get; set; }
         public WebDbContext(IConfiguration configuration)
         {
             _configuration = configuration;

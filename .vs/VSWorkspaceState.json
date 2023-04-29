@@ -10,6 +10,6 @@
     "\\eventRadar\\Data\\Dtos",
     "\\eventRadar\\Data\\Models"
   ],
-  "SelectedNode": "\\eventRadar.sln",
+  "SelectedNode": "\\eventRadar\\Controllers\\EventController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -114,6 +114,23 @@ namespace eventRadar.Migrations
                     b.ToTable("IdentityUserRoles");
                 });
 
+            modelBuilder.Entity("eventRadar.Models.BlacklistedCategoryName", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlacklistedCategoryNames");
+                });
+
             modelBuilder.Entity("eventRadar.Models.BlacklistedPage", b =>
                 {
                     b.Property<int>("Id")
@@ -147,7 +164,7 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WebsiteName")
+                    b.Property<string>("SourceUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -185,6 +202,23 @@ namespace eventRadar.Migrations
                     b.ToTable("ChangedEvents");
                 });
 
+            modelBuilder.Entity("eventRadar.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("eventRadar.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -197,9 +231,8 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ImageLink")
                         .IsRequired()
@@ -209,8 +242,9 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TicketLink")
                         .IsRequired()
@@ -345,9 +379,6 @@ namespace eventRadar.Migrations
             modelBuilder.Entity("eventRadar.Auth.Model.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<bool>("Blocked")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()

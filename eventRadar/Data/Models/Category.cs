@@ -9,6 +9,6 @@ namespace eventRadar.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string WebsiteName { get; set; }
+        public string SourceUrl { get; set; }
     }
 }
