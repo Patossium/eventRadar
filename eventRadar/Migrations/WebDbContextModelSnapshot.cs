@@ -374,6 +374,10 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TicketLinkType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TicketPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

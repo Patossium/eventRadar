@@ -171,7 +171,8 @@ namespace eventRadar.Migrations
                     UrlExtensionForEvent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EventLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PagerLink = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PagerLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TicketLinkType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

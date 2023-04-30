@@ -25,7 +25,7 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<WebsiteDto>> GetMany()
         {
             var website = await _websiteRepository.GetManyAsync();
-            return website.Select(o => new WebsiteDto(o.Id, o.Url, o.TitlePath, o.LocationPath, o.PricePath, o.DatePath, o.ImagePath, o.TicketPath, o.UrlExtensionForEvent, o.EventLink, o.CategoryLink, o.PagerLink));
+            return website.Select(o => new WebsiteDto(o.Id, o.Url, o.TitlePath, o.LocationPath, o.PricePath, o.DatePath, o.ImagePath, o.TicketPath, o.UrlExtensionForEvent, o.EventLink, o.CategoryLink, o.PagerLink, o.TicketLinkType));
         }
 
         [HttpGet()]
@@ -39,7 +39,7 @@ namespace eventRadar.Controllers
                 return NotFound();
             }
 
-            return new WebsiteDto(website.Id, website.Url, website.TitlePath, website.LocationPath, website.PricePath, website.DatePath, website.ImagePath, website.TicketPath, website.UrlExtensionForEvent, website.EventLink, website.CategoryLink, website.PagerLink);
+            return new WebsiteDto(website.Id, website.Url, website.TitlePath, website.LocationPath, website.PricePath, website.DatePath, website.ImagePath, website.TicketPath, website.UrlExtensionForEvent, website.EventLink, website.CategoryLink, website.PagerLink, website.TicketLinkType);
         }
 
         [HttpPost]
@@ -57,12 +57,13 @@ namespace eventRadar.Controllers
                 UrlExtensionForEvent = createWebsiteDto.UrlExtensionForEvent,
                 EventLink = createWebsiteDto.EventLink,
                 CategoryLink = createWebsiteDto.CategoryLink,
-                PagerLink = createWebsiteDto.PagerLink
+                PagerLink = createWebsiteDto.PagerLink,
+                TicketLinkType = createWebsiteDto.TicketLinkType
             };
 
             await _websiteRepository.CreateAsync(website);
 
-            return Created("", new WebsiteDto(website.Id, website.Url, website.TitlePath, website.LocationPath, website.PricePath, website.DatePath, website.ImagePath, website.TicketPath, website.UrlExtensionForEvent, website.EventLink, website.CategoryLink, website.PagerLink));
+            return Created("", new WebsiteDto(website.Id, website.Url, website.TitlePath, website.LocationPath, website.PricePath, website.DatePath, website.ImagePath, website.TicketPath, website.UrlExtensionForEvent, website.EventLink, website.CategoryLink, website.PagerLink, website.TicketLinkType));
 
         }
 
@@ -89,10 +90,11 @@ namespace eventRadar.Controllers
             website.EventLink = updateWebsiteDto.EventLink;
             website.CategoryLink = updateWebsiteDto.CategoryLink;
             website.PagerLink = updateWebsiteDto.PagerLink;
+            website.TicketLinkType = updateWebsiteDto.TicketLinkType;
 
             await _websiteRepository.UpdateAsync(website);
 
-            return Ok(new WebsiteDto (websiteId, website.Url, website.TitlePath, website.LocationPath, website.PricePath, website.DatePath, website.ImagePath, website.TicketPath, website.UrlExtensionForEvent, website.EventLink, website.CategoryLink, website.PagerLink));
+            return Ok(new WebsiteDto (websiteId, website.Url, website.TitlePath, website.LocationPath, website.PricePath, website.DatePath, website.ImagePath, website.TicketPath, website.UrlExtensionForEvent, website.EventLink, website.CategoryLink, website.PagerLink, website.TicketLinkType));
         }
 
         [HttpDelete]

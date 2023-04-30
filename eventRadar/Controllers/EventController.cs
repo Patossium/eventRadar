@@ -5,6 +5,9 @@ using eventRadar.Models;
 using eventRadar.Data.Dtos;
 using eventRadar.Data.Repositories;
 using eventRadar.Auth.Model;
+using eventRadar.Data;
+using System.Text.Json;
+using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace eventRadar.Controllers
 {
@@ -21,12 +24,40 @@ namespace eventRadar.Controllers
             _locationRepository = locationRepository;
             _categoryRepository = categoryRepository;
         }
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IEnumerable<EventDto>> GetMany()
         {
             var events = await _eventRepository.GetManyAsync();
             return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Updated, o.Location, o.Category));
+        }*/
+        [HttpGet(Name = "GetEvents")]
+        public async Task<IEnumerable<EventDto>> GetManyPaging([FromQuery] EventSearchParameters searchParameters)
+        {
+            var events = await _eventRepository.GetManyAsync(searchParameters);
+
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Updated, o.Location, o.Category));
         }
+
         [HttpGet()]
         [Route("{eventId}", Name = "GetEvent")]
         public async Task<ActionResult<EventDto>> Get(int eventId)
@@ -103,6 +134,33 @@ namespace eventRadar.Controllers
             await _eventRepository.DeleteAsync(eventObject);
 
             return NoContent();
+        }
+        private string? CreateEventResourceUri(
+            EventSearchParameters eventSearchParametersDto,
+            ResourceUriType type
+            )
+        {
+            return type switch
+            {
+                ResourceUriType.PreviousPage => Url.Link("GetEvents",
+                new
+                {
+                    pageNumber = eventSearchParametersDto.PageNumber - 1,
+                    pageSize = eventSearchParametersDto.PageSize,
+                }),
+                ResourceUriType.NextPage => Url.Link("GetEvents",
+                new
+                {
+                    pageNumber = eventSearchParametersDto.PageNumber + 1,
+                    pageSize = eventSearchParametersDto.PageSize,
+                }),
+                _ => Url.Link("GetEvents",
+                new
+                {
+                    pageNumber = eventSearchParametersDto.PageNumber,
+                    pageSize = eventSearchParametersDto.PageSize,
+                })
+            };
         }
     }
 }

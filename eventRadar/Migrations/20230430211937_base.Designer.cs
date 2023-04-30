@@ -12,7 +12,7 @@ using eventRadar;
 namespace eventRadar.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20230430143648_base")]
+    [Migration("20230430211937_base")]
     partial class @base
     {
         /// <inheritdoc />
@@ -374,6 +374,10 @@ namespace eventRadar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PricePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TicketLinkType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

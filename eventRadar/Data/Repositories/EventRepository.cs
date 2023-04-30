@@ -1,6 +1,8 @@
 ﻿using eventRadar.Controllers;
 using eventRadar.Models;
 using Microsoft.EntityFrameworkCore;
+using eventRadar.Helpers;
+using eventRadar.Data.Dtos;
 
 namespace eventRadar.Data.Repositories
 {
@@ -10,6 +12,7 @@ namespace eventRadar.Data.Repositories
         Task DeleteAsync(Event eventObject);
         Task<Event?> GetAsync(int eventId);
         Task<IReadOnlyList<Event>> GetManyAsync();
+        Task<PagedList<Event>> GetManyAsync(EventSearchParameters eventSearchParameters);
         Task UpdateAsync(Event eventObject);
     }
 
@@ -23,6 +26,12 @@ namespace eventRadar.Data.Repositories
         public async Task<Event?> GetAsync(int eventId)
         {
             return await _webDbContext.Events.FirstOrDefaultAsync(o => o.Id == eventId);
+        }
+        public async Task<PagedList<Event>> GetManyAsync(EventSearchParameters eventSearchParameters)
+        {
+            var queryable = _webDbContext.Events.AsQueryable().OrderBy(o => o.DateStart);
+
+            return await PagedList<Event>.CreateAsync(queryable, eventSearchParameters.PageNumber, eventSearchParameters.PageSize);
         }
         public async Task<IReadOnlyList<Event>> GetManyAsync()
         {
