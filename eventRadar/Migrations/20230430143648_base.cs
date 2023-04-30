@@ -73,7 +73,8 @@ namespace eventRadar.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TicketLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -166,7 +167,11 @@ namespace eventRadar.Migrations
                     PricePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DatePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TicketPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TicketPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UrlExtensionForEvent = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EventLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PagerLink = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

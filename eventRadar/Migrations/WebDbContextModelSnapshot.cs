@@ -231,7 +231,10 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("DateEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateStart")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageLink")
@@ -343,7 +346,15 @@ namespace eventRadar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CategoryLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DatePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EventLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -352,6 +363,10 @@ namespace eventRadar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LocationPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PagerLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -368,6 +383,10 @@ namespace eventRadar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrlExtensionForEvent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

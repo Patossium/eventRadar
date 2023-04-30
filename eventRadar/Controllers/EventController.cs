@@ -25,7 +25,7 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<EventDto>> GetMany()
         {
             var events = await _eventRepository.GetManyAsync();
-            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.Date, o.ImageLink, o.Price, o.TicketLink, o.Updated, o.Location, o.Category));
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Updated, o.Location, o.Category));
         }
         [HttpGet()]
         [Route("{eventId}", Name = "GetEvent")]
@@ -37,7 +37,7 @@ namespace eventRadar.Controllers
                 return NotFound();
             }
 
-            return new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.Date, eventObject.ImageLink,
+            return new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink,
                 eventObject.Price, eventObject.TicketLink, eventObject.Updated, eventObject.Location, eventObject.Category);
         }
 
@@ -49,7 +49,8 @@ namespace eventRadar.Controllers
             {
                 Url = createEventDto.Url,
                 Title = createEventDto.Title,
-                Date = createEventDto.Date,
+                DateStart = createEventDto.DateStart,
+                DateEnd = createEventDto.DateEnd,
                 ImageLink = createEventDto.ImageLink,
                 Price = createEventDto.Price,
                 TicketLink = createEventDto.TicketLink,
@@ -59,7 +60,7 @@ namespace eventRadar.Controllers
             };
             await _eventRepository.CreateAsync(eventObject);
 
-            return Created("", new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.Date, eventObject.ImageLink, eventObject.Price, 
+            return Created("", new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, eventObject.Price, 
                 eventObject.TicketLink, eventObject.Updated, eventObject.Location, eventObject.Category));
         }
 
@@ -75,7 +76,8 @@ namespace eventRadar.Controllers
 
             eventObject.Title = updateEventDto.Title;
             eventObject.Url = updateEventDto.Url;
-            eventObject.Date = updateEventDto.Date;
+            eventObject.DateStart = updateEventDto.DateStart;
+            eventObject.DateEnd = updateEventDto.DateEnd;
             eventObject.ImageLink = updateEventDto.ImageLink;
             eventObject.Price = updateEventDto.Price;
             eventObject.TicketLink = updateEventDto.TicketLink;
@@ -85,7 +87,7 @@ namespace eventRadar.Controllers
 
             await _eventRepository.UpdateAsync(eventObject);
 
-            return Ok(new EventDto(eventID, eventObject.Url, eventObject.Title, eventObject.Date, eventObject.ImageLink, 
+            return Ok(new EventDto(eventID, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, 
                 eventObject.Price, eventObject.TicketLink, eventObject.Updated, eventObject.Location, eventObject.Category));
         }
         [HttpDelete]

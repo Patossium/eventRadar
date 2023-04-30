@@ -15,5 +15,9 @@ namespace eventRadar.Models
         public string DatePath { get; set; }
         public string ImagePath { get; set; }
         public string TicketPath { get; set; }
+        public string UrlExtensionForEvent { get; set; }
+        public string EventLink { get; set; }
+        public string CategoryLink { get; set; }
+        public string PagerLink { get; set; }
     }
 }
