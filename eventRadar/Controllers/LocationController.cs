@@ -24,7 +24,7 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<LocationDto>> GetMany()
         {
             var locations = await _locationRepository.GetManyAsync();
-            return locations.Select(o => new LocationDto(o.Id, o.Name, o.City));
+            return locations.Select(o => new LocationDto(o.Id, o.Name, o.City, o.Country, o.Address));
         }
         [HttpGet()]
         [Route("{locationId}", Name = "GetLocation")]
@@ -36,17 +36,22 @@ namespace eventRadar.Controllers
             {
                 return NotFound();
             }
-            return new LocationDto(location.Id, location.Name, location.City);
+            return new LocationDto(location.Id, location.Name, location.City, location.Country, location.Address);
         }
 
         [HttpPost]
         [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<LocationDto>> Create(CreateLocationDto createLocationDto)
         {
-            var location = new Location { Name = createLocationDto.Name, City = createLocationDto.City };
+            var location = new Location {
+                Name = createLocationDto.Name, 
+                City = createLocationDto.City,
+                Country = createLocationDto.Country,
+                Address = createLocationDto.Address
+            };
             await _locationRepository.CreateAsync(location);
 
-            return Created("", new LocationDto(location.Id, location.Name, location.City));
+            return Created("", new LocationDto(location.Id, location.Name, location.City, location.Country, location.Address));
         }
 
         [HttpPut]
@@ -63,10 +68,12 @@ namespace eventRadar.Controllers
 
             location.Name = updateLocationDto.Name;
             location.City = updateLocationDto.City;
+            location.Country = updateLocationDto.Country;
+            location.Address = updateLocationDto.Address;
 
             await _locationRepository.UpdateAsync(location);
 
-            return Ok(new LocationDto(locationId, location.Name, location.City));
+            return Ok(new LocationDto(locationId, location.Name, location.City, location.Country, location.Address));
         }
 
         [HttpDelete]

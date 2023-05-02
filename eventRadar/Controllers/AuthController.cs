@@ -62,8 +62,7 @@ namespace eventRadar.Controllers
             if (!isPasswordValid)
                 return BadRequest("Neteisingi prisijungimo duomenys");
 
-            var isLockedOut = await _userManager.IsLockedOutAsync(user);
-            if (isLockedOut)
+            if (user.LockoutEnd != null)
                 return BadRequest("Naudotojas yra užblokuotas");
 
             //user is valid
@@ -81,9 +80,11 @@ namespace eventRadar.Controllers
             if (user == null) 
                 return NotFound();
 
-            await _userManager.SetLockoutEnabledAsync(user, true);
+            user.LockoutEnd = DateTimeOffset.MaxValue;
 
-            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnabled));
+            await _userManager.UpdateAsync(user);
+
+            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnd, user.LockoutEnabled));
         }
         [HttpPost]
         [Route("users/{userId}/unblock")]
@@ -94,9 +95,9 @@ namespace eventRadar.Controllers
             if (user == null)
                 return NotFound();
 
-            await _userManager.SetLockoutEnabledAsync(user, false);
+            await _userManager.SetLockoutEndDateAsync(user, null);
 
-            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnabled));
+            return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnd, user.LockoutEnabled));
         }
     }
 }

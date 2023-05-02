@@ -24,7 +24,7 @@ namespace eventRadar.DB
         {
             var newAdminUser = new User()
             {
-                UserName = "administratorius",
+                UserName = "Administrator",
                 Email = "admin@admin.com"
             };
 
@@ -36,6 +36,7 @@ namespace eventRadar.DB
                 {
                     await _userManager.AddToRolesAsync(newAdminUser, SystemRoles.All);
                 }
+                await _userManager.SetLockoutEnabledAsync(newAdminUser, false);
             }
         }
 

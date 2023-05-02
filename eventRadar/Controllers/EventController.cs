@@ -24,16 +24,18 @@ namespace eventRadar.Controllers
             _locationRepository = locationRepository;
             _categoryRepository = categoryRepository;
         }
-        /*[HttpGet]
+        [HttpGet]
+        [Route("all")]
         public async Task<IEnumerable<EventDto>> GetMany()
         {
             var events = await _eventRepository.GetManyAsync();
-            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Updated, o.Location, o.Category));
-        }*/
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
         [HttpGet(Name = "GetEvents")]
+        [Route("visi")]
         public async Task<IEnumerable<EventDto>> GetManyPaging([FromQuery] EventSearchParameters searchParameters)
         {
-            var events = await _eventRepository.GetManyAsync(searchParameters);
+            var events = await _eventRepository.GetManyPagedAsync(searchParameters);
 
             var previousPageLink = events.HasPrevious ?
                 CreateEventResourceUri(searchParameters,
@@ -55,7 +57,34 @@ namespace eventRadar.Controllers
 
             Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
 
-            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Updated, o.Location, o.Category));
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetFilteredEvents")]
+        [Route("filtered/{Category}")]
+        public async Task<IEnumerable<EventDto>> GetManyFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
+        {
+            var events = await _eventRepository.GetManyFilteredAsync(Category, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
 
         [HttpGet()]
@@ -69,7 +98,7 @@ namespace eventRadar.Controllers
             }
 
             return new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink,
-                eventObject.Price, eventObject.TicketLink, eventObject.Updated, eventObject.Location, eventObject.Category);
+                eventObject.Price, eventObject.TicketLink, eventObject.Location, eventObject.Category);
         }
 
         [HttpPost]
@@ -85,14 +114,13 @@ namespace eventRadar.Controllers
                 ImageLink = createEventDto.ImageLink,
                 Price = createEventDto.Price,
                 TicketLink = createEventDto.TicketLink,
-                Updated = createEventDto.Updated,
                 Location = createEventDto.Location,
                 Category = createEventDto.Category
             };
             await _eventRepository.CreateAsync(eventObject);
 
             return Created("", new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, eventObject.Price, 
-                eventObject.TicketLink, eventObject.Updated, eventObject.Location, eventObject.Category));
+                eventObject.TicketLink, eventObject.Location, eventObject.Category));
         }
 
         [HttpPut]
@@ -112,14 +140,13 @@ namespace eventRadar.Controllers
             eventObject.ImageLink = updateEventDto.ImageLink;
             eventObject.Price = updateEventDto.Price;
             eventObject.TicketLink = updateEventDto.TicketLink;
-            eventObject.Updated = updateEventDto.Updated;
             eventObject.Location = updateEventDto.Location;
             eventObject.Category = updateEventDto.Category;
 
             await _eventRepository.UpdateAsync(eventObject);
 
             return Ok(new EventDto(eventID, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, 
-                eventObject.Price, eventObject.TicketLink, eventObject.Updated, eventObject.Location, eventObject.Category));
+                eventObject.Price, eventObject.TicketLink, eventObject.Location, eventObject.Category));
         }
         [HttpDelete]
         [Route("{eventId}")]

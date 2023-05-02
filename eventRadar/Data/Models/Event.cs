@@ -16,7 +16,6 @@ namespace eventRadar.Models
         public string ImageLink { get; set; }
         public string Price { get; set; }
         public string TicketLink { get; set; }
-        public bool Updated { get; set; }
         public string Location { get; set; }
         public string Category { get; set; }
     }

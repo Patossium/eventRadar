@@ -12,8 +12,8 @@ using eventRadar;
 namespace eventRadar.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20230430211937_base")]
-    partial class @base
+    [Migration("20230502181203_inital")]
+    partial class inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -176,35 +176,6 @@ namespace eventRadar.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("eventRadar.Models.ChangedEvent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("ChangeTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NewInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OldInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.ToTable("ChangedEvents");
-                });
-
             modelBuilder.Entity("eventRadar.Models.City", b =>
                 {
                     b.Property<int>("Id")
@@ -260,9 +231,6 @@ namespace eventRadar.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Updated")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -304,7 +272,15 @@ namespace eventRadar.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -358,6 +334,10 @@ namespace eventRadar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EventLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullLocationPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -415,17 +395,6 @@ namespace eventRadar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("User");
-                });
-
-            modelBuilder.Entity("eventRadar.Models.ChangedEvent", b =>
-                {
-                    b.HasOne("eventRadar.Models.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("eventRadar.Models.FollowedEvent", b =>

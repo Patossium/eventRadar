@@ -21,7 +21,7 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<UserDto>> GetMany()
         {
             var users = await _userRepository.GetManyAsync();
-            return users.Select(o => new UserDto(o.Id, o.UserName, o.Email, o.PasswordHash, o.Name, o.Surname, o.LockoutEnabled));
+            return users.Select(o => new UserDto(o.Id, o.UserName, o.Email, o.PasswordHash, o.Name, o.Surname, o.LockoutEnd, o.LockoutEnabled));
         }
         [HttpGet()]
         [Route("{userId}", Name ="GetUser")]
@@ -33,7 +33,7 @@ namespace eventRadar.Controllers
             {
                 return NotFound();
             }
-            return new UserDto(user.Id, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnabled);
+            return new UserDto(user.Id, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnd, user.LockoutEnabled);
         }
     }
 }

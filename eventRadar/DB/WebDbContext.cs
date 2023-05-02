@@ -16,7 +16,6 @@ namespace eventRadar
 
         public DbSet<BlacklistedPage> BlacklistedPages { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ChangedEvent> ChangedEvents { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<FollowedEvent> FollowedEvents { get; set; }
         public DbSet<Location> Locations { get; set; }

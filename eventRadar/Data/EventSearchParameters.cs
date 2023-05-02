@@ -2,8 +2,8 @@
 {
     public class EventSearchParameters
     {
-        private int _pageSize = 50;
-        private const int MaxPageSize = 50;
+        private int _pageSize = 45;
+        private const int MaxPageSize = 45;
 
         public int PageNumber { get; set; } = 1;
 

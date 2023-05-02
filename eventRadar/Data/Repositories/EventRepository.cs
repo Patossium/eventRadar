@@ -12,8 +12,10 @@ namespace eventRadar.Data.Repositories
         Task DeleteAsync(Event eventObject);
         Task<Event?> GetAsync(int eventId);
         Task<IReadOnlyList<Event>> GetManyAsync();
-        Task<PagedList<Event>> GetManyAsync(EventSearchParameters eventSearchParameters);
+        Task<PagedList<Event>> GetManyPagedAsync(EventSearchParameters eventSearchParameters);
         Task UpdateAsync(Event eventObject);
+        Task<PagedList<Event>> GetManyFilteredAsync(string Category, EventSearchParameters eventSearchParameters);
+        Task<PagedList<Event>> GetManySearchedAsync(string search, EventSearchParameters eventSearchParameters);
     }
 
     public class EventRepository : IEventRepository
@@ -27,11 +29,24 @@ namespace eventRadar.Data.Repositories
         {
             return await _webDbContext.Events.FirstOrDefaultAsync(o => o.Id == eventId);
         }
-        public async Task<PagedList<Event>> GetManyAsync(EventSearchParameters eventSearchParameters)
+        public async Task<PagedList<Event>> GetManyPagedAsync(EventSearchParameters eventSearchParameters)
         {
             var queryable = _webDbContext.Events.AsQueryable().OrderBy(o => o.DateStart);
 
             return await PagedList<Event>.CreateAsync(queryable, eventSearchParameters.PageNumber, eventSearchParameters.PageSize);
+        }
+        public async Task<PagedList<Event>> GetManyFilteredAsync(string Category, EventSearchParameters eventSearchParameters)
+        {
+            var filteredEvents = _webDbContext.Events.AsQueryable().Where(o => o.Category == Category).OrderBy(o => o.DateStart);
+
+            return await PagedList<Event>.CreateAsync(filteredEvents, eventSearchParameters.PageNumber, eventSearchParameters.PageSize);
+
+        }
+        public async Task<PagedList<Event>> GetManySearchedAsync(string search, EventSearchParameters eventSearchParameters)
+        {
+            var searchedEvents = _webDbContext.Events.AsQueryable().Where(o => o.Title.Contains(search) || o.Location.Contains(search)).OrderBy(o => o.DateStart);
+
+            return await PagedList<Event>.CreateAsync(searchedEvents, eventSearchParameters.PageNumber, eventSearchParameters.PageSize);
         }
         public async Task<IReadOnlyList<Event>> GetManyAsync()
         {

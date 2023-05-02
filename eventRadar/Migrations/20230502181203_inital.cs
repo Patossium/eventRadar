@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace eventRadar.Migrations
 {
     /// <inheritdoc />
-    public partial class @base : Migration
+    public partial class inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,7 +78,6 @@ namespace eventRadar.Migrations
                     ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TicketLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Updated = table.Column<bool>(type: "bit", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -106,7 +105,9 @@ namespace eventRadar.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,33 +173,12 @@ namespace eventRadar.Migrations
                     EventLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PagerLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TicketLinkType = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TicketLinkType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullLocationPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Websites", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ChangedEvents",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OldInformation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NewInformation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ChangeTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EventId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ChangedEvents", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ChangedEvents_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -254,11 +234,6 @@ namespace eventRadar.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChangedEvents_EventId",
-                table: "ChangedEvents",
-                column: "EventId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_FollowedEvents_EventId",
                 table: "FollowedEvents",
                 column: "EventId");
@@ -290,9 +265,6 @@ namespace eventRadar.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "ChangedEvents");
 
             migrationBuilder.DropTable(
                 name: "Cities");

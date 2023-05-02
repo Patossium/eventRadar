@@ -40,7 +40,6 @@ builder.Services.AddAuthentication(configureOptions: options =>
 builder.Services.AddTransient<IBlacklistedPageRepository, BlacklistedPageRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
-builder.Services.AddTransient<IChangedEventRepository, ChangedEventRepository>();
 builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddTransient<IFollowedEventRepository, FollowedEventRepository>();
 builder.Services.AddTransient<ILocationRepository, LocationRepository>();

@@ -20,5 +20,6 @@ namespace eventRadar.Models
         public string CategoryLink { get; set; }
         public string PagerLink { get; set; }
         public string TicketLinkType { get; set; }
+        public string FullLocationPath { get; set; }
     }
 }
