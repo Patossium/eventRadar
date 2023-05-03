@@ -52,7 +52,7 @@ namespace eventRadar.Controllers
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             var user = await _userRepository.GetAsync(userId);
-            if(user == null)
+            if (user == null)
                 return NotFound();
 
             var followedEvents = await _followedEventRepository.GetManyAsync(user);
@@ -71,6 +71,18 @@ namespace eventRadar.Controllers
 
             return new FollowedEventDto(followedEvent.Id, followedEvent.UserId, followedEvent.User, followedEvent.Event, followedEvent.EventId);
         }
+        [HttpGet()]
+        [Route("{eventId}/check", Name = "CheckIfFollowed")]
+        public async Task<ActionResult<FollowedEventDto>> GetCheck(int eventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var followedEvent = await _followedEventRepository.GetCheckAsync(user, eventId);
+            if (followedEvent == null)
+                return NotFound();
+
+            return new FollowedEventDto(followedEvent.Id, followedEvent.UserId, followedEvent.User, followedEvent.Event, followedEvent.EventId);
+        }
         [HttpDelete]
         [Route("{followedEventId}")]
         public async Task<ActionResult> Remove(int followedEventId)
@@ -79,6 +91,20 @@ namespace eventRadar.Controllers
             var user = await _userRepository.GetAsync(userId);
             var followedEvent = await _followedEventRepository.GetAsync(user, followedEventId);
             if(followedEvent == null)
+                return NotFound();
+
+            await _followedEventRepository.DeleteAsync(followedEvent);
+
+            return NoContent();
+        }
+        [HttpDelete]
+        [Route("{eventId}/checked")]
+        public async Task<ActionResult> RemoveByEvent(int eventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var followedEvent = await _followedEventRepository.GetCheckAsync(user, eventId);
+            if (followedEvent == null)
                 return NotFound();
 
             await _followedEventRepository.DeleteAsync(followedEvent);

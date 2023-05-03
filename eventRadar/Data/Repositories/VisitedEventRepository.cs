@@ -10,6 +10,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(VisitedEvent visitedEvent);
         Task DeleteAsync(VisitedEvent visitedEvent);
         Task<VisitedEvent?> GetAsync(User user, int visitedEventId);
+        Task<VisitedEvent?> GetCheckAsync(User user, int eventId);
         Task<IReadOnlyList<VisitedEvent>> GetManyAsync(User user);
     }
     public class VisitedEventRepository : IVisitedEventRepository
@@ -22,11 +23,15 @@ namespace eventRadar.Data.Repositories
         }
         public async Task<VisitedEvent?> GetAsync(User user, int visitedEventId)
         {
-            return await _webDbContext.VisitedEvents.Where(o => o.User == user).FirstOrDefaultAsync(o => o.Id == visitedEventId);
+            return await _webDbContext.VisitedEvents.Include(fe => fe.Event).Where(o => o.User == user).FirstOrDefaultAsync(o => o.Id == visitedEventId);
         }
         public async Task<IReadOnlyList<VisitedEvent>> GetManyAsync(User user)
         {
-            return await _webDbContext.VisitedEvents.Where(o => o.User == user).ToListAsync();
+            return await _webDbContext.VisitedEvents.Include(fe => fe.Event).Where(o => o.User == user).ToListAsync();
+        }
+        public async Task<VisitedEvent?> GetCheckAsync(User user, int eventId)
+        {
+            return await _webDbContext.VisitedEvents.Include(fe => fe.Event).Where(o => o.User == user).FirstOrDefaultAsync(o => o.EventId == eventId);
         }
         public async Task CreateAsync(VisitedEvent visitedEvent)
         {

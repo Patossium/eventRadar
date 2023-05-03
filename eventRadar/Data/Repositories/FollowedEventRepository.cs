@@ -10,6 +10,7 @@ namespace eventRadar.Data.Repositories
         Task CreateAsync(FollowedEvent followedEvent);
         Task DeleteAsync(FollowedEvent followedEvent);
         Task<FollowedEvent?> GetAsync(User user, int followedEventId);
+        Task<FollowedEvent?> GetCheckAsync(User user, int eventId);
         Task<IReadOnlyList<FollowedEvent>> GetManyAsync(User user);
     }
     public class FollowedEventRepository : IFollowedEventRepository
@@ -21,11 +22,15 @@ namespace eventRadar.Data.Repositories
         }
         public async Task<FollowedEvent?> GetAsync(User user, int followedEventId)
         {
-            return await _webDbContext.FollowedEvents.Where(o => o.User == user).FirstOrDefaultAsync( o => o.Id == followedEventId);
+            return await _webDbContext.FollowedEvents.Include(fe => fe.Event).Where(o => o.User == user).FirstOrDefaultAsync( o => o.Id == followedEventId);
+        }
+        public async Task<FollowedEvent?> GetCheckAsync(User user, int eventId)
+        {
+            return await _webDbContext.FollowedEvents.Include(fe => fe.Event).Where(o => o.User == user).FirstOrDefaultAsync(o => o.EventId == eventId);
         }
         public async Task<IReadOnlyList<FollowedEvent>> GetManyAsync(User user)
         {
-            return await _webDbContext.FollowedEvents.Where(o => o.User == user).ToListAsync();
+            return await _webDbContext.FollowedEvents.Include(fe => fe.Event).Where(o => o.User == user).ToListAsync();
         }
         public async Task CreateAsync(FollowedEvent followedEvent)
         {
@@ -37,5 +42,6 @@ namespace eventRadar.Data.Repositories
             _webDbContext.FollowedEvents.Remove(followedEvent);
             await _webDbContext.SaveChangesAsync();
         }
+
     }
 }

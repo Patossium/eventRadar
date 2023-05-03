@@ -12,7 +12,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace eventRadar.Controllers
 {
     [ApiController]
-    [Route("api/user/{userId}/visitedEvent")]
+    [Route("api/user/visitedEvent")]
     public class VisitedEventController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
@@ -86,6 +86,18 @@ namespace eventRadar.Controllers
 
             return Created("", new VisitedEventDto(visitedEvent.Id, visitedEvent.UserId, visitedEvent.User, visitedEvent.Event, visitedEvent.EventId));
         }
+        [HttpGet()]
+        [Route("{eventId}/check", Name = "CheckIfFollowed")]
+        public async Task<ActionResult<FollowedEventDto>> GetCheck(int eventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var visitedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
+            if (visitedEvent == null)
+                return NotFound();
+
+            return new FollowedEventDto(visitedEvent.Id, visitedEvent.UserId, visitedEvent.User, visitedEvent.Event, visitedEvent.EventId);
+        }
 
         [HttpDelete]
         [Route("{visitedEventId}")]
@@ -104,6 +116,20 @@ namespace eventRadar.Controllers
                 return NotFound();
 
             await _visitedEventRepository.DeleteAsync(visitedEvent);
+
+            return NoContent();
+        }
+        [HttpDelete]
+        [Route("{eventId}/checked")]
+        public async Task<ActionResult> RemoveByEvent(int eventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var followedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
+            if (followedEvent == null)
+                return NotFound();
+
+            await _visitedEventRepository.DeleteAsync(followedEvent);
 
             return NoContent();
         }

@@ -86,6 +86,33 @@ namespace eventRadar.Controllers
 
             return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
+        [HttpGet(Name = "GetSearchedEvents")]
+        [Route("search/{search}")]
+        public async Task<IEnumerable<EventDto>> GetManySearchedPaging([FromQuery] EventSearchParameters searchParameters, string search)
+        {
+            var events = await _eventRepository.GetManySearchedAsync(search, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
 
         [HttpGet()]
         [Route("{eventId}", Name = "GetEvent")]
