@@ -12,8 +12,8 @@ using eventRadar;
 namespace eventRadar.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20230502181203_inital")]
-    partial class inital
+    [Migration("20230508133628_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
