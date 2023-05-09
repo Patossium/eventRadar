@@ -12,7 +12,7 @@ using eventRadar;
 namespace eventRadar.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20230508133628_initial")]
+    [Migration("20230509220250_initial")]
     partial class initial
     {
         /// <inheritdoc />
