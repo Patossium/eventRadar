@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj": {}
+    "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj": {
+    "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj",
         "projectName": "eventRadarUnitTests",
-        "projectPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj",
-        "packagesPath": "C:\\Users\\p4t0s\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadarUnitTests\\obj\\",
+        "projectPath": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadarUnitTests\\eventRadarUnitTests.csproj",
+        "packagesPath": "C:\\Users\\37069\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadarUnitTests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\p4t0s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\37069\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj": {
-                "projectPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj"
+              "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadar\\eventRadar.csproj": {
+                "projectPath": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadar\\eventRadar.csproj"
               }
             }
           }
@@ -89,17 +94,21 @@
         }
       }
     },
-    "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj": {
+    "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadar\\eventRadar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj",
+        "projectUniqueName": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadar\\eventRadar.csproj",
         "projectName": "eventRadar",
-        "projectPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\eventRadar.csproj",
-        "packagesPath": "C:\\Users\\p4t0s\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\",
+        "projectPath": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadar\\eventRadar.csproj",
+        "packagesPath": "C:\\Users\\37069\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\37069\\Documents\\GitHub\\eventRadar\\eventRadar\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\p4t0s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\37069\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,6 +116,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

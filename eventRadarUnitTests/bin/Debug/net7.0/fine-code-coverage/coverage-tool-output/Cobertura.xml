@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.307362401715511" branch-rate="0.155844155844156" lines-covered="430" lines-valid="1399" branches-covered="24" branches-valid="154" complexity="400" version="0" timestamp="1683858217">
+<coverage line-rate="0.572164948453608" branch-rate="0.331168831168831" lines-covered="999" lines-valid="1746" branches-covered="51" branches-valid="154" complexity="436" version="0" timestamp="1683887775">
   <sources>
-    <source>C:\Users\p4t0s\</source>
+    <source>C:\Users\37069\</source>
   </sources>
   <packages>
-    <package name="eventRadar" line-rate="0.133211678832117" branch-rate="0.155844155844156" complexity="366">
+    <package name="eventRadar" line-rate="0.364051094890511" branch-rate="0.331168831168831" complexity="366">
       <classes>
-        <class name="eventRadar.Auth.JwtTokenService" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Auth\JWTTokenService.cs" line-rate="0" branch-rate="1" complexity="2">
+        <class name="eventRadar.Auth.JwtTokenService" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Auth\JWTTokenService.cs" line-rate="0" branch-rate="1" complexity="2">
           <methods>
             <method name="CreateAccessToken" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -69,7 +69,7 @@
             <line number="47" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Auth.Model.AuthDtos" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Auth\Model\AuthDtos.cs" line-rate="0.8" branch-rate="1" complexity="5">
+        <class name="eventRadar.Auth.Model.AuthDtos" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Auth\Model\AuthDtos.cs" line-rate="0.8" branch-rate="1" complexity="5">
           <methods>
             <method name="get_Username" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -105,7 +105,7 @@
             <line number="11" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Auth.Model.SystemRoles" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Auth\Model\SystemRoles.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Auth.Model.SystemRoles" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Auth\Model\SystemRoles.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name=".cctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -117,7 +117,7 @@
             <line number="8" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Auth.Model.User" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Auth\Model\User.cs" line-rate="1" branch-rate="1" complexity="2">
+        <class name="eventRadar.Auth.Model.User" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Auth\Model\User.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
             <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -135,7 +135,7 @@
             <line number="16" hits="9" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Auth.ResourceUserAuthorizationHandler" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Auth\ResourceOwnerAuthorizationHandler.cs" line-rate="0" branch-rate="0" complexity="5">
+        <class name="eventRadar.Auth.ResourceUserAuthorizationHandler" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Auth\ResourceOwnerAuthorizationHandler.cs" line-rate="0" branch-rate="0" complexity="5">
           <methods>
             <method name="HandleRequirementAsync" signature="(...)" line-rate="0" branch-rate="0" complexity="4">
               <lines>
@@ -165,7 +165,7 @@
             <line number="19" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.AuthController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\AuthController.cs" line-rate="0.843137254901961" branch-rate="0.785714285714286" complexity="15">
+        <class name="eventRadar.Controllers.AuthController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\AuthController.cs" line-rate="0.843137254901961" branch-rate="0.785714285714286" complexity="15">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -293,7 +293,7 @@
             <line number="101" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.BlacklistedCategoryNameController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\BlacklistedCategoryNameController.cs" line-rate="1" branch-rate="1" complexity="9">
+        <class name="eventRadar.Controllers.BlacklistedCategoryNameController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\BlacklistedCategoryNameController.cs" line-rate="1" branch-rate="1" complexity="9">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -391,7 +391,7 @@
             <line number="83" hits="2" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.BlacklistedPageController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\BlacklistedPageController.cs" line-rate="0.947368421052632" branch-rate="0.833333333333333" complexity="9">
+        <class name="eventRadar.Controllers.BlacklistedPageController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\BlacklistedPageController.cs" line-rate="0.947368421052632" branch-rate="0.833333333333333" complexity="9">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -497,14 +497,14 @@
             <line number="88" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.CategoryController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\CategoryController.cs" line-rate="0" branch-rate="0" complexity="9">
+        <class name="eventRadar.Controllers.CategoryController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\CategoryController.cs" line-rate="0.861111111111111" branch-rate="1" complexity="9">
           <methods>
-            <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="17" hits="0" branch="false" />
-                <line number="18" hits="0" branch="false" />
-                <line number="19" hits="0" branch="false" />
-                <line number="20" hits="0" branch="false" />
+                <line number="17" hits="7" branch="false" />
+                <line number="18" hits="7" branch="false" />
+                <line number="19" hits="7" branch="false" />
+                <line number="20" hits="7" branch="false" />
               </lines>
             </method>
             <method name="Create" signature="()" line-rate="0" branch-rate="1" complexity="1">
@@ -516,257 +516,257 @@
                 <line number="50" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="Get" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Get" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="32" hits="0" branch="false" />
-                <line number="33" hits="0" branch="false" />
-                <line number="34" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="35" hits="0" branch="false" />
-                <line number="36" hits="0" branch="false" />
-                <line number="38" hits="0" branch="false" />
-                <line number="39" hits="0" branch="false" />
+                <line number="32" hits="2" branch="false" />
+                <line number="33" hits="2" branch="false" />
+                <line number="34" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="35" hits="1" branch="false" />
+                <line number="36" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="39" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="GetMany" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="GetMany" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="24" hits="0" branch="false" />
-                <line number="25" hits="0" branch="false" />
-                <line number="26" hits="0" branch="false" />
-                <line number="27" hits="0" branch="false" />
+                <line number="24" hits="1" branch="false" />
+                <line number="25" hits="1" branch="false" />
+                <line number="26" hits="3" branch="false" />
+                <line number="27" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Remove" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Remove" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="75" hits="0" branch="false" />
-                <line number="76" hits="0" branch="false" />
-                <line number="78" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="79" hits="0" branch="false" />
-                <line number="81" hits="0" branch="false" />
-                <line number="83" hits="0" branch="false" />
-                <line number="84" hits="0" branch="false" />
+                <line number="75" hits="2" branch="false" />
+                <line number="76" hits="2" branch="false" />
+                <line number="78" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="79" hits="1" branch="false" />
+                <line number="81" hits="1" branch="false" />
+                <line number="83" hits="1" branch="false" />
+                <line number="84" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="Update" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Update" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="56" hits="0" branch="false" />
-                <line number="57" hits="0" branch="false" />
-                <line number="59" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="60" hits="0" branch="false" />
-                <line number="61" hits="0" branch="false" />
-                <line number="64" hits="0" branch="false" />
-                <line number="66" hits="0" branch="false" />
-                <line number="68" hits="0" branch="false" />
-                <line number="69" hits="0" branch="false" />
+                <line number="56" hits="2" branch="false" />
+                <line number="57" hits="2" branch="false" />
+                <line number="59" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="60" hits="1" branch="false" />
+                <line number="61" hits="1" branch="false" />
+                <line number="64" hits="1" branch="false" />
+                <line number="66" hits="1" branch="false" />
+                <line number="68" hits="1" branch="false" />
+                <line number="69" hits="2" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="17" hits="0" branch="false" />
-            <line number="18" hits="0" branch="false" />
-            <line number="19" hits="0" branch="false" />
-            <line number="20" hits="0" branch="false" />
-            <line number="24" hits="0" branch="false" />
-            <line number="25" hits="0" branch="false" />
-            <line number="26" hits="0" branch="false" />
-            <line number="27" hits="0" branch="false" />
-            <line number="32" hits="0" branch="false" />
-            <line number="33" hits="0" branch="false" />
-            <line number="34" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="35" hits="0" branch="false" />
-            <line number="36" hits="0" branch="false" />
-            <line number="38" hits="0" branch="false" />
-            <line number="39" hits="0" branch="false" />
+            <line number="17" hits="7" branch="false" />
+            <line number="18" hits="7" branch="false" />
+            <line number="19" hits="7" branch="false" />
+            <line number="20" hits="7" branch="false" />
+            <line number="24" hits="1" branch="false" />
+            <line number="25" hits="1" branch="false" />
+            <line number="26" hits="3" branch="false" />
+            <line number="27" hits="1" branch="false" />
+            <line number="32" hits="2" branch="false" />
+            <line number="33" hits="2" branch="false" />
+            <line number="34" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="35" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="39" hits="2" branch="false" />
             <line number="44" hits="0" branch="false" />
             <line number="45" hits="0" branch="false" />
             <line number="47" hits="0" branch="false" />
             <line number="49" hits="0" branch="false" />
             <line number="50" hits="0" branch="false" />
-            <line number="56" hits="0" branch="false" />
-            <line number="57" hits="0" branch="false" />
-            <line number="59" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="60" hits="0" branch="false" />
-            <line number="61" hits="0" branch="false" />
-            <line number="64" hits="0" branch="false" />
-            <line number="66" hits="0" branch="false" />
-            <line number="68" hits="0" branch="false" />
-            <line number="69" hits="0" branch="false" />
-            <line number="75" hits="0" branch="false" />
-            <line number="76" hits="0" branch="false" />
-            <line number="78" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="79" hits="0" branch="false" />
-            <line number="81" hits="0" branch="false" />
-            <line number="83" hits="0" branch="false" />
-            <line number="84" hits="0" branch="false" />
+            <line number="56" hits="2" branch="false" />
+            <line number="57" hits="2" branch="false" />
+            <line number="59" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="60" hits="1" branch="false" />
+            <line number="61" hits="1" branch="false" />
+            <line number="64" hits="1" branch="false" />
+            <line number="66" hits="1" branch="false" />
+            <line number="68" hits="1" branch="false" />
+            <line number="69" hits="2" branch="false" />
+            <line number="75" hits="2" branch="false" />
+            <line number="76" hits="2" branch="false" />
+            <line number="78" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="79" hits="1" branch="false" />
+            <line number="81" hits="1" branch="false" />
+            <line number="83" hits="1" branch="false" />
+            <line number="84" hits="2" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.CityController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\CityController.cs" line-rate="0" branch-rate="0" complexity="7">
+        <class name="eventRadar.Controllers.CityController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\CityController.cs" line-rate="1" branch-rate="1" complexity="7">
           <methods>
-            <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="0" branch="false" />
-                <line number="17" hits="0" branch="false" />
-                <line number="18" hits="0" branch="false" />
-                <line number="19" hits="0" branch="false" />
+                <line number="16" hits="6" branch="false" />
+                <line number="17" hits="6" branch="false" />
+                <line number="18" hits="6" branch="false" />
+                <line number="19" hits="6" branch="false" />
               </lines>
             </method>
-            <method name="Create" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="Create" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="43" hits="0" branch="false" />
-                <line number="44" hits="0" branch="false" />
-                <line number="46" hits="0" branch="false" />
-                <line number="48" hits="0" branch="false" />
-                <line number="49" hits="0" branch="false" />
+                <line number="43" hits="1" branch="false" />
+                <line number="44" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="48" hits="1" branch="false" />
+                <line number="49" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Get" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Get" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="32" hits="0" branch="false" />
-                <line number="33" hits="0" branch="false" />
-                <line number="34" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="35" hits="0" branch="false" />
-                <line number="37" hits="0" branch="false" />
-                <line number="38" hits="0" branch="false" />
+                <line number="32" hits="2" branch="false" />
+                <line number="33" hits="2" branch="false" />
+                <line number="34" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="35" hits="1" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="GetMany" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="GetMany" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="23" hits="0" branch="false" />
-                <line number="24" hits="0" branch="false" />
-                <line number="25" hits="0" branch="false" />
-                <line number="26" hits="0" branch="false" />
+                <line number="23" hits="1" branch="false" />
+                <line number="24" hits="1" branch="false" />
+                <line number="25" hits="5" branch="false" />
+                <line number="26" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Remove" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Remove" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="55" hits="0" branch="false" />
-                <line number="56" hits="0" branch="false" />
-                <line number="58" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="59" hits="0" branch="false" />
-                <line number="61" hits="0" branch="false" />
-                <line number="63" hits="0" branch="false" />
-                <line number="64" hits="0" branch="false" />
+                <line number="55" hits="2" branch="false" />
+                <line number="56" hits="2" branch="false" />
+                <line number="58" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="59" hits="1" branch="false" />
+                <line number="61" hits="1" branch="false" />
+                <line number="63" hits="1" branch="false" />
+                <line number="64" hits="2" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="16" hits="0" branch="false" />
-            <line number="17" hits="0" branch="false" />
-            <line number="18" hits="0" branch="false" />
-            <line number="19" hits="0" branch="false" />
-            <line number="23" hits="0" branch="false" />
-            <line number="24" hits="0" branch="false" />
-            <line number="25" hits="0" branch="false" />
-            <line number="26" hits="0" branch="false" />
-            <line number="32" hits="0" branch="false" />
-            <line number="33" hits="0" branch="false" />
-            <line number="34" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="35" hits="0" branch="false" />
-            <line number="37" hits="0" branch="false" />
-            <line number="38" hits="0" branch="false" />
-            <line number="43" hits="0" branch="false" />
-            <line number="44" hits="0" branch="false" />
-            <line number="46" hits="0" branch="false" />
-            <line number="48" hits="0" branch="false" />
-            <line number="49" hits="0" branch="false" />
-            <line number="55" hits="0" branch="false" />
-            <line number="56" hits="0" branch="false" />
-            <line number="58" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="59" hits="0" branch="false" />
-            <line number="61" hits="0" branch="false" />
-            <line number="63" hits="0" branch="false" />
-            <line number="64" hits="0" branch="false" />
+            <line number="16" hits="6" branch="false" />
+            <line number="17" hits="6" branch="false" />
+            <line number="18" hits="6" branch="false" />
+            <line number="19" hits="6" branch="false" />
+            <line number="23" hits="1" branch="false" />
+            <line number="24" hits="1" branch="false" />
+            <line number="25" hits="5" branch="false" />
+            <line number="26" hits="1" branch="false" />
+            <line number="32" hits="2" branch="false" />
+            <line number="33" hits="2" branch="false" />
+            <line number="34" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="35" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="2" branch="false" />
+            <line number="43" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
+            <line number="48" hits="1" branch="false" />
+            <line number="49" hits="1" branch="false" />
+            <line number="55" hits="2" branch="false" />
+            <line number="56" hits="2" branch="false" />
+            <line number="58" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="59" hits="1" branch="false" />
+            <line number="61" hits="1" branch="false" />
+            <line number="63" hits="1" branch="false" />
+            <line number="64" hits="2" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.EventController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\EventController.cs" line-rate="0" branch-rate="0" complexity="25">
+        <class name="eventRadar.Controllers.EventController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\EventController.cs" line-rate="0.5" branch-rate="0.454545454545455" complexity="25">
           <methods>
-            <method name="CreateEventResourceUri" signature="(...)" line-rate="0" branch-rate="0" complexity="4">
+            <method name="CreateEventResourceUri" signature="(...)" line-rate="0.695652173913043" branch-rate="0.75" complexity="4">
               <lines>
-                <line number="196" hits="0" branch="false" />
-                <line number="197" hits="0" branch="true" condition-coverage="0% (0/4)" />
-                <line number="198" hits="0" branch="false" />
-                <line number="199" hits="0" branch="false" />
-                <line number="200" hits="0" branch="false" />
-                <line number="201" hits="0" branch="false" />
-                <line number="202" hits="0" branch="false" />
-                <line number="203" hits="0" branch="false" />
-                <line number="204" hits="0" branch="false" />
-                <line number="205" hits="0" branch="false" />
-                <line number="206" hits="0" branch="false" />
-                <line number="207" hits="0" branch="false" />
-                <line number="208" hits="0" branch="false" />
-                <line number="209" hits="0" branch="false" />
-                <line number="210" hits="0" branch="false" />
+                <line number="196" hits="2" branch="false" />
+                <line number="197" hits="2" branch="true" condition-coverage="75% (3/4)" />
+                <line number="198" hits="2" branch="false" />
+                <line number="199" hits="1" branch="false" />
+                <line number="200" hits="1" branch="false" />
+                <line number="201" hits="1" branch="false" />
+                <line number="202" hits="1" branch="false" />
+                <line number="203" hits="1" branch="false" />
+                <line number="204" hits="1" branch="false" />
+                <line number="205" hits="1" branch="false" />
+                <line number="206" hits="1" branch="false" />
+                <line number="207" hits="1" branch="false" />
+                <line number="208" hits="1" branch="false" />
+                <line number="209" hits="1" branch="false" />
+                <line number="210" hits="1" branch="false" />
                 <line number="211" hits="0" branch="false" />
                 <line number="212" hits="0" branch="false" />
                 <line number="213" hits="0" branch="false" />
                 <line number="214" hits="0" branch="false" />
                 <line number="215" hits="0" branch="false" />
                 <line number="216" hits="0" branch="false" />
-                <line number="217" hits="0" branch="false" />
+                <line number="217" hits="2" branch="false" />
                 <line number="218" hits="0" branch="false" />
               </lines>
             </method>
-            <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="21" hits="0" branch="false" />
-                <line number="22" hits="0" branch="false" />
-                <line number="23" hits="0" branch="false" />
-                <line number="24" hits="0" branch="false" />
-                <line number="25" hits="0" branch="false" />
-                <line number="26" hits="0" branch="false" />
+                <line number="21" hits="19" branch="false" />
+                <line number="22" hits="19" branch="false" />
+                <line number="23" hits="19" branch="false" />
+                <line number="24" hits="19" branch="false" />
+                <line number="25" hits="19" branch="false" />
+                <line number="26" hits="19" branch="false" />
               </lines>
             </method>
-            <method name="Create" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="Create" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="134" hits="0" branch="false" />
-                <line number="135" hits="0" branch="false" />
-                <line number="136" hits="0" branch="false" />
-                <line number="137" hits="0" branch="false" />
-                <line number="138" hits="0" branch="false" />
-                <line number="139" hits="0" branch="false" />
-                <line number="140" hits="0" branch="false" />
-                <line number="141" hits="0" branch="false" />
-                <line number="142" hits="0" branch="false" />
-                <line number="143" hits="0" branch="false" />
-                <line number="144" hits="0" branch="false" />
-                <line number="145" hits="0" branch="false" />
-                <line number="146" hits="0" branch="false" />
-                <line number="147" hits="0" branch="false" />
-                <line number="149" hits="0" branch="false" />
-                <line number="150" hits="0" branch="false" />
-                <line number="151" hits="0" branch="false" />
+                <line number="134" hits="2" branch="false" />
+                <line number="135" hits="2" branch="false" />
+                <line number="136" hits="2" branch="false" />
+                <line number="137" hits="2" branch="false" />
+                <line number="138" hits="2" branch="false" />
+                <line number="139" hits="2" branch="false" />
+                <line number="140" hits="2" branch="false" />
+                <line number="141" hits="2" branch="false" />
+                <line number="142" hits="2" branch="false" />
+                <line number="143" hits="2" branch="false" />
+                <line number="144" hits="2" branch="false" />
+                <line number="145" hits="2" branch="false" />
+                <line number="146" hits="2" branch="false" />
+                <line number="147" hits="2" branch="false" />
+                <line number="149" hits="1" branch="false" />
+                <line number="150" hits="1" branch="false" />
+                <line number="151" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Get" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Get" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="120" hits="0" branch="false" />
-                <line number="121" hits="0" branch="false" />
-                <line number="122" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="123" hits="0" branch="false" />
-                <line number="124" hits="0" branch="false" />
-                <line number="127" hits="0" branch="false" />
-                <line number="128" hits="0" branch="false" />
-                <line number="129" hits="0" branch="false" />
+                <line number="120" hits="2" branch="false" />
+                <line number="121" hits="2" branch="false" />
+                <line number="122" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="123" hits="1" branch="false" />
+                <line number="124" hits="1" branch="false" />
+                <line number="127" hits="1" branch="false" />
+                <line number="128" hits="1" branch="false" />
+                <line number="129" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="GetMany" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="GetMany" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="30" hits="0" branch="false" />
-                <line number="31" hits="0" branch="false" />
-                <line number="32" hits="0" branch="false" />
-                <line number="33" hits="0" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="1" branch="false" />
+                <line number="32" hits="5" branch="false" />
+                <line number="33" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="GetManyFilteredPaging" signature="()" line-rate="0" branch-rate="0" complexity="4">
+            <method name="GetManyFilteredPaging" signature="()" line-rate="0.4" branch-rate="0.5" complexity="4">
               <lines>
-                <line number="65" hits="0" branch="false" />
-                <line number="66" hits="0" branch="false" />
-                <line number="67" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="68" hits="0" branch="false" />
-                <line number="69" hits="0" branch="false" />
-                <line number="71" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="72" hits="0" branch="false" />
-                <line number="73" hits="0" branch="false" />
+                <line number="65" hits="1" branch="false" />
+                <line number="66" hits="1" branch="false" />
+                <line number="67" hits="1" branch="true" condition-coverage="50% (1/2)" />
+                <line number="68" hits="1" branch="false" />
+                <line number="69" hits="1" branch="false" />
+                <line number="71" hits="1" branch="true" condition-coverage="50% (1/2)" />
+                <line number="72" hits="1" branch="false" />
+                <line number="73" hits="1" branch="false" />
                 <line number="75" hits="0" branch="false" />
                 <line number="76" hits="0" branch="false" />
                 <line number="77" hits="0" branch="false" />
@@ -781,13 +781,13 @@
                 <line number="88" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="GetManyPaging" signature="()" line-rate="0" branch-rate="0" complexity="4">
+            <method name="GetManyPaging" signature="()" line-rate="0.25" branch-rate="0.25" complexity="4">
               <lines>
-                <line number="37" hits="0" branch="false" />
-                <line number="38" hits="0" branch="false" />
-                <line number="40" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="41" hits="0" branch="false" />
-                <line number="42" hits="0" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="40" hits="1" branch="true" condition-coverage="50% (1/2)" />
+                <line number="41" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
                 <line number="44" hits="0" branch="true" condition-coverage="0% (0/2)" />
                 <line number="45" hits="0" branch="false" />
                 <line number="46" hits="0" branch="false" />
@@ -829,15 +829,15 @@
                 <line number="115" hits="0" branch="false" />
               </lines>
             </method>
-            <method name="Remove" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Remove" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="182" hits="0" branch="false" />
-                <line number="183" hits="0" branch="false" />
-                <line number="185" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="186" hits="0" branch="false" />
-                <line number="188" hits="0" branch="false" />
-                <line number="190" hits="0" branch="false" />
-                <line number="191" hits="0" branch="false" />
+                <line number="182" hits="3" branch="false" />
+                <line number="183" hits="3" branch="false" />
+                <line number="185" hits="3" branch="true" condition-coverage="100% (2/2)" />
+                <line number="186" hits="1" branch="false" />
+                <line number="188" hits="2" branch="false" />
+                <line number="190" hits="1" branch="false" />
+                <line number="191" hits="2" branch="false" />
               </lines>
             </method>
             <method name="Update" signature="()" line-rate="0" branch-rate="0" complexity="2">
@@ -863,21 +863,21 @@
             </method>
           </methods>
           <lines>
-            <line number="21" hits="0" branch="false" />
-            <line number="22" hits="0" branch="false" />
-            <line number="23" hits="0" branch="false" />
-            <line number="24" hits="0" branch="false" />
-            <line number="25" hits="0" branch="false" />
-            <line number="26" hits="0" branch="false" />
-            <line number="30" hits="0" branch="false" />
-            <line number="31" hits="0" branch="false" />
-            <line number="32" hits="0" branch="false" />
-            <line number="33" hits="0" branch="false" />
-            <line number="37" hits="0" branch="false" />
-            <line number="38" hits="0" branch="false" />
-            <line number="40" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="41" hits="0" branch="false" />
-            <line number="42" hits="0" branch="false" />
+            <line number="21" hits="19" branch="false" />
+            <line number="22" hits="19" branch="false" />
+            <line number="23" hits="19" branch="false" />
+            <line number="24" hits="19" branch="false" />
+            <line number="25" hits="19" branch="false" />
+            <line number="26" hits="19" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="31" hits="1" branch="false" />
+            <line number="32" hits="5" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="40" hits="1" branch="true" condition-coverage="50% (1/2)" />
+            <line number="41" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
             <line number="44" hits="0" branch="true" condition-coverage="0% (0/2)" />
             <line number="45" hits="0" branch="false" />
             <line number="46" hits="0" branch="false" />
@@ -893,14 +893,14 @@
             <line number="58" hits="0" branch="false" />
             <line number="60" hits="0" branch="false" />
             <line number="61" hits="0" branch="false" />
-            <line number="65" hits="0" branch="false" />
-            <line number="66" hits="0" branch="false" />
-            <line number="67" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="68" hits="0" branch="false" />
-            <line number="69" hits="0" branch="false" />
-            <line number="71" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="72" hits="0" branch="false" />
-            <line number="73" hits="0" branch="false" />
+            <line number="65" hits="1" branch="false" />
+            <line number="66" hits="1" branch="false" />
+            <line number="67" hits="1" branch="true" condition-coverage="50% (1/2)" />
+            <line number="68" hits="1" branch="false" />
+            <line number="69" hits="1" branch="false" />
+            <line number="71" hits="1" branch="true" condition-coverage="50% (1/2)" />
+            <line number="72" hits="1" branch="false" />
+            <line number="73" hits="1" branch="false" />
             <line number="75" hits="0" branch="false" />
             <line number="76" hits="0" branch="false" />
             <line number="77" hits="0" branch="false" />
@@ -933,31 +933,31 @@
             <line number="112" hits="0" branch="false" />
             <line number="114" hits="0" branch="false" />
             <line number="115" hits="0" branch="false" />
-            <line number="120" hits="0" branch="false" />
-            <line number="121" hits="0" branch="false" />
-            <line number="122" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="123" hits="0" branch="false" />
-            <line number="124" hits="0" branch="false" />
-            <line number="127" hits="0" branch="false" />
-            <line number="128" hits="0" branch="false" />
-            <line number="129" hits="0" branch="false" />
-            <line number="134" hits="0" branch="false" />
-            <line number="135" hits="0" branch="false" />
-            <line number="136" hits="0" branch="false" />
-            <line number="137" hits="0" branch="false" />
-            <line number="138" hits="0" branch="false" />
-            <line number="139" hits="0" branch="false" />
-            <line number="140" hits="0" branch="false" />
-            <line number="141" hits="0" branch="false" />
-            <line number="142" hits="0" branch="false" />
-            <line number="143" hits="0" branch="false" />
-            <line number="144" hits="0" branch="false" />
-            <line number="145" hits="0" branch="false" />
-            <line number="146" hits="0" branch="false" />
-            <line number="147" hits="0" branch="false" />
-            <line number="149" hits="0" branch="false" />
-            <line number="150" hits="0" branch="false" />
-            <line number="151" hits="0" branch="false" />
+            <line number="120" hits="2" branch="false" />
+            <line number="121" hits="2" branch="false" />
+            <line number="122" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="123" hits="1" branch="false" />
+            <line number="124" hits="1" branch="false" />
+            <line number="127" hits="1" branch="false" />
+            <line number="128" hits="1" branch="false" />
+            <line number="129" hits="2" branch="false" />
+            <line number="134" hits="2" branch="false" />
+            <line number="135" hits="2" branch="false" />
+            <line number="136" hits="2" branch="false" />
+            <line number="137" hits="2" branch="false" />
+            <line number="138" hits="2" branch="false" />
+            <line number="139" hits="2" branch="false" />
+            <line number="140" hits="2" branch="false" />
+            <line number="141" hits="2" branch="false" />
+            <line number="142" hits="2" branch="false" />
+            <line number="143" hits="2" branch="false" />
+            <line number="144" hits="2" branch="false" />
+            <line number="145" hits="2" branch="false" />
+            <line number="146" hits="2" branch="false" />
+            <line number="147" hits="2" branch="false" />
+            <line number="149" hits="1" branch="false" />
+            <line number="150" hits="1" branch="false" />
+            <line number="151" hits="1" branch="false" />
             <line number="157" hits="0" branch="false" />
             <line number="158" hits="0" branch="false" />
             <line number="160" hits="0" branch="true" condition-coverage="0% (0/2)" />
@@ -975,39 +975,39 @@
             <line number="175" hits="0" branch="false" />
             <line number="176" hits="0" branch="false" />
             <line number="177" hits="0" branch="false" />
-            <line number="182" hits="0" branch="false" />
-            <line number="183" hits="0" branch="false" />
-            <line number="185" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="186" hits="0" branch="false" />
-            <line number="188" hits="0" branch="false" />
-            <line number="190" hits="0" branch="false" />
-            <line number="191" hits="0" branch="false" />
-            <line number="196" hits="0" branch="false" />
-            <line number="197" hits="0" branch="true" condition-coverage="0% (0/4)" />
-            <line number="198" hits="0" branch="false" />
-            <line number="199" hits="0" branch="false" />
-            <line number="200" hits="0" branch="false" />
-            <line number="201" hits="0" branch="false" />
-            <line number="202" hits="0" branch="false" />
-            <line number="203" hits="0" branch="false" />
-            <line number="204" hits="0" branch="false" />
-            <line number="205" hits="0" branch="false" />
-            <line number="206" hits="0" branch="false" />
-            <line number="207" hits="0" branch="false" />
-            <line number="208" hits="0" branch="false" />
-            <line number="209" hits="0" branch="false" />
-            <line number="210" hits="0" branch="false" />
+            <line number="182" hits="3" branch="false" />
+            <line number="183" hits="3" branch="false" />
+            <line number="185" hits="3" branch="true" condition-coverage="100% (2/2)" />
+            <line number="186" hits="1" branch="false" />
+            <line number="188" hits="2" branch="false" />
+            <line number="190" hits="1" branch="false" />
+            <line number="191" hits="2" branch="false" />
+            <line number="196" hits="2" branch="false" />
+            <line number="197" hits="2" branch="true" condition-coverage="75% (3/4)" />
+            <line number="198" hits="2" branch="false" />
+            <line number="199" hits="1" branch="false" />
+            <line number="200" hits="1" branch="false" />
+            <line number="201" hits="1" branch="false" />
+            <line number="202" hits="1" branch="false" />
+            <line number="203" hits="1" branch="false" />
+            <line number="204" hits="1" branch="false" />
+            <line number="205" hits="1" branch="false" />
+            <line number="206" hits="1" branch="false" />
+            <line number="207" hits="1" branch="false" />
+            <line number="208" hits="1" branch="false" />
+            <line number="209" hits="1" branch="false" />
+            <line number="210" hits="1" branch="false" />
             <line number="211" hits="0" branch="false" />
             <line number="212" hits="0" branch="false" />
             <line number="213" hits="0" branch="false" />
             <line number="214" hits="0" branch="false" />
             <line number="215" hits="0" branch="false" />
             <line number="216" hits="0" branch="false" />
-            <line number="217" hits="0" branch="false" />
+            <line number="217" hits="2" branch="false" />
             <line number="218" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.FollowedEventController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\FollowedEventController.cs" line-rate="0" branch-rate="0" complexity="15">
+        <class name="eventRadar.Controllers.FollowedEventController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\FollowedEventController.cs" line-rate="0" branch-rate="0" complexity="15">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1163,7 +1163,7 @@
             <line number="113" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.LocationController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\LocationController.cs" line-rate="0" branch-rate="0" complexity="9">
+        <class name="eventRadar.Controllers.LocationController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\LocationController.cs" line-rate="0" branch-rate="0" complexity="9">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1283,7 +1283,7 @@
             <line number="94" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.UserController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\UserController.cs" line-rate="1" branch-rate="1" complexity="4">
+        <class name="eventRadar.Controllers.UserController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\UserController.cs" line-rate="1" branch-rate="1" complexity="4">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1331,7 +1331,7 @@
             <line number="37" hits="2" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.VisitedEventController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\VisitedEventController.cs" line-rate="0" branch-rate="0" complexity="29">
+        <class name="eventRadar.Controllers.VisitedEventController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\VisitedEventController.cs" line-rate="0" branch-rate="0" complexity="29">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1517,175 +1517,175 @@
             <line number="135" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Controllers.WebsiteController" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Controllers\WebsiteController.cs" line-rate="0" branch-rate="0" complexity="9">
+        <class name="eventRadar.Controllers.WebsiteController" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Controllers\WebsiteController.cs" line-rate="1" branch-rate="1" complexity="9">
           <methods>
-            <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="18" hits="0" branch="false" />
-                <line number="19" hits="0" branch="false" />
-                <line number="20" hits="0" branch="false" />
-                <line number="21" hits="0" branch="false" />
+                <line number="18" hits="9" branch="false" />
+                <line number="19" hits="9" branch="false" />
+                <line number="20" hits="9" branch="false" />
+                <line number="21" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="Create" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="Create" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="51" hits="0" branch="false" />
-                <line number="52" hits="0" branch="false" />
-                <line number="53" hits="0" branch="false" />
-                <line number="54" hits="0" branch="false" />
-                <line number="55" hits="0" branch="false" />
-                <line number="56" hits="0" branch="false" />
-                <line number="57" hits="0" branch="false" />
-                <line number="58" hits="0" branch="false" />
-                <line number="59" hits="0" branch="false" />
-                <line number="60" hits="0" branch="false" />
-                <line number="61" hits="0" branch="false" />
-                <line number="62" hits="0" branch="false" />
-                <line number="63" hits="0" branch="false" />
-                <line number="64" hits="0" branch="false" />
-                <line number="65" hits="0" branch="false" />
-                <line number="66" hits="0" branch="false" />
-                <line number="68" hits="0" branch="false" />
-                <line number="70" hits="0" branch="false" />
-                <line number="71" hits="0" branch="false" />
-                <line number="72" hits="0" branch="false" />
-                <line number="74" hits="0" branch="false" />
+                <line number="51" hits="2" branch="false" />
+                <line number="52" hits="2" branch="false" />
+                <line number="53" hits="2" branch="false" />
+                <line number="54" hits="2" branch="false" />
+                <line number="55" hits="2" branch="false" />
+                <line number="56" hits="2" branch="false" />
+                <line number="57" hits="2" branch="false" />
+                <line number="58" hits="2" branch="false" />
+                <line number="59" hits="2" branch="false" />
+                <line number="60" hits="2" branch="false" />
+                <line number="61" hits="2" branch="false" />
+                <line number="62" hits="2" branch="false" />
+                <line number="63" hits="2" branch="false" />
+                <line number="64" hits="2" branch="false" />
+                <line number="65" hits="2" branch="false" />
+                <line number="66" hits="2" branch="false" />
+                <line number="68" hits="2" branch="false" />
+                <line number="70" hits="2" branch="false" />
+                <line number="71" hits="2" branch="false" />
+                <line number="72" hits="2" branch="false" />
+                <line number="74" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="Get" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Get" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="36" hits="0" branch="false" />
-                <line number="37" hits="0" branch="false" />
-                <line number="38" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="39" hits="0" branch="false" />
-                <line number="40" hits="0" branch="false" />
-                <line number="43" hits="0" branch="false" />
-                <line number="44" hits="0" branch="false" />
-                <line number="45" hits="0" branch="false" />
-                <line number="46" hits="0" branch="false" />
+                <line number="36" hits="2" branch="false" />
+                <line number="37" hits="2" branch="false" />
+                <line number="38" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="39" hits="1" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="43" hits="1" branch="false" />
+                <line number="44" hits="1" branch="false" />
+                <line number="45" hits="1" branch="false" />
+                <line number="46" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="GetMany" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="GetMany" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="26" hits="0" branch="false" />
-                <line number="27" hits="0" branch="false" />
-                <line number="28" hits="0" branch="false" />
-                <line number="29" hits="0" branch="false" />
-                <line number="30" hits="0" branch="false" />
+                <line number="26" hits="1" branch="false" />
+                <line number="27" hits="1" branch="false" />
+                <line number="28" hits="3" branch="false" />
+                <line number="29" hits="3" branch="false" />
+                <line number="30" hits="1" branch="false" />
               </lines>
             </method>
-            <method name="Remove" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Remove" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="112" hits="0" branch="false" />
-                <line number="113" hits="0" branch="false" />
-                <line number="115" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="116" hits="0" branch="false" />
-                <line number="117" hits="0" branch="false" />
-                <line number="120" hits="0" branch="false" />
-                <line number="122" hits="0" branch="false" />
-                <line number="123" hits="0" branch="false" />
+                <line number="112" hits="2" branch="false" />
+                <line number="113" hits="2" branch="false" />
+                <line number="115" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="116" hits="1" branch="false" />
+                <line number="117" hits="1" branch="false" />
+                <line number="120" hits="1" branch="false" />
+                <line number="122" hits="1" branch="false" />
+                <line number="123" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="Update" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="Update" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="80" hits="0" branch="false" />
-                <line number="81" hits="0" branch="false" />
-                <line number="83" hits="0" branch="true" condition-coverage="0% (0/2)" />
-                <line number="84" hits="0" branch="false" />
-                <line number="85" hits="0" branch="false" />
-                <line number="88" hits="0" branch="false" />
-                <line number="89" hits="0" branch="false" />
-                <line number="90" hits="0" branch="false" />
-                <line number="91" hits="0" branch="false" />
-                <line number="92" hits="0" branch="false" />
-                <line number="93" hits="0" branch="false" />
-                <line number="94" hits="0" branch="false" />
-                <line number="95" hits="0" branch="false" />
-                <line number="96" hits="0" branch="false" />
-                <line number="97" hits="0" branch="false" />
-                <line number="98" hits="0" branch="false" />
-                <line number="99" hits="0" branch="false" />
-                <line number="101" hits="0" branch="false" />
-                <line number="103" hits="0" branch="false" />
-                <line number="104" hits="0" branch="false" />
-                <line number="105" hits="0" branch="false" />
-                <line number="106" hits="0" branch="false" />
+                <line number="80" hits="2" branch="false" />
+                <line number="81" hits="2" branch="false" />
+                <line number="83" hits="2" branch="true" condition-coverage="100% (2/2)" />
+                <line number="84" hits="1" branch="false" />
+                <line number="85" hits="1" branch="false" />
+                <line number="88" hits="1" branch="false" />
+                <line number="89" hits="1" branch="false" />
+                <line number="90" hits="1" branch="false" />
+                <line number="91" hits="1" branch="false" />
+                <line number="92" hits="1" branch="false" />
+                <line number="93" hits="1" branch="false" />
+                <line number="94" hits="1" branch="false" />
+                <line number="95" hits="1" branch="false" />
+                <line number="96" hits="1" branch="false" />
+                <line number="97" hits="1" branch="false" />
+                <line number="98" hits="1" branch="false" />
+                <line number="99" hits="1" branch="false" />
+                <line number="101" hits="1" branch="false" />
+                <line number="103" hits="1" branch="false" />
+                <line number="104" hits="1" branch="false" />
+                <line number="105" hits="1" branch="false" />
+                <line number="106" hits="2" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0" branch="false" />
-            <line number="19" hits="0" branch="false" />
-            <line number="20" hits="0" branch="false" />
-            <line number="21" hits="0" branch="false" />
-            <line number="26" hits="0" branch="false" />
-            <line number="27" hits="0" branch="false" />
-            <line number="28" hits="0" branch="false" />
-            <line number="29" hits="0" branch="false" />
-            <line number="30" hits="0" branch="false" />
-            <line number="36" hits="0" branch="false" />
-            <line number="37" hits="0" branch="false" />
-            <line number="38" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="39" hits="0" branch="false" />
-            <line number="40" hits="0" branch="false" />
-            <line number="43" hits="0" branch="false" />
-            <line number="44" hits="0" branch="false" />
-            <line number="45" hits="0" branch="false" />
-            <line number="46" hits="0" branch="false" />
-            <line number="51" hits="0" branch="false" />
-            <line number="52" hits="0" branch="false" />
-            <line number="53" hits="0" branch="false" />
-            <line number="54" hits="0" branch="false" />
-            <line number="55" hits="0" branch="false" />
-            <line number="56" hits="0" branch="false" />
-            <line number="57" hits="0" branch="false" />
-            <line number="58" hits="0" branch="false" />
-            <line number="59" hits="0" branch="false" />
-            <line number="60" hits="0" branch="false" />
-            <line number="61" hits="0" branch="false" />
-            <line number="62" hits="0" branch="false" />
-            <line number="63" hits="0" branch="false" />
-            <line number="64" hits="0" branch="false" />
-            <line number="65" hits="0" branch="false" />
-            <line number="66" hits="0" branch="false" />
-            <line number="68" hits="0" branch="false" />
-            <line number="70" hits="0" branch="false" />
-            <line number="71" hits="0" branch="false" />
-            <line number="72" hits="0" branch="false" />
-            <line number="74" hits="0" branch="false" />
-            <line number="80" hits="0" branch="false" />
-            <line number="81" hits="0" branch="false" />
-            <line number="83" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="84" hits="0" branch="false" />
-            <line number="85" hits="0" branch="false" />
-            <line number="88" hits="0" branch="false" />
-            <line number="89" hits="0" branch="false" />
-            <line number="90" hits="0" branch="false" />
-            <line number="91" hits="0" branch="false" />
-            <line number="92" hits="0" branch="false" />
-            <line number="93" hits="0" branch="false" />
-            <line number="94" hits="0" branch="false" />
-            <line number="95" hits="0" branch="false" />
-            <line number="96" hits="0" branch="false" />
-            <line number="97" hits="0" branch="false" />
-            <line number="98" hits="0" branch="false" />
-            <line number="99" hits="0" branch="false" />
-            <line number="101" hits="0" branch="false" />
-            <line number="103" hits="0" branch="false" />
-            <line number="104" hits="0" branch="false" />
-            <line number="105" hits="0" branch="false" />
-            <line number="106" hits="0" branch="false" />
-            <line number="112" hits="0" branch="false" />
-            <line number="113" hits="0" branch="false" />
-            <line number="115" hits="0" branch="true" condition-coverage="0% (0/2)" />
-            <line number="116" hits="0" branch="false" />
-            <line number="117" hits="0" branch="false" />
-            <line number="120" hits="0" branch="false" />
-            <line number="122" hits="0" branch="false" />
-            <line number="123" hits="0" branch="false" />
+            <line number="18" hits="9" branch="false" />
+            <line number="19" hits="9" branch="false" />
+            <line number="20" hits="9" branch="false" />
+            <line number="21" hits="9" branch="false" />
+            <line number="26" hits="1" branch="false" />
+            <line number="27" hits="1" branch="false" />
+            <line number="28" hits="3" branch="false" />
+            <line number="29" hits="3" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="36" hits="2" branch="false" />
+            <line number="37" hits="2" branch="false" />
+            <line number="38" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="39" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="43" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="45" hits="1" branch="false" />
+            <line number="46" hits="2" branch="false" />
+            <line number="51" hits="2" branch="false" />
+            <line number="52" hits="2" branch="false" />
+            <line number="53" hits="2" branch="false" />
+            <line number="54" hits="2" branch="false" />
+            <line number="55" hits="2" branch="false" />
+            <line number="56" hits="2" branch="false" />
+            <line number="57" hits="2" branch="false" />
+            <line number="58" hits="2" branch="false" />
+            <line number="59" hits="2" branch="false" />
+            <line number="60" hits="2" branch="false" />
+            <line number="61" hits="2" branch="false" />
+            <line number="62" hits="2" branch="false" />
+            <line number="63" hits="2" branch="false" />
+            <line number="64" hits="2" branch="false" />
+            <line number="65" hits="2" branch="false" />
+            <line number="66" hits="2" branch="false" />
+            <line number="68" hits="2" branch="false" />
+            <line number="70" hits="2" branch="false" />
+            <line number="71" hits="2" branch="false" />
+            <line number="72" hits="2" branch="false" />
+            <line number="74" hits="2" branch="false" />
+            <line number="80" hits="2" branch="false" />
+            <line number="81" hits="2" branch="false" />
+            <line number="83" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="84" hits="1" branch="false" />
+            <line number="85" hits="1" branch="false" />
+            <line number="88" hits="1" branch="false" />
+            <line number="89" hits="1" branch="false" />
+            <line number="90" hits="1" branch="false" />
+            <line number="91" hits="1" branch="false" />
+            <line number="92" hits="1" branch="false" />
+            <line number="93" hits="1" branch="false" />
+            <line number="94" hits="1" branch="false" />
+            <line number="95" hits="1" branch="false" />
+            <line number="96" hits="1" branch="false" />
+            <line number="97" hits="1" branch="false" />
+            <line number="98" hits="1" branch="false" />
+            <line number="99" hits="1" branch="false" />
+            <line number="101" hits="1" branch="false" />
+            <line number="103" hits="1" branch="false" />
+            <line number="104" hits="1" branch="false" />
+            <line number="105" hits="1" branch="false" />
+            <line number="106" hits="2" branch="false" />
+            <line number="112" hits="2" branch="false" />
+            <line number="113" hits="2" branch="false" />
+            <line number="115" hits="2" branch="true" condition-coverage="100% (2/2)" />
+            <line number="116" hits="1" branch="false" />
+            <line number="117" hits="1" branch="false" />
+            <line number="120" hits="1" branch="false" />
+            <line number="122" hits="1" branch="false" />
+            <line number="123" hits="2" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.BlacklistedCategoryNameDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\BlacklistedCategoryNameDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.BlacklistedCategoryNameDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\BlacklistedCategoryNameDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1697,7 +1697,7 @@
             <line number="3" hits="27" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.BlacklistedPageDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\BlacklistedPageDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.BlacklistedPageDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\BlacklistedPageDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1709,19 +1709,19 @@
             <line number="3" hits="23" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CategoryDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\CategoryDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CategoryDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\CategoryDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="3" hits="0" branch="false" />
+                <line number="3" hits="19" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="3" hits="0" branch="false" />
+            <line number="3" hits="19" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.ChangePasswordDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\UserDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.ChangePasswordDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\UserDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Password" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1733,19 +1733,19 @@
             <line number="4" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CityDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\CityDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CityDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\CityDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="3" hits="0" branch="false" />
+                <line number="3" hits="23" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="3" hits="0" branch="false" />
+            <line number="3" hits="23" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateBlacklistedCategoryNameDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\BlacklistedCategoryNameDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateBlacklistedCategoryNameDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\BlacklistedCategoryNameDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1757,7 +1757,7 @@
             <line number="4" hits="4" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateBlacklistedPageDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\BlacklistedPageDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateBlacklistedPageDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\BlacklistedPageDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1769,7 +1769,7 @@
             <line number="4" hits="5" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateCategoryDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\CategoryDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateCategoryDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\CategoryDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1781,31 +1781,31 @@
             <line number="4" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateCityDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\CityDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateCityDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\CityDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="4" hits="0" branch="false" />
+                <line number="4" hits="3" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="4" hits="0" branch="false" />
+            <line number="4" hits="3" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateEventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\EventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateEventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\EventDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Url" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="6" hits="0" branch="false" />
+                <line number="6" hits="39" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="6" hits="0" branch="false" />
+            <line number="6" hits="39" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateFollowedEventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\FollowedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateFollowedEventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\FollowedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1817,7 +1817,7 @@
             <line number="7" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateLocationDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\LocationDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateLocationDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\LocationDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1829,7 +1829,7 @@
             <line number="4" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateVisitedEventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\VisitedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateVisitedEventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\VisitedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1841,61 +1841,61 @@
             <line number="7" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.CreateWebsiteDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\WebsiteDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.CreateWebsiteDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\WebsiteDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Url" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="4" hits="0" branch="false" />
+                <line number="4" hits="54" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="4" hits="0" branch="false" />
+            <line number="4" hits="54" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.EventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\EventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.EventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\EventDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="5" hits="0" branch="false" />
+                <line number="5" hits="67" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="5" hits="0" branch="false" />
+            <line number="5" hits="67" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.EventSearchParameters" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\EventSearchParameters.cs" line-rate="0" branch-rate="0" complexity="5">
+        <class name="eventRadar.Data.Dtos.EventSearchParameters" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\EventSearchParameters.cs" line-rate="1" branch-rate="0.5" complexity="5">
           <methods>
-            <method name="get_PageNumber" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_PageNumber" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="8" hits="0" branch="false" />
+                <line number="8" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_PageSize" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_PageSize" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="false" />
+                <line number="12" hits="4" branch="false" />
               </lines>
             </method>
-            <method name="set_PageSize" signature="(...)" line-rate="0" branch-rate="0" complexity="2">
+            <method name="set_PageSize" signature="(...)" line-rate="1" branch-rate="0.5" complexity="2">
               <lines>
-                <line number="13" hits="0" branch="true" condition-coverage="0% (0/2)" />
+                <line number="13" hits="2" branch="true" condition-coverage="50% (1/2)" />
               </lines>
             </method>
-            <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="5" hits="0" branch="false" />
+                <line number="5" hits="2" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="5" hits="0" branch="false" />
-            <line number="8" hits="0" branch="false" />
-            <line number="12" hits="0" branch="false" />
-            <line number="13" hits="0" branch="true" condition-coverage="0% (0/2)" />
+            <line number="5" hits="2" branch="false" />
+            <line number="8" hits="8" branch="false" />
+            <line number="12" hits="4" branch="false" />
+            <line number="13" hits="2" branch="true" condition-coverage="50% (1/2)" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.FollowedEventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\FollowedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.FollowedEventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\FollowedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1907,7 +1907,7 @@
             <line number="6" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.LocationDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\LocationDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.LocationDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\LocationDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1919,7 +1919,7 @@
             <line number="3" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UpdateBlacklistedCategoryNameDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\BlacklistedCategoryNameDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UpdateBlacklistedCategoryNameDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\BlacklistedCategoryNameDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1931,7 +1931,7 @@
             <line number="5" hits="6" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UpdateBlacklistedPageDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\BlacklistedPageDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UpdateBlacklistedPageDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\BlacklistedPageDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -1943,7 +1943,19 @@
             <line number="5" hits="8" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UpdateCategoryDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\CategoryDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UpdateCategoryDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\CategoryDto.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="7" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="7" branch="false" />
+          </lines>
+        </class>
+        <class name="eventRadar.Data.Dtos.UpdateCityDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\CityDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1955,19 +1967,7 @@
             <line number="5" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UpdateCityDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\CityDto.cs" line-rate="0" branch-rate="1" complexity="1">
-          <methods>
-            <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
-              <lines>
-                <line number="5" hits="0" branch="false" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="5" hits="0" branch="false" />
-          </lines>
-        </class>
-        <class name="eventRadar.Data.Dtos.UpdateEventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\EventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UpdateEventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\EventDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Url" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1979,7 +1979,7 @@
             <line number="7" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UpdateLocationDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\LocationDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UpdateLocationDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\LocationDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -1991,19 +1991,19 @@
             <line number="5" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UpdateWebsiteDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\WebsiteDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UpdateWebsiteDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\WebsiteDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Url" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="5" hits="0" branch="false" />
+                <line number="5" hits="41" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="5" hits="0" branch="false" />
+            <line number="5" hits="41" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.UserDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\UserDto.cs" line-rate="1" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.UserDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\UserDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -2015,7 +2015,7 @@
             <line number="3" hits="38" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.VisitedEventDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\VisitedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.VisitedEventDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\VisitedEventDto.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2027,19 +2027,19 @@
             <line number="6" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Dtos.WebsiteDto" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Dtos\WebsiteDto.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Data.Dtos.WebsiteDto" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Dtos\WebsiteDto.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="3" hits="0" branch="false" />
+                <line number="3" hits="94" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="3" hits="0" branch="false" />
+            <line number="3" hits="94" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.BlacklistedCategoryNameRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\BlacklistedCategoryNameRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.BlacklistedCategoryNameRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\BlacklistedCategoryNameRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2113,7 +2113,7 @@
             <line number="45" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.BlacklistedPageRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\BlacklistedPageRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.BlacklistedPageRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\BlacklistedPageRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2187,7 +2187,7 @@
             <line number="44" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.CategoryRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\CategoryRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.CategoryRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\CategoryRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2261,7 +2261,7 @@
             <line number="45" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.CityRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\CityRepository.cs" line-rate="0" branch-rate="1" complexity="5">
+        <class name="eventRadar.Data.Repositories.CityRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\CityRepository.cs" line-rate="0" branch-rate="1" complexity="5">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2323,7 +2323,7 @@
             <line number="39" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.EventRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\EventRepository.cs" line-rate="0" branch-rate="1" complexity="9">
+        <class name="eventRadar.Data.Repositories.EventRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\EventRepository.cs" line-rate="0" branch-rate="1" complexity="9">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2433,7 +2433,7 @@
             <line number="69" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.FollowedEventRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\FollowedEventRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.FollowedEventRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\FollowedEventRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2505,7 +2505,7 @@
             <line number="44" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.LocationRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\LocationRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.LocationRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\LocationRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2579,7 +2579,7 @@
             <line number="44" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.UserRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\UserRepository.cs" line-rate="0" branch-rate="1" complexity="4">
+        <class name="eventRadar.Data.Repositories.UserRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\UserRepository.cs" line-rate="0" branch-rate="1" complexity="4">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2629,7 +2629,7 @@
             <line number="32" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.VisitedEventRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\VisitedEventRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.VisitedEventRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\VisitedEventRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2701,7 +2701,7 @@
             <line number="45" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Data.Repositories.WebsiteRepository" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Repositories\WebsiteRepository.cs" line-rate="0" branch-rate="1" complexity="6">
+        <class name="eventRadar.Data.Repositories.WebsiteRepository" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Repositories\WebsiteRepository.cs" line-rate="0" branch-rate="1" complexity="6">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2775,7 +2775,7 @@
             <line number="44" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.DB.AuthDbSeeder" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\DB\AuthDbSeeder.cs" line-rate="0" branch-rate="0" complexity="10">
+        <class name="eventRadar.DB.AuthDbSeeder" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\DB\AuthDbSeeder.cs" line-rate="0" branch-rate="0" complexity="10">
           <methods>
             <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -2865,48 +2865,48 @@
             <line number="51" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Helpers.PagedList`1" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Helpers\PagedList.cs" line-rate="0" branch-rate="1" complexity="8">
+        <class name="eventRadar.Helpers.PagedList`1" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Helpers\PagedList.cs" line-rate="0.736842105263158" branch-rate="1" complexity="8">
           <methods>
-            <method name="get_CurrentPage" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_CurrentPage" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="7" hits="0" branch="false" />
+                <line number="7" hits="5" branch="false" />
               </lines>
             </method>
-            <method name="get_TotalPages" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TotalPages" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="8" hits="0" branch="false" />
+                <line number="8" hits="3" branch="false" />
               </lines>
             </method>
-            <method name="get_PageSize" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_PageSize" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="9" hits="0" branch="false" />
+                <line number="9" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="get_TotalCount" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TotalCount" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="10" hits="0" branch="false" />
+                <line number="10" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="get_HasPrevious" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_HasPrevious" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="false" />
+                <line number="12" hits="2" branch="false" />
               </lines>
             </method>
-            <method name="get_HasNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_HasNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="14" hits="0" branch="false" />
+                <line number="14" hits="1" branch="false" />
               </lines>
             </method>
-            <method name=".ctor" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="0" branch="false" />
-                <line number="17" hits="0" branch="false" />
-                <line number="18" hits="0" branch="false" />
-                <line number="19" hits="0" branch="false" />
-                <line number="20" hits="0" branch="false" />
-                <line number="21" hits="0" branch="false" />
-                <line number="22" hits="0" branch="false" />
-                <line number="23" hits="0" branch="false" />
+                <line number="16" hits="2" branch="false" />
+                <line number="17" hits="2" branch="false" />
+                <line number="18" hits="2" branch="false" />
+                <line number="19" hits="2" branch="false" />
+                <line number="20" hits="2" branch="false" />
+                <line number="21" hits="2" branch="false" />
+                <line number="22" hits="2" branch="false" />
+                <line number="23" hits="2" branch="false" />
               </lines>
             </method>
             <method name="CreateAsync" signature="()" line-rate="0" branch-rate="1" complexity="1">
@@ -2920,20 +2920,20 @@
             </method>
           </methods>
           <lines>
-            <line number="7" hits="0" branch="false" />
-            <line number="8" hits="0" branch="false" />
-            <line number="9" hits="0" branch="false" />
-            <line number="10" hits="0" branch="false" />
-            <line number="12" hits="0" branch="false" />
-            <line number="14" hits="0" branch="false" />
-            <line number="16" hits="0" branch="false" />
-            <line number="17" hits="0" branch="false" />
-            <line number="18" hits="0" branch="false" />
-            <line number="19" hits="0" branch="false" />
-            <line number="20" hits="0" branch="false" />
-            <line number="21" hits="0" branch="false" />
-            <line number="22" hits="0" branch="false" />
-            <line number="23" hits="0" branch="false" />
+            <line number="7" hits="5" branch="false" />
+            <line number="8" hits="3" branch="false" />
+            <line number="9" hits="2" branch="false" />
+            <line number="10" hits="2" branch="false" />
+            <line number="12" hits="2" branch="false" />
+            <line number="14" hits="1" branch="false" />
+            <line number="16" hits="2" branch="false" />
+            <line number="17" hits="2" branch="false" />
+            <line number="18" hits="2" branch="false" />
+            <line number="19" hits="2" branch="false" />
+            <line number="20" hits="2" branch="false" />
+            <line number="21" hits="2" branch="false" />
+            <line number="22" hits="2" branch="false" />
+            <line number="23" hits="2" branch="false" />
             <line number="26" hits="0" branch="false" />
             <line number="27" hits="0" branch="false" />
             <line number="28" hits="0" branch="false" />
@@ -2941,7 +2941,7 @@
             <line number="30" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.BlacklistedCategoryName" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\BlacklistedCategoryName.cs" line-rate="1" branch-rate="1" complexity="2">
+        <class name="eventRadar.Models.BlacklistedCategoryName" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\BlacklistedCategoryName.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
             <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -2959,7 +2959,7 @@
             <line number="11" hits="17" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.BlacklistedPage" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\BlacklistedPage.cs" line-rate="1" branch-rate="1" complexity="3">
+        <class name="eventRadar.Models.BlacklistedPage" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\BlacklistedPage.cs" line-rate="1" branch-rate="1" complexity="3">
           <methods>
             <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -2983,115 +2983,115 @@
             <line number="12" hits="13" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.Category" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\Category.cs" line-rate="0" branch-rate="1" complexity="3">
+        <class name="eventRadar.Models.Category" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\Category.cs" line-rate="1" branch-rate="1" complexity="3">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="10" hits="0" branch="false" />
+                <line number="10" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="0" branch="false" />
+                <line number="11" hits="10" branch="false" />
               </lines>
             </method>
-            <method name="get_SourceUrl" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_SourceUrl" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="false" />
+                <line number="12" hits="9" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="10" hits="0" branch="false" />
-            <line number="11" hits="0" branch="false" />
-            <line number="12" hits="0" branch="false" />
+            <line number="10" hits="8" branch="false" />
+            <line number="11" hits="10" branch="false" />
+            <line number="12" hits="9" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.City" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\City.cs" line-rate="0" branch-rate="1" complexity="2">
+        <class name="eventRadar.Models.City" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\City.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="10" hits="0" branch="false" />
+                <line number="10" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_Name" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="0" branch="false" />
+                <line number="11" hits="11" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="10" hits="0" branch="false" />
-            <line number="11" hits="0" branch="false" />
+            <line number="10" hits="9" branch="false" />
+            <line number="11" hits="11" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.Event" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\Event.cs" line-rate="0" branch-rate="1" complexity="10">
+        <class name="eventRadar.Models.Event" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\Event.cs" line-rate="1" branch-rate="1" complexity="10">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="0" branch="false" />
+                <line number="11" hits="14" branch="false" />
               </lines>
             </method>
-            <method name="get_Url" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="false" />
+                <line number="12" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_Title" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Title" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="0" branch="false" />
+                <line number="13" hits="11" branch="false" />
               </lines>
             </method>
-            <method name="get_DateStart" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_DateStart" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="14" hits="0" branch="false" />
+                <line number="14" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_DateEnd" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_DateEnd" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="15" hits="0" branch="false" />
+                <line number="15" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_ImageLink" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_ImageLink" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="0" branch="false" />
+                <line number="16" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_Price" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Price" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="17" hits="0" branch="false" />
+                <line number="17" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_TicketLink" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TicketLink" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="18" hits="0" branch="false" />
+                <line number="18" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_Location" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Location" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="19" hits="0" branch="false" />
+                <line number="19" hits="8" branch="false" />
               </lines>
             </method>
-            <method name="get_Category" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Category" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="20" hits="0" branch="false" />
+                <line number="20" hits="8" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="11" hits="0" branch="false" />
-            <line number="12" hits="0" branch="false" />
-            <line number="13" hits="0" branch="false" />
-            <line number="14" hits="0" branch="false" />
-            <line number="15" hits="0" branch="false" />
-            <line number="16" hits="0" branch="false" />
-            <line number="17" hits="0" branch="false" />
-            <line number="18" hits="0" branch="false" />
-            <line number="19" hits="0" branch="false" />
-            <line number="20" hits="0" branch="false" />
+            <line number="11" hits="14" branch="false" />
+            <line number="12" hits="8" branch="false" />
+            <line number="13" hits="11" branch="false" />
+            <line number="14" hits="8" branch="false" />
+            <line number="15" hits="8" branch="false" />
+            <line number="16" hits="8" branch="false" />
+            <line number="17" hits="8" branch="false" />
+            <line number="18" hits="8" branch="false" />
+            <line number="19" hits="8" branch="false" />
+            <line number="20" hits="8" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.FollowedEvent" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\FollowedEvent.cs" line-rate="0" branch-rate="1" complexity="5">
+        <class name="eventRadar.Models.FollowedEvent" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\FollowedEvent.cs" line-rate="0" branch-rate="1" complexity="5">
           <methods>
             <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3127,7 +3127,7 @@
             <line number="15" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.Location" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\Location.cs" line-rate="0" branch-rate="1" complexity="5">
+        <class name="eventRadar.Models.Location" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\Location.cs" line-rate="0" branch-rate="1" complexity="5">
           <methods>
             <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3163,7 +3163,7 @@
             <line number="14" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.VisitedEvent" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\VisitedEvent.cs" line-rate="0" branch-rate="1" complexity="5">
+        <class name="eventRadar.Models.VisitedEvent" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\VisitedEvent.cs" line-rate="0" branch-rate="1" complexity="5">
           <methods>
             <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3199,97 +3199,97 @@
             <line number="16" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Models.Website" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Data\Models\Website.cs" line-rate="0" branch-rate="1" complexity="14">
+        <class name="eventRadar.Models.Website" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Data\Models\Website.cs" line-rate="1" branch-rate="1" complexity="14">
           <methods>
-            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="10" hits="0" branch="false" />
+                <line number="10" hits="14" branch="false" />
               </lines>
             </method>
-            <method name="get_Url" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Url" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="0" branch="false" />
+                <line number="11" hits="16" branch="false" />
               </lines>
             </method>
-            <method name="get_TitlePath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TitlePath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="false" />
+                <line number="12" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_LocationPath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_LocationPath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="0" branch="false" />
+                <line number="13" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_PricePath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_PricePath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="14" hits="0" branch="false" />
+                <line number="14" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_DatePath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_DatePath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="15" hits="0" branch="false" />
+                <line number="15" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_ImagePath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_ImagePath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="0" branch="false" />
+                <line number="16" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_TicketPath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TicketPath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="17" hits="0" branch="false" />
+                <line number="17" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_UrlExtensionForEvent" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_UrlExtensionForEvent" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="18" hits="0" branch="false" />
+                <line number="18" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_EventLink" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_EventLink" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="19" hits="0" branch="false" />
+                <line number="19" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_CategoryLink" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_CategoryLink" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="20" hits="0" branch="false" />
+                <line number="20" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_PagerLink" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_PagerLink" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="21" hits="0" branch="false" />
+                <line number="21" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_TicketLinkType" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TicketLinkType" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="22" hits="0" branch="false" />
+                <line number="22" hits="9" branch="false" />
               </lines>
             </method>
-            <method name="get_FullLocationPath" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_FullLocationPath" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="23" hits="0" branch="false" />
+                <line number="23" hits="8" branch="false" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="10" hits="0" branch="false" />
-            <line number="11" hits="0" branch="false" />
-            <line number="12" hits="0" branch="false" />
-            <line number="13" hits="0" branch="false" />
-            <line number="14" hits="0" branch="false" />
-            <line number="15" hits="0" branch="false" />
-            <line number="16" hits="0" branch="false" />
-            <line number="17" hits="0" branch="false" />
-            <line number="18" hits="0" branch="false" />
-            <line number="19" hits="0" branch="false" />
-            <line number="20" hits="0" branch="false" />
-            <line number="21" hits="0" branch="false" />
-            <line number="22" hits="0" branch="false" />
-            <line number="23" hits="0" branch="false" />
+            <line number="10" hits="14" branch="false" />
+            <line number="11" hits="16" branch="false" />
+            <line number="12" hits="9" branch="false" />
+            <line number="13" hits="9" branch="false" />
+            <line number="14" hits="9" branch="false" />
+            <line number="15" hits="9" branch="false" />
+            <line number="16" hits="9" branch="false" />
+            <line number="17" hits="9" branch="false" />
+            <line number="18" hits="9" branch="false" />
+            <line number="19" hits="9" branch="false" />
+            <line number="20" hits="9" branch="false" />
+            <line number="21" hits="9" branch="false" />
+            <line number="22" hits="9" branch="false" />
+            <line number="23" hits="8" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.ErrorModel" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Error.cshtml.cs" line-rate="0" branch-rate="0" complexity="7">
+        <class name="eventRadar.Pages.ErrorModel" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Error.cshtml.cs" line-rate="0" branch-rate="0" complexity="7">
           <methods>
             <method name="get_RequestId" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3329,7 +3329,7 @@
             <line number="25" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.IndexModel" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Index.cshtml.cs" line-rate="0" branch-rate="1" complexity="2">
+        <class name="eventRadar.Pages.IndexModel" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Index.cshtml.cs" line-rate="0" branch-rate="1" complexity="2">
           <methods>
             <method name="OnGet" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3355,7 +3355,7 @@
             <line number="18" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.Pages__ViewStart" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\_ViewStart.cshtml" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Pages.Pages__ViewStart" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\_ViewStart.cshtml" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="ExecuteAsync" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3367,7 +3367,7 @@
             <line number="2" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.Pages_Error" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Error.cshtml" line-rate="0" branch-rate="0" complexity="2">
+        <class name="eventRadar.Pages.Pages_Error" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Error.cshtml" line-rate="0" branch-rate="0" complexity="2">
           <methods>
             <method name="ExecuteAsync" signature="()" line-rate="0" branch-rate="0" complexity="2">
               <lines>
@@ -3387,7 +3387,7 @@
             <line number="15" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.Pages_Index" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Index.cshtml" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Pages.Pages_Index" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Index.cshtml" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="ExecuteAsync" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3399,7 +3399,7 @@
             <line number="4" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.Pages_Privacy" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Privacy.cshtml" line-rate="0" branch-rate="1" complexity="1">
+        <class name="eventRadar.Pages.Pages_Privacy" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Privacy.cshtml" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="ExecuteAsync" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3413,7 +3413,7 @@
             <line number="6" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.PrivacyModel" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Privacy.cshtml.cs" line-rate="0" branch-rate="1" complexity="2">
+        <class name="eventRadar.Pages.PrivacyModel" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Privacy.cshtml.cs" line-rate="0" branch-rate="1" complexity="2">
           <methods>
             <method name="OnGet" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3439,7 +3439,7 @@
             <line number="17" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Pages.Shared.Pages_Shared__Layout" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Pages\Shared\_Layout.cshtml" line-rate="0" branch-rate="0" complexity="20">
+        <class name="eventRadar.Pages.Shared.Pages_Shared__Layout" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Pages\Shared\_Layout.cshtml" line-rate="0" branch-rate="0" complexity="20">
           <methods>
             <method name="&lt;ExecuteAsync" signature="()" line-rate="0" branch-rate="0" complexity="6">
               <lines>
@@ -3465,7 +3465,7 @@
             <line number="49" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.WebDbContext" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\DB\WebDbContext.cs" line-rate="0" branch-rate="1" complexity="15">
+        <class name="eventRadar.WebDbContext" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\DB\WebDbContext.cs" line-rate="0" branch-rate="1" complexity="15">
           <methods>
             <method name="get_BlacklistedPages" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3581,7 +3581,7 @@
             <line number="45" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="Program" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadar\Program.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="Program" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadar\Program.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="&lt;Main&gt;$" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3695,9 +3695,9 @@
         </class>
       </classes>
     </package>
-    <package name="eventRadarUnitTests" line-rate="0.937293729372937" branch-rate="1" complexity="34">
+    <package name="eventRadarUnitTests" line-rate="0.923076923076923" branch-rate="1" complexity="70">
       <classes>
-        <class name="AutoGeneratedProgram" filename="C:\Users\p4t0s\.nuget\packages\microsoft.net.test.sdk\17.5.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="AutoGeneratedProgram" filename="C:\Users\37069\.nuget\packages\microsoft.net.test.sdk\17.5.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="Main" signature="(...)" line-rate="0" branch-rate="1" complexity="1">
               <lines>
@@ -3709,7 +3709,7 @@
             <line number="4" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Tests.AuthControllerTests" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadarUnitTests\AuthControllerTests.cs" line-rate="0.990909090909091" branch-rate="1" complexity="11">
+        <class name="eventRadar.Tests.AuthControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\AuthControllerTests.cs" line-rate="0.990909090909091" branch-rate="1" complexity="11">
           <methods>
             <method name="Setup" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -3979,7 +3979,7 @@
             <line number="217" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Tests.BlacklistedCategoryNameControllerTests" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadarUnitTests\BlacklistedCategoryNameControllerTests.cs" line-rate="1" branch-rate="1" complexity="9">
+        <class name="eventRadar.Tests.BlacklistedCategoryNameControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\BlacklistedCategoryNameControllerTests.cs" line-rate="1" branch-rate="1" complexity="9">
           <methods>
             <method name="TestInitialize" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -4169,7 +4169,211 @@
             <line number="157" hits="1" branch="false" />
           </lines>
         </class>
-        <class name="eventRadar.Tests.UserControllerTests" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadarUnitTests\UserControllerTests.cs" line-rate="0.857142857142857" branch-rate="1" complexity="5">
+        <class name="eventRadar.Tests.EventControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\EventControllerTests.cs" line-rate="0.876543209876543" branch-rate="1" complexity="9">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="22" hits="8" branch="false" />
+                <line number="23" hits="8" branch="false" />
+                <line number="24" hits="8" branch="false" />
+                <line number="25" hits="8" branch="false" />
+                <line number="26" hits="8" branch="false" />
+                <line number="27" hits="8" branch="false" />
+                <line number="28" hits="8" branch="false" />
+              </lines>
+            </method>
+            <method name="Create_ReturnsCreatedEvent_WhenEventIsValid" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="84" hits="1" branch="false" />
+                <line number="86" hits="1" branch="false" />
+                <line number="88" hits="1" branch="false" />
+                <line number="91" hits="1" branch="false" />
+                <line number="92" hits="1" branch="false" />
+                <line number="95" hits="1" branch="false" />
+                <line number="96" hits="1" branch="false" />
+                <line number="97" hits="1" branch="false" />
+                <line number="98" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Create_ReturnsInternalServerError_WhenEventCreationFails" signature="()" line-rate="0.555555555555556" branch-rate="1" complexity="1">
+              <lines>
+                <line number="101" hits="1" branch="false" />
+                <line number="103" hits="1" branch="false" />
+                <line number="105" hits="1" branch="false" />
+                <line number="106" hits="1" branch="false" />
+                <line number="109" hits="1" branch="false" />
+                <line number="110" hits="0" branch="false" />
+                <line number="113" hits="0" branch="false" />
+                <line number="114" hits="0" branch="false" />
+                <line number="115" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetMany_ReturnsEvents" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="32" hits="1" branch="false" />
+                <line number="34" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="36" hits="1" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="39" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
+                <line number="45" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="47" hits="1" branch="false" />
+                <line number="48" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsEvent_WhenEventExists" signature="()" line-rate="0.7" branch-rate="1" complexity="1">
+              <lines>
+                <line number="51" hits="1" branch="false" />
+                <line number="53" hits="1" branch="false" />
+                <line number="54" hits="1" branch="false" />
+                <line number="55" hits="1" branch="false" />
+                <line number="58" hits="1" branch="false" />
+                <line number="59" hits="1" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="63" hits="0" branch="false" />
+                <line number="64" hits="0" branch="false" />
+                <line number="65" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsNotFound_WhenEventDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="69" hits="1" branch="false" />
+                <line number="71" hits="1" branch="false" />
+                <line number="72" hits="1" branch="false" />
+                <line number="75" hits="1" branch="false" />
+                <line number="76" hits="1" branch="false" />
+                <line number="79" hits="1" branch="false" />
+                <line number="80" hits="1" branch="false" />
+                <line number="81" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsInternalServerError_WhenEventDeletionFails" signature="()" line-rate="0.7" branch-rate="1" complexity="1">
+              <lines>
+                <line number="150" hits="1" branch="false" />
+                <line number="152" hits="1" branch="false" />
+                <line number="153" hits="1" branch="false" />
+                <line number="154" hits="1" branch="false" />
+                <line number="156" hits="1" branch="false" />
+                <line number="157" hits="1" branch="false" />
+                <line number="160" hits="1" branch="false" />
+                <line number="163" hits="0" branch="false" />
+                <line number="164" hits="0" branch="false" />
+                <line number="165" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNoContent_WhenEventIsSuccessfullyDeleted" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="118" hits="1" branch="false" />
+                <line number="120" hits="1" branch="false" />
+                <line number="121" hits="1" branch="false" />
+                <line number="122" hits="1" branch="false" />
+                <line number="125" hits="1" branch="false" />
+                <line number="128" hits="1" branch="false" />
+                <line number="129" hits="1" branch="false" />
+                <line number="130" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNotFound_WhenEventDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="134" hits="1" branch="false" />
+                <line number="136" hits="1" branch="false" />
+                <line number="137" hits="1" branch="false" />
+                <line number="138" hits="1" branch="false" />
+                <line number="141" hits="1" branch="false" />
+                <line number="144" hits="1" branch="false" />
+                <line number="145" hits="1" branch="false" />
+                <line number="146" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="8" branch="false" />
+            <line number="23" hits="8" branch="false" />
+            <line number="24" hits="8" branch="false" />
+            <line number="25" hits="8" branch="false" />
+            <line number="26" hits="8" branch="false" />
+            <line number="27" hits="8" branch="false" />
+            <line number="28" hits="8" branch="false" />
+            <line number="32" hits="1" branch="false" />
+            <line number="34" hits="1" branch="false" />
+            <line number="35" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="39" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
+            <line number="45" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
+            <line number="47" hits="1" branch="false" />
+            <line number="48" hits="1" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="53" hits="1" branch="false" />
+            <line number="54" hits="1" branch="false" />
+            <line number="55" hits="1" branch="false" />
+            <line number="58" hits="1" branch="false" />
+            <line number="59" hits="1" branch="false" />
+            <line number="62" hits="1" branch="false" />
+            <line number="63" hits="0" branch="false" />
+            <line number="64" hits="0" branch="false" />
+            <line number="65" hits="0" branch="false" />
+            <line number="69" hits="1" branch="false" />
+            <line number="71" hits="1" branch="false" />
+            <line number="72" hits="1" branch="false" />
+            <line number="75" hits="1" branch="false" />
+            <line number="76" hits="1" branch="false" />
+            <line number="79" hits="1" branch="false" />
+            <line number="80" hits="1" branch="false" />
+            <line number="81" hits="1" branch="false" />
+            <line number="84" hits="1" branch="false" />
+            <line number="86" hits="1" branch="false" />
+            <line number="88" hits="1" branch="false" />
+            <line number="91" hits="1" branch="false" />
+            <line number="92" hits="1" branch="false" />
+            <line number="95" hits="1" branch="false" />
+            <line number="96" hits="1" branch="false" />
+            <line number="97" hits="1" branch="false" />
+            <line number="98" hits="1" branch="false" />
+            <line number="101" hits="1" branch="false" />
+            <line number="103" hits="1" branch="false" />
+            <line number="105" hits="1" branch="false" />
+            <line number="106" hits="1" branch="false" />
+            <line number="109" hits="1" branch="false" />
+            <line number="110" hits="0" branch="false" />
+            <line number="113" hits="0" branch="false" />
+            <line number="114" hits="0" branch="false" />
+            <line number="115" hits="0" branch="false" />
+            <line number="118" hits="1" branch="false" />
+            <line number="120" hits="1" branch="false" />
+            <line number="121" hits="1" branch="false" />
+            <line number="122" hits="1" branch="false" />
+            <line number="125" hits="1" branch="false" />
+            <line number="128" hits="1" branch="false" />
+            <line number="129" hits="1" branch="false" />
+            <line number="130" hits="1" branch="false" />
+            <line number="134" hits="1" branch="false" />
+            <line number="136" hits="1" branch="false" />
+            <line number="137" hits="1" branch="false" />
+            <line number="138" hits="1" branch="false" />
+            <line number="141" hits="1" branch="false" />
+            <line number="144" hits="1" branch="false" />
+            <line number="145" hits="1" branch="false" />
+            <line number="146" hits="1" branch="false" />
+            <line number="150" hits="1" branch="false" />
+            <line number="152" hits="1" branch="false" />
+            <line number="153" hits="1" branch="false" />
+            <line number="154" hits="1" branch="false" />
+            <line number="156" hits="1" branch="false" />
+            <line number="157" hits="1" branch="false" />
+            <line number="160" hits="1" branch="false" />
+            <line number="163" hits="0" branch="false" />
+            <line number="164" hits="0" branch="false" />
+            <line number="165" hits="0" branch="false" />
+          </lines>
+        </class>
+        <class name="eventRadar.Tests.UserControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\UserControllerTests.cs" line-rate="0.857142857142857" branch-rate="1" complexity="5">
           <methods>
             <method name="SetupControllerWithMockRepo" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -4293,7 +4497,7 @@
             <line number="100" hits="0" branch="false" />
           </lines>
         </class>
-        <class name="eventRadarUnitTests.BlacklistedPageControllerTests" filename="C:\Users\p4t0s\Desktop\eventRadar\eventRadarUnitTests\BlacklistedPageControllerTests.cs" line-rate="0.855072463768116" branch-rate="1" complexity="8">
+        <class name="eventRadarUnitTests.BlacklistedPageControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\BlacklistedPageControllerTests.cs" line-rate="0.855072463768116" branch-rate="1" complexity="8">
           <methods>
             <method name="TestInitialize" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
@@ -4467,6 +4671,664 @@
             <line number="141" hits="1" branch="false" />
             <line number="144" hits="1" branch="false" />
             <line number="145" hits="1" branch="false" />
+          </lines>
+        </class>
+        <class name="eventRadarUnitTests.CategoryControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\CategoryControllerTests.cs" line-rate="0.909090909090909" branch-rate="1" complexity="8">
+          <methods>
+            <method name="SetupControllerWithMockRepo" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="3" branch="false" />
+                <line number="19" hits="3" branch="false" />
+                <line number="20" hits="3" branch="false" />
+              </lines>
+            </method>
+            <method name="GetMany_ReturnsAllCategories" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="24" hits="1" branch="false" />
+                <line number="26" hits="1" branch="false" />
+                <line number="27" hits="1" branch="false" />
+                <line number="28" hits="1" branch="false" />
+                <line number="29" hits="1" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="31" hits="1" branch="false" />
+                <line number="32" hits="1" branch="false" />
+                <line number="33" hits="1" branch="false" />
+                <line number="36" hits="1" branch="false" />
+                <line number="39" hits="1" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="41" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsNotFoundResult_WhenCategoryDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="44" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="47" hits="1" branch="false" />
+                <line number="48" hits="1" branch="false" />
+                <line number="51" hits="1" branch="false" />
+                <line number="54" hits="1" branch="false" />
+                <line number="55" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsOkObjectResult_WhenCategoryExists" signature="()" line-rate="0.5" branch-rate="1" complexity="1">
+              <lines>
+                <line number="59" hits="1" branch="false" />
+                <line number="61" hits="1" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="63" hits="1" branch="false" />
+                <line number="64" hits="1" branch="false" />
+                <line number="67" hits="1" branch="false" />
+                <line number="70" hits="1" branch="false" />
+                <line number="71" hits="0" branch="false" />
+                <line number="72" hits="0" branch="false" />
+                <line number="73" hits="0" branch="false" />
+                <line number="74" hits="0" branch="false" />
+                <line number="75" hits="0" branch="false" />
+                <line number="76" hits="0" branch="false" />
+                <line number="77" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNoContentResult_WhenCategoryIsDeleted" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="135" hits="1" branch="false" />
+                <line number="137" hits="1" branch="false" />
+                <line number="138" hits="1" branch="false" />
+                <line number="139" hits="1" branch="false" />
+                <line number="140" hits="1" branch="false" />
+                <line number="141" hits="1" branch="false" />
+                <line number="144" hits="1" branch="false" />
+                <line number="147" hits="1" branch="false" />
+                <line number="148" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNotFoundResult_WhenCategoryDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="120" hits="1" branch="false" />
+                <line number="122" hits="1" branch="false" />
+                <line number="123" hits="1" branch="false" />
+                <line number="124" hits="1" branch="false" />
+                <line number="127" hits="1" branch="false" />
+                <line number="130" hits="1" branch="false" />
+                <line number="131" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Update_ReturnsNotFoundResult_WhenCategoryDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="80" hits="1" branch="false" />
+                <line number="82" hits="1" branch="false" />
+                <line number="83" hits="1" branch="false" />
+                <line number="84" hits="1" branch="false" />
+                <line number="85" hits="1" branch="false" />
+                <line number="88" hits="1" branch="false" />
+                <line number="91" hits="1" branch="false" />
+                <line number="92" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Update_ReturnsOkObjectResult_WhenCategoryIsUpdated" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="96" hits="1" branch="false" />
+                <line number="98" hits="1" branch="false" />
+                <line number="99" hits="1" branch="false" />
+                <line number="100" hits="1" branch="false" />
+                <line number="101" hits="1" branch="false" />
+                <line number="102" hits="1" branch="false" />
+                <line number="103" hits="1" branch="false" />
+                <line number="106" hits="1" branch="false" />
+                <line number="109" hits="1" branch="false" />
+                <line number="110" hits="1" branch="false" />
+                <line number="111" hits="1" branch="false" />
+                <line number="112" hits="1" branch="false" />
+                <line number="113" hits="1" branch="false" />
+                <line number="114" hits="1" branch="false" />
+                <line number="115" hits="1" branch="false" />
+                <line number="116" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="3" branch="false" />
+            <line number="19" hits="3" branch="false" />
+            <line number="20" hits="3" branch="false" />
+            <line number="24" hits="1" branch="false" />
+            <line number="26" hits="1" branch="false" />
+            <line number="27" hits="1" branch="false" />
+            <line number="28" hits="1" branch="false" />
+            <line number="29" hits="1" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="31" hits="1" branch="false" />
+            <line number="32" hits="1" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="39" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="41" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
+            <line number="47" hits="1" branch="false" />
+            <line number="48" hits="1" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="54" hits="1" branch="false" />
+            <line number="55" hits="1" branch="false" />
+            <line number="59" hits="1" branch="false" />
+            <line number="61" hits="1" branch="false" />
+            <line number="62" hits="1" branch="false" />
+            <line number="63" hits="1" branch="false" />
+            <line number="64" hits="1" branch="false" />
+            <line number="67" hits="1" branch="false" />
+            <line number="70" hits="1" branch="false" />
+            <line number="71" hits="0" branch="false" />
+            <line number="72" hits="0" branch="false" />
+            <line number="73" hits="0" branch="false" />
+            <line number="74" hits="0" branch="false" />
+            <line number="75" hits="0" branch="false" />
+            <line number="76" hits="0" branch="false" />
+            <line number="77" hits="0" branch="false" />
+            <line number="80" hits="1" branch="false" />
+            <line number="82" hits="1" branch="false" />
+            <line number="83" hits="1" branch="false" />
+            <line number="84" hits="1" branch="false" />
+            <line number="85" hits="1" branch="false" />
+            <line number="88" hits="1" branch="false" />
+            <line number="91" hits="1" branch="false" />
+            <line number="92" hits="1" branch="false" />
+            <line number="96" hits="1" branch="false" />
+            <line number="98" hits="1" branch="false" />
+            <line number="99" hits="1" branch="false" />
+            <line number="100" hits="1" branch="false" />
+            <line number="101" hits="1" branch="false" />
+            <line number="102" hits="1" branch="false" />
+            <line number="103" hits="1" branch="false" />
+            <line number="106" hits="1" branch="false" />
+            <line number="109" hits="1" branch="false" />
+            <line number="110" hits="1" branch="false" />
+            <line number="111" hits="1" branch="false" />
+            <line number="112" hits="1" branch="false" />
+            <line number="113" hits="1" branch="false" />
+            <line number="114" hits="1" branch="false" />
+            <line number="115" hits="1" branch="false" />
+            <line number="116" hits="1" branch="false" />
+            <line number="120" hits="1" branch="false" />
+            <line number="122" hits="1" branch="false" />
+            <line number="123" hits="1" branch="false" />
+            <line number="124" hits="1" branch="false" />
+            <line number="127" hits="1" branch="false" />
+            <line number="130" hits="1" branch="false" />
+            <line number="131" hits="1" branch="false" />
+            <line number="135" hits="1" branch="false" />
+            <line number="137" hits="1" branch="false" />
+            <line number="138" hits="1" branch="false" />
+            <line number="139" hits="1" branch="false" />
+            <line number="140" hits="1" branch="false" />
+            <line number="141" hits="1" branch="false" />
+            <line number="144" hits="1" branch="false" />
+            <line number="147" hits="1" branch="false" />
+            <line number="148" hits="1" branch="false" />
+          </lines>
+        </class>
+        <class name="eventRadarUnitTests.CityControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\CityControllerTests.cs" line-rate="1" branch-rate="1" complexity="6">
+          <methods>
+            <method name="Create_ReturnsCreatedResult_WhenCityIsCreated" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="72" hits="1" branch="false" />
+                <line number="74" hits="1" branch="false" />
+                <line number="75" hits="1" branch="false" />
+                <line number="76" hits="1" branch="false" />
+                <line number="77" hits="1" branch="false" />
+                <line number="80" hits="1" branch="false" />
+                <line number="83" hits="1" branch="false" />
+                <line number="84" hits="1" branch="false" />
+                <line number="85" hits="1" branch="false" />
+                <line number="86" hits="1" branch="false" />
+                <line number="87" hits="1" branch="false" />
+                <line number="88" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="GetMany_ReturnsListOfCityDtos" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="19" hits="1" branch="false" />
+                <line number="21" hits="1" branch="false" />
+                <line number="22" hits="1" branch="false" />
+                <line number="23" hits="1" branch="false" />
+                <line number="24" hits="1" branch="false" />
+                <line number="25" hits="1" branch="false" />
+                <line number="26" hits="1" branch="false" />
+                <line number="27" hits="1" branch="false" />
+                <line number="30" hits="1" branch="false" />
+                <line number="33" hits="1" branch="false" />
+                <line number="34" hits="1" branch="false" />
+                <line number="35" hits="1" branch="false" />
+                <line number="36" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsCityDto_WhenCityExists" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="55" hits="1" branch="false" />
+                <line number="57" hits="1" branch="false" />
+                <line number="58" hits="1" branch="false" />
+                <line number="59" hits="1" branch="false" />
+                <line number="62" hits="1" branch="false" />
+                <line number="65" hits="1" branch="false" />
+                <line number="66" hits="1" branch="false" />
+                <line number="67" hits="1" branch="false" />
+                <line number="68" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsNotFoundResult_WhenCityDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="40" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
+                <line number="43" hits="1" branch="false" />
+                <line number="44" hits="1" branch="false" />
+                <line number="47" hits="1" branch="false" />
+                <line number="50" hits="1" branch="false" />
+                <line number="51" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNoContentResult_WhenCityIsDeleted" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="106" hits="1" branch="false" />
+                <line number="108" hits="1" branch="false" />
+                <line number="109" hits="1" branch="false" />
+                <line number="110" hits="1" branch="false" />
+                <line number="111" hits="1" branch="false" />
+                <line number="114" hits="1" branch="false" />
+                <line number="117" hits="1" branch="false" />
+                <line number="118" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNotFoundResult_WhenCityDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="92" hits="1" branch="false" />
+                <line number="94" hits="1" branch="false" />
+                <line number="95" hits="1" branch="false" />
+                <line number="96" hits="1" branch="false" />
+                <line number="99" hits="1" branch="false" />
+                <line number="102" hits="1" branch="false" />
+                <line number="103" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="1" branch="false" />
+            <line number="21" hits="1" branch="false" />
+            <line number="22" hits="1" branch="false" />
+            <line number="23" hits="1" branch="false" />
+            <line number="24" hits="1" branch="false" />
+            <line number="25" hits="1" branch="false" />
+            <line number="26" hits="1" branch="false" />
+            <line number="27" hits="1" branch="false" />
+            <line number="30" hits="1" branch="false" />
+            <line number="33" hits="1" branch="false" />
+            <line number="34" hits="1" branch="false" />
+            <line number="35" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
+            <line number="43" hits="1" branch="false" />
+            <line number="44" hits="1" branch="false" />
+            <line number="47" hits="1" branch="false" />
+            <line number="50" hits="1" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="55" hits="1" branch="false" />
+            <line number="57" hits="1" branch="false" />
+            <line number="58" hits="1" branch="false" />
+            <line number="59" hits="1" branch="false" />
+            <line number="62" hits="1" branch="false" />
+            <line number="65" hits="1" branch="false" />
+            <line number="66" hits="1" branch="false" />
+            <line number="67" hits="1" branch="false" />
+            <line number="68" hits="1" branch="false" />
+            <line number="72" hits="1" branch="false" />
+            <line number="74" hits="1" branch="false" />
+            <line number="75" hits="1" branch="false" />
+            <line number="76" hits="1" branch="false" />
+            <line number="77" hits="1" branch="false" />
+            <line number="80" hits="1" branch="false" />
+            <line number="83" hits="1" branch="false" />
+            <line number="84" hits="1" branch="false" />
+            <line number="85" hits="1" branch="false" />
+            <line number="86" hits="1" branch="false" />
+            <line number="87" hits="1" branch="false" />
+            <line number="88" hits="1" branch="false" />
+            <line number="92" hits="1" branch="false" />
+            <line number="94" hits="1" branch="false" />
+            <line number="95" hits="1" branch="false" />
+            <line number="96" hits="1" branch="false" />
+            <line number="99" hits="1" branch="false" />
+            <line number="102" hits="1" branch="false" />
+            <line number="103" hits="1" branch="false" />
+            <line number="106" hits="1" branch="false" />
+            <line number="108" hits="1" branch="false" />
+            <line number="109" hits="1" branch="false" />
+            <line number="110" hits="1" branch="false" />
+            <line number="111" hits="1" branch="false" />
+            <line number="114" hits="1" branch="false" />
+            <line number="117" hits="1" branch="false" />
+            <line number="118" hits="1" branch="false" />
+          </lines>
+        </class>
+        <class name="eventRadarUnitTests.WebsiteControllerTests" filename="C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\WebsiteControllerTests.cs" line-rate="0.894736842105263" branch-rate="1" complexity="13">
+          <methods>
+            <method name="Setup" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="23" hits="11" branch="false" />
+                <line number="24" hits="11" branch="false" />
+                <line number="25" hits="11" branch="false" />
+                <line number="26" hits="11" branch="false" />
+              </lines>
+            </method>
+            <method name="SetupControllerWithMockRepo" signature="(...)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="28" hits="9" branch="false" />
+                <line number="29" hits="9" branch="false" />
+                <line number="30" hits="9" branch="false" />
+              </lines>
+            </method>
+            <method name="Create_CallsCreateAsyncOnRepository_Once" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="115" hits="1" branch="false" />
+                <line number="117" hits="1" branch="false" />
+                <line number="118" hits="1" branch="false" />
+                <line number="119" hits="1" branch="false" />
+                <line number="120" hits="2" branch="false" />
+                <line number="123" hits="1" branch="false" />
+                <line number="126" hits="1" branch="false" />
+                <line number="127" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Create_ReturnsCreatedResult_WithWebsiteDto" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="93" hits="1" branch="false" />
+                <line number="95" hits="1" branch="false" />
+                <line number="96" hits="1" branch="false" />
+                <line number="97" hits="1" branch="false" />
+                <line number="98" hits="1" branch="false" />
+                <line number="99" hits="2" branch="false" />
+                <line number="102" hits="1" branch="false" />
+                <line number="105" hits="1" branch="false" />
+                <line number="106" hits="1" branch="false" />
+                <line number="107" hits="1" branch="false" />
+                <line number="108" hits="1" branch="false" />
+                <line number="109" hits="1" branch="false" />
+                <line number="110" hits="1" branch="false" />
+                <line number="111" hits="1" branch="false" />
+                <line number="112" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="GetManyFilteredPaging_ReturnsNextPageLink_WhenNextPageExists" signature="()" line-rate="0.6" branch-rate="1" complexity="1">
+              <lines>
+                <line number="225" hits="1" branch="false" />
+                <line number="227" hits="1" branch="false" />
+                <line number="228" hits="1" branch="false" />
+                <line number="229" hits="1" branch="false" />
+                <line number="230" hits="1" branch="false" />
+                <line number="233" hits="1" branch="false" />
+                <line number="236" hits="0" branch="false" />
+                <line number="237" hits="0" branch="false" />
+                <line number="238" hits="0" branch="false" />
+                <line number="239" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetManyPaging_ReturnsPreviousPageLink_WhenPreviousPageExists" signature="()" line-rate="0.6" branch-rate="1" complexity="1">
+              <lines>
+                <line number="207" hits="1" branch="false" />
+                <line number="209" hits="1" branch="false" />
+                <line number="210" hits="1" branch="false" />
+                <line number="211" hits="1" branch="false" />
+                <line number="212" hits="1" branch="false" />
+                <line number="215" hits="1" branch="false" />
+                <line number="218" hits="0" branch="false" />
+                <line number="219" hits="0" branch="false" />
+                <line number="220" hits="0" branch="false" />
+                <line number="221" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetMany_ReturnsListOfWebsites" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="34" hits="1" branch="false" />
+                <line number="36" hits="1" branch="false" />
+                <line number="37" hits="1" branch="false" />
+                <line number="38" hits="1" branch="false" />
+                <line number="39" hits="1" branch="false" />
+                <line number="40" hits="1" branch="false" />
+                <line number="41" hits="1" branch="false" />
+                <line number="42" hits="1" branch="false" />
+                <line number="43" hits="1" branch="false" />
+                <line number="46" hits="1" branch="false" />
+                <line number="49" hits="1" branch="false" />
+                <line number="50" hits="1" branch="false" />
+                <line number="51" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsNotFoundResult_WhenWebsiteDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="55" hits="1" branch="false" />
+                <line number="57" hits="1" branch="false" />
+                <line number="58" hits="1" branch="false" />
+                <line number="59" hits="1" branch="false" />
+                <line number="60" hits="1" branch="false" />
+                <line number="63" hits="1" branch="false" />
+                <line number="66" hits="1" branch="false" />
+                <line number="67" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Get_ReturnsOkObjectResult_WhenWebsiteExists" signature="()" line-rate="0.6" branch-rate="1" complexity="1">
+              <lines>
+                <line number="71" hits="1" branch="false" />
+                <line number="73" hits="1" branch="false" />
+                <line number="74" hits="1" branch="false" />
+                <line number="75" hits="1" branch="false" />
+                <line number="76" hits="1" branch="false" />
+                <line number="77" hits="1" branch="false" />
+                <line number="80" hits="1" branch="false" />
+                <line number="83" hits="1" branch="false" />
+                <line number="84" hits="1" branch="false" />
+                <line number="85" hits="0" branch="false" />
+                <line number="86" hits="0" branch="false" />
+                <line number="87" hits="0" branch="false" />
+                <line number="88" hits="0" branch="false" />
+                <line number="89" hits="0" branch="false" />
+                <line number="90" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNoContentResult_WhenWebsiteIsDeleted" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="189" hits="1" branch="false" />
+                <line number="191" hits="1" branch="false" />
+                <line number="192" hits="1" branch="false" />
+                <line number="193" hits="1" branch="false" />
+                <line number="194" hits="1" branch="false" />
+                <line number="195" hits="1" branch="false" />
+                <line number="196" hits="1" branch="false" />
+                <line number="199" hits="1" branch="false" />
+                <line number="202" hits="1" branch="false" />
+                <line number="203" hits="1" branch="false" />
+                <line number="204" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Remove_ReturnsNotFoundResult_WhenWebsiteDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="172" hits="1" branch="false" />
+                <line number="174" hits="1" branch="false" />
+                <line number="175" hits="1" branch="false" />
+                <line number="176" hits="1" branch="false" />
+                <line number="177" hits="1" branch="false" />
+                <line number="180" hits="1" branch="false" />
+                <line number="183" hits="1" branch="false" />
+                <line number="184" hits="1" branch="false" />
+                <line number="185" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Update_ReturnsNotFoundResult_WhenWebsiteDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="130" hits="1" branch="false" />
+                <line number="132" hits="1" branch="false" />
+                <line number="133" hits="1" branch="false" />
+                <line number="134" hits="1" branch="false" />
+                <line number="135" hits="1" branch="false" />
+                <line number="136" hits="1" branch="false" />
+                <line number="139" hits="1" branch="false" />
+                <line number="142" hits="1" branch="false" />
+                <line number="143" hits="1" branch="false" />
+                <line number="144" hits="1" branch="false" />
+              </lines>
+            </method>
+            <method name="Update_ReturnsOkObjectResult_WithUpdatedWebsiteDto" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="148" hits="1" branch="false" />
+                <line number="150" hits="1" branch="false" />
+                <line number="151" hits="1" branch="false" />
+                <line number="152" hits="1" branch="false" />
+                <line number="153" hits="1" branch="false" />
+                <line number="154" hits="1" branch="false" />
+                <line number="155" hits="1" branch="false" />
+                <line number="156" hits="1" branch="false" />
+                <line number="159" hits="1" branch="false" />
+                <line number="162" hits="1" branch="false" />
+                <line number="163" hits="1" branch="false" />
+                <line number="164" hits="1" branch="false" />
+                <line number="165" hits="1" branch="false" />
+                <line number="166" hits="1" branch="false" />
+                <line number="167" hits="1" branch="false" />
+                <line number="168" hits="1" branch="false" />
+                <line number="169" hits="1" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="23" hits="11" branch="false" />
+            <line number="24" hits="11" branch="false" />
+            <line number="25" hits="11" branch="false" />
+            <line number="26" hits="11" branch="false" />
+            <line number="28" hits="9" branch="false" />
+            <line number="29" hits="9" branch="false" />
+            <line number="30" hits="9" branch="false" />
+            <line number="34" hits="1" branch="false" />
+            <line number="36" hits="1" branch="false" />
+            <line number="37" hits="1" branch="false" />
+            <line number="38" hits="1" branch="false" />
+            <line number="39" hits="1" branch="false" />
+            <line number="40" hits="1" branch="false" />
+            <line number="41" hits="1" branch="false" />
+            <line number="42" hits="1" branch="false" />
+            <line number="43" hits="1" branch="false" />
+            <line number="46" hits="1" branch="false" />
+            <line number="49" hits="1" branch="false" />
+            <line number="50" hits="1" branch="false" />
+            <line number="51" hits="1" branch="false" />
+            <line number="55" hits="1" branch="false" />
+            <line number="57" hits="1" branch="false" />
+            <line number="58" hits="1" branch="false" />
+            <line number="59" hits="1" branch="false" />
+            <line number="60" hits="1" branch="false" />
+            <line number="63" hits="1" branch="false" />
+            <line number="66" hits="1" branch="false" />
+            <line number="67" hits="1" branch="false" />
+            <line number="71" hits="1" branch="false" />
+            <line number="73" hits="1" branch="false" />
+            <line number="74" hits="1" branch="false" />
+            <line number="75" hits="1" branch="false" />
+            <line number="76" hits="1" branch="false" />
+            <line number="77" hits="1" branch="false" />
+            <line number="80" hits="1" branch="false" />
+            <line number="83" hits="1" branch="false" />
+            <line number="84" hits="1" branch="false" />
+            <line number="85" hits="0" branch="false" />
+            <line number="86" hits="0" branch="false" />
+            <line number="87" hits="0" branch="false" />
+            <line number="88" hits="0" branch="false" />
+            <line number="89" hits="0" branch="false" />
+            <line number="90" hits="0" branch="false" />
+            <line number="93" hits="1" branch="false" />
+            <line number="95" hits="1" branch="false" />
+            <line number="96" hits="1" branch="false" />
+            <line number="97" hits="1" branch="false" />
+            <line number="98" hits="1" branch="false" />
+            <line number="99" hits="2" branch="false" />
+            <line number="102" hits="1" branch="false" />
+            <line number="105" hits="1" branch="false" />
+            <line number="106" hits="1" branch="false" />
+            <line number="107" hits="1" branch="false" />
+            <line number="108" hits="1" branch="false" />
+            <line number="109" hits="1" branch="false" />
+            <line number="110" hits="1" branch="false" />
+            <line number="111" hits="1" branch="false" />
+            <line number="112" hits="1" branch="false" />
+            <line number="115" hits="1" branch="false" />
+            <line number="117" hits="1" branch="false" />
+            <line number="118" hits="1" branch="false" />
+            <line number="119" hits="1" branch="false" />
+            <line number="120" hits="2" branch="false" />
+            <line number="123" hits="1" branch="false" />
+            <line number="126" hits="1" branch="false" />
+            <line number="127" hits="1" branch="false" />
+            <line number="130" hits="1" branch="false" />
+            <line number="132" hits="1" branch="false" />
+            <line number="133" hits="1" branch="false" />
+            <line number="134" hits="1" branch="false" />
+            <line number="135" hits="1" branch="false" />
+            <line number="136" hits="1" branch="false" />
+            <line number="139" hits="1" branch="false" />
+            <line number="142" hits="1" branch="false" />
+            <line number="143" hits="1" branch="false" />
+            <line number="144" hits="1" branch="false" />
+            <line number="148" hits="1" branch="false" />
+            <line number="150" hits="1" branch="false" />
+            <line number="151" hits="1" branch="false" />
+            <line number="152" hits="1" branch="false" />
+            <line number="153" hits="1" branch="false" />
+            <line number="154" hits="1" branch="false" />
+            <line number="155" hits="1" branch="false" />
+            <line number="156" hits="1" branch="false" />
+            <line number="159" hits="1" branch="false" />
+            <line number="162" hits="1" branch="false" />
+            <line number="163" hits="1" branch="false" />
+            <line number="164" hits="1" branch="false" />
+            <line number="165" hits="1" branch="false" />
+            <line number="166" hits="1" branch="false" />
+            <line number="167" hits="1" branch="false" />
+            <line number="168" hits="1" branch="false" />
+            <line number="169" hits="1" branch="false" />
+            <line number="172" hits="1" branch="false" />
+            <line number="174" hits="1" branch="false" />
+            <line number="175" hits="1" branch="false" />
+            <line number="176" hits="1" branch="false" />
+            <line number="177" hits="1" branch="false" />
+            <line number="180" hits="1" branch="false" />
+            <line number="183" hits="1" branch="false" />
+            <line number="184" hits="1" branch="false" />
+            <line number="185" hits="1" branch="false" />
+            <line number="189" hits="1" branch="false" />
+            <line number="191" hits="1" branch="false" />
+            <line number="192" hits="1" branch="false" />
+            <line number="193" hits="1" branch="false" />
+            <line number="194" hits="1" branch="false" />
+            <line number="195" hits="1" branch="false" />
+            <line number="196" hits="1" branch="false" />
+            <line number="199" hits="1" branch="false" />
+            <line number="202" hits="1" branch="false" />
+            <line number="203" hits="1" branch="false" />
+            <line number="204" hits="1" branch="false" />
+            <line number="207" hits="1" branch="false" />
+            <line number="209" hits="1" branch="false" />
+            <line number="210" hits="1" branch="false" />
+            <line number="211" hits="1" branch="false" />
+            <line number="212" hits="1" branch="false" />
+            <line number="215" hits="1" branch="false" />
+            <line number="218" hits="0" branch="false" />
+            <line number="219" hits="0" branch="false" />
+            <line number="220" hits="0" branch="false" />
+            <line number="221" hits="0" branch="false" />
+            <line number="225" hits="1" branch="false" />
+            <line number="227" hits="1" branch="false" />
+            <line number="228" hits="1" branch="false" />
+            <line number="229" hits="1" branch="false" />
+            <line number="230" hits="1" branch="false" />
+            <line number="233" hits="1" branch="false" />
+            <line number="236" hits="0" branch="false" />
+            <line number="237" hits="0" branch="false" />
+            <line number="238" hits="0" branch="false" />
+            <line number="239" hits="0" branch="false" />
           </lines>
         </class>
       </classes>
