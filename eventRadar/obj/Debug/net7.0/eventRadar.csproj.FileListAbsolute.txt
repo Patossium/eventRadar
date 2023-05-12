@@ -100,3 +100,9 @@ C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\ru\FSharp.Core.res
 C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\tr\FSharp.Core.resources.dll
 C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\zh-Hans\FSharp.Core.resources.dll
 C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\zh-Hant\FSharp.Core.resources.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\Moq.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\xunit.abstractions.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\xunit.assert.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\xunit.core.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadar\bin\Debug\net7.0\xunit.execution.dotnet.dll

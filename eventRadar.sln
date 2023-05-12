@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eventRadar", "eventRadar\eventRadar.csproj", "{D4A27FF2-FA1F-4A80-85D1-A3FDC099C5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eventRadar", "eventRadar\eventRadar.csproj", "{D4A27FF2-FA1F-4A80-85D1-A3FDC099C5F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eventRadarUnitTests", "eventRadarUnitTests\eventRadarUnitTests.csproj", "{A0DD5889-6502-4ED8-B0DF-7776E090B14D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D4A27FF2-FA1F-4A80-85D1-A3FDC099C5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4A27FF2-FA1F-4A80-85D1-A3FDC099C5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4A27FF2-FA1F-4A80-85D1-A3FDC099C5F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0DD5889-6502-4ED8-B0DF-7776E090B14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0DD5889-6502-4ED8-B0DF-7776E090B14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0DD5889-6502-4ED8-B0DF-7776E090B14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0DD5889-6502-4ED8-B0DF-7776E090B14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
