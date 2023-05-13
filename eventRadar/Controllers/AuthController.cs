@@ -7,6 +7,8 @@ using eventRadar.Auth.Model;
 using Microsoft.AspNetCore.Identity;
 using eventRadar.Auth;
 using static eventRadar.Auth.Model.AuthDtos;
+using System.Security.Claims;
+using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace eventRadar.Controllers
 {
@@ -99,36 +101,6 @@ namespace eventRadar.Controllers
             await _userManager.SetLockoutEndDateAsync(user, null);
 
             return Ok(new UserDto(userId, user.UserName, user.Email, user.PasswordHash, user.Name, user.Surname, user.LockoutEnd, user.LockoutEnabled));
-        }
-        [HttpPut]
-        [Route("{userId}/change-password")]
-        [Authorize]
-        public async Task<IActionResult> ChangePassword(string userId, ChangePasswordDto changePasswordDto)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            // Validate the current password
-            var isPasswordValid = await _userManager.CheckPasswordAsync(user, changePasswordDto.Password);
-
-            if (!isPasswordValid)
-            {
-                return BadRequest("Invalid current password.");
-            }
-
-            // Change the user's password
-            var changePasswordResult = await _userManager.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword);
-
-            if (!changePasswordResult.Succeeded)
-            {
-                return BadRequest(changePasswordResult.Errors);
-            }
-
-            return NoContent();
         }
     }
 }

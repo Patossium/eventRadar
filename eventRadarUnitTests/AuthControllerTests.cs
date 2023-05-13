@@ -246,41 +246,6 @@ namespace eventRadar.Tests
             _userManagerMock.Verify(mgr => mgr.UpdateAsync(It.IsAny<User>()), Times.Never);
         }
         [TestMethod]
-        public async Task ChangePassword_InvalidUserId_ReturnsNotFound()
-        {
-            // Arrange
-            var userId = "1";
-            var changePasswordDto = new ChangePasswordDto("oldPassword", "newPassword");
-
-            _userManagerMock.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync((User)null);
-
-            // Act
-            var result = await _authController.ChangePassword(userId, changePasswordDto);
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
-        }
-
-        [TestMethod]
-        public async Task ChangePassword_InvalidCurrentPassword_ReturnsBadRequest()
-        {
-            // Arrange
-            var userId = "1";
-            var changePasswordDto = new ChangePasswordDto("wrongPassword", "newPassword");
-
-            var user = new User { Id = userId };
-            _userManagerMock.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync(user);
-            _userManagerMock.Setup(u => u.CheckPasswordAsync(user, changePasswordDto.Password)).ReturnsAsync(false);
-
-            // Act
-            var result = await _authController.ChangePassword(userId, changePasswordDto);
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
-            var badRequestResult = result as BadRequestObjectResult;
-            Assert.AreEqual("Invalid current password.", badRequestResult.Value);
-        }
-        [TestMethod]
         public async Task Login_UserIsNotBlocked_ReturnsOkResult()
         {
             // Arrange
