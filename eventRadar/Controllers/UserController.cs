@@ -5,6 +5,7 @@ using eventRadar.Models;
 using eventRadar.Data.Dtos;
 using eventRadar.Data.Repositories;
 using eventRadar.Auth.Model;
+using Microsoft.AspNetCore.Identity;
 
 namespace eventRadar.Controllers
 {

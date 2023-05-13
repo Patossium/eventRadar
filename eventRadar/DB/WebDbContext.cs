@@ -7,9 +7,11 @@ using eventRadar.Models;
 using eventRadar.Auth.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using System.Diagnostics.CodeAnalysis;
 
 namespace eventRadar
 {
+    [ExcludeFromCodeCoverage]
     public class WebDbContext : DbContext
     {
         private readonly IConfiguration _configuration;

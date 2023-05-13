@@ -8,6 +8,9 @@ using eventRadar.Auth.Model;
 using eventRadar.Data;
 using System.Text.Json;
 using Microsoft.IdentityModel.JsonWebTokens;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("eventRadarUnitTests")]
 
 namespace eventRadar.Controllers
 {
@@ -15,6 +18,7 @@ namespace eventRadar.Controllers
     [Route("api/events")]
     public class EventController : ControllerBase
     {
+        
         private readonly IEventRepository _eventRepository;
         private readonly ILocationRepository _locationRepository;
         private readonly ICategoryRepository _categoryRepository;
@@ -132,22 +136,29 @@ namespace eventRadar.Controllers
         [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<EventDto>> Create(CreateEventDto createEventDto)
         {
-            var eventObject = new Event
+            try
             {
-                Url = createEventDto.Url,
-                Title = createEventDto.Title,
-                DateStart = createEventDto.DateStart,
-                DateEnd = createEventDto.DateEnd,
-                ImageLink = createEventDto.ImageLink,
-                Price = createEventDto.Price,
-                TicketLink = createEventDto.TicketLink,
-                Location = createEventDto.Location,
-                Category = createEventDto.Category
-            };
-            await _eventRepository.CreateAsync(eventObject);
+                var eventObject = new Event
+                {
+                    Url = createEventDto.Url,
+                    Title = createEventDto.Title,
+                    DateStart = createEventDto.DateStart,
+                    DateEnd = createEventDto.DateEnd,
+                    ImageLink = createEventDto.ImageLink,
+                    Price = createEventDto.Price,
+                    TicketLink = createEventDto.TicketLink,
+                    Location = createEventDto.Location,
+                    Category = createEventDto.Category
+                };
+                await _eventRepository.CreateAsync(eventObject);
 
-            return Created("", new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, eventObject.Price, 
-                eventObject.TicketLink, eventObject.Location, eventObject.Category));
+                return Created("", new EventDto(eventObject.Id, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, eventObject.Price,
+                    eventObject.TicketLink, eventObject.Location, eventObject.Category));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while creating the event.");
+            }
         }
 
         [HttpPut]
@@ -180,16 +191,23 @@ namespace eventRadar.Controllers
         [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult> Remove(int eventId)
         {
-            var eventObject = await _eventRepository.GetAsync(eventId);
+            try
+            {
+                var eventObject = await _eventRepository.GetAsync(eventId);
 
-            if (eventObject == null) 
-                return NotFound();
+                if (eventObject == null)
+                    return NotFound();
 
-            await _eventRepository.DeleteAsync(eventObject);
+                await _eventRepository.DeleteAsync(eventObject);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error occurred while deleting the event.");
+            }
         }
-        private string? CreateEventResourceUri(
+        internal string? CreateEventResourceUri(
             EventSearchParameters eventSearchParametersDto,
             ResourceUriType type
             )

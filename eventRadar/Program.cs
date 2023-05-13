@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using eventRadar;
 using eventRadar.DB;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();

@@ -90,9 +90,10 @@ namespace eventRadar.Tests
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result.Result, typeof(ActionResult<UserDto>));
-            var okResult = result.Result as OkObjectResult;
+            Assert.IsInstanceOfType(result, typeof(ActionResult<UserDto>));
+            var okResult = result;
             Assert.IsNotNull(okResult);
+            Assert.IsInstanceOfType(okResult.Value, typeof(UserDto));
             var userDto = okResult.Value as UserDto;
             Assert.AreEqual(existingUser.Id, userDto.Id);
             Assert.AreEqual(existingUser.UserName, userDto.Username);

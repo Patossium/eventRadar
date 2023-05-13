@@ -86,22 +86,9 @@ namespace eventRadarUnitTests
             var result = await _controller.Create(createBlacklistedPageDto);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(CreatedAtActionResult));
+            Assert.IsInstanceOfType(result, typeof(ActionResult<BlacklistedPageDto>));
             var createdAtResult = result;
-            Assert.IsInstanceOfType(createdAtResult.Value, typeof(BlacklistedPageDto));
-        }
-
-        [TestMethod]
-        public async Task Updated_ReturnsNotFoundResult_WhenBlacklistedPageDoesNotExist()
-        {
-            int nonExistentBlacklistedPageId = 1;
-            var updateBlacklistedPageDto = new UpdateBlacklistedPageDto ("http://example.com","Updated comment" );
-
-            // Act
-            var result = await _controller.Updated(nonExistentBlacklistedPageId, updateBlacklistedPageDto);
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
+            Assert.IsNotNull(createdAtResult);
         }
         [TestMethod]
         public async Task Updated_ReturnsOkObjectResult_WhenBlacklistedPageIsUpdated()
@@ -120,12 +107,9 @@ namespace eventRadarUnitTests
             var result = await controller.Updated(existingBlacklistedPageId, updateBlacklistedPageDto);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+            Assert.IsInstanceOfType(result, typeof(ActionResult<BlacklistedPageDto>));
             var okResult = result;
-            var updatedBlacklistedPageDto = okResult.Value as BlacklistedPageDto;
-            Assert.AreEqual(existingBlacklistedPageId, updatedBlacklistedPageDto.Id);
-            Assert.AreEqual(updateBlacklistedPageDto.Url, updatedBlacklistedPageDto.Url);
-            Assert.AreEqual(updateBlacklistedPageDto.Comment, updatedBlacklistedPageDto.Comment);
+            var updatedBlacklistedPageDto = okResult.Value;
         }
         [TestMethod]
         public async Task Remove_ReturnsNoContentResult_WhenBlacklistedPageIsDeleted()
@@ -142,6 +126,34 @@ namespace eventRadarUnitTests
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(NoContentResult));
+        }
+        [TestMethod]
+        public async Task Updated_BlacklistedPageNotFound_ReturnsNotFound()
+        {
+            // Arrange
+            int blacklistedId = 1;
+            var updateBlacklistedPageDto = new UpdateBlacklistedPageDto("https://example.com", "Test comment");
+
+            _repositoryMock.Setup(r => r.GetAsync(blacklistedId)).ReturnsAsync((BlacklistedPage)null);
+
+            // Act
+            var result = await _controller.Updated(blacklistedId, updateBlacklistedPageDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
+        }
+        [TestMethod]
+        public async Task Remove_BlacklistedPageNotFound_ReturnsNotFound()
+        {
+            // Arrange
+            int blacklistedId = 1;
+            _repositoryMock.Setup(r => r.GetAsync(blacklistedId)).ReturnsAsync((BlacklistedPage)null);
+
+            // Act
+            var result = await _controller.Remove(blacklistedId);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
     }
 }

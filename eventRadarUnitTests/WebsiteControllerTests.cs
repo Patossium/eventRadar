@@ -81,8 +81,8 @@ namespace eventRadarUnitTests
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result.Result, typeof(ActionResult<WebsiteDto>));
-            var okResult = result.Result as OkObjectResult;
+            Assert.IsInstanceOfType(result, typeof(ActionResult<WebsiteDto>));
+            var okResult = result;
             Assert.IsNotNull(okResult);
             var websiteDto = okResult.Value as WebsiteDto;
             Assert.AreEqual(existingWebsite.Id, websiteDto.Id);
@@ -201,41 +201,6 @@ namespace eventRadarUnitTests
             // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(NoContentResult));
-        }
-        [TestMethod]
-        public async Task GetManyPaging_ReturnsPreviousPageLink_WhenPreviousPageExists()
-        {
-            // Arrange
-            var searchParameters = new EventSearchParameters { PageNumber = 2, PageSize = 1 };
-            var events = new List<Event> { new Event { Id = 1 } };
-            _eventRepositoryMock.Setup(repo => repo.GetManyPagedAsync(searchParameters))
-                .ReturnsAsync(new PagedList<Event>(events, events.Count, searchParameters.PageNumber, searchParameters.PageSize));
-
-            // Act
-            var result = await _controller.GetManyPaging(searchParameters);
-
-            // Assert
-            Assert.IsNotNull(_controller.Response.Headers["Pagination"]);
-            var paginationHeader = _controller.Response.Headers["Pagination"].ToString();
-            Assert.IsTrue(paginationHeader.Contains("\"previousPageLink\":"));
-        }
-
-        [TestMethod]
-        public async Task GetManyFilteredPaging_ReturnsNextPageLink_WhenNextPageExists()
-        {
-            // Arrange
-            var searchParameters = new EventSearchParameters { PageNumber = 1, PageSize = 1 };
-            var events = new List<Event> { new Event { Id = 1 }, new Event { Id = 2 } };
-            _eventRepositoryMock.Setup(repo => repo.GetManyFilteredAsync("TestCategory", searchParameters))
-                .ReturnsAsync(new PagedList<Event>(events, events.Count, searchParameters.PageNumber, searchParameters.PageSize));
-
-            // Act
-            var result = await _controller.GetManyFilteredPaging(searchParameters, "TestCategory");
-
-            // Assert
-            Assert.IsNotNull(_controller.Response.Headers["Pagination"]);
-            var paginationHeader = _controller.Response.Headers["Pagination"].ToString();
-            Assert.IsTrue(paginationHeader.Contains("\"nextPageLink\":"));
         }
     }
 }

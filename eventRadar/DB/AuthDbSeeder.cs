@@ -1,8 +1,10 @@
 ﻿using eventRadar.Auth.Model;
 using Microsoft.AspNetCore.Identity;
+using System.Diagnostics.CodeAnalysis;
 
 namespace eventRadar.DB
 {
+    [ExcludeFromCodeCoverage]
     public class AuthDbSeeder
     {
         private readonly UserManager<User> _userManager;

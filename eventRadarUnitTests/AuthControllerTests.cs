@@ -88,7 +88,7 @@ namespace eventRadar.Tests
         public async Task Login_InvalidUsername_ReturnsBadRequest()
         {
             // Arrange
-            var loginDto = new LoginDto ("Simona123123", "Bakalaurasyragerai1!");
+            var loginDto = new LoginDto("Simona123123", "Bakalaurasyragerai1!");
             _userManagerMock.Setup(x => x.FindByNameAsync(loginDto.Username)).ReturnsAsync((User)null);
 
             // Act
@@ -96,6 +96,8 @@ namespace eventRadar.Tests
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
+            var badRequestResult = result as BadRequestObjectResult;
+            Assert.IsNotNull(badRequestResult);
         }
 
         [TestMethod]
@@ -197,23 +199,236 @@ namespace eventRadar.Tests
             Assert.AreEqual(DateTimeOffset.MaxValue, userDto.LockoutEnd);
         }
         [TestMethod]
-        public async Task BlockUser_UnauthorizedAccess_ReturnsUnauthorizedResult()
+        public async Task BlockUser_WithValidUserId_ReturnsOkResult()
         {
             // Arrange
-            string userId = Guid.NewGuid().ToString();
-
-            // Set the user role to a non-administrator role
-            var userRole = "SystemUser";
-            var claims = new List<Claim> { new Claim(ClaimTypes.Role, userRole) };
-            var identity = new ClaimsIdentity(claims);
-            var principal = new ClaimsPrincipal(identity);
-            _authController.ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext { User = principal } };
+            string userId = "valid-user-id";
+            var user = new User { Id = userId, UserName = "testuser", Email = "testuser@example.com" };
+            _userManagerMock.Setup(mgr => mgr.FindByIdAsync(userId)).ReturnsAsync(user);
+            _userManagerMock.Setup(mgr => mgr.UpdateAsync(user)).ReturnsAsync(IdentityResult.Success);
 
             // Act
             var result = await _authController.BlockUser(userId);
 
             // Assert
-            Assert.IsInstanceOfType(result, typeof(UnauthorizedResult));
+            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+            var okResult = result as OkObjectResult;
+            Assert.IsNotNull(okResult);
+            Assert.IsInstanceOfType(okResult.Value, typeof(UserDto));
+            var userDto = okResult.Value as UserDto;
+            Assert.AreEqual(userId, userDto.Id);
+            Assert.AreEqual(user.UserName, userDto.Username);
+            Assert.AreEqual(user.Email, userDto.Email);
+            Assert.AreEqual(user.PasswordHash, userDto.Password);
+            Assert.AreEqual(user.Name, userDto.Name);
+            Assert.AreEqual(user.Surname, userDto.Surname);
+            Assert.AreEqual(user.LockoutEnd, userDto.LockoutEnd);
+            Assert.AreEqual(user.LockoutEnabled, userDto.LockoutEnabled);
+
+            _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.UpdateAsync(user), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task BlockUser_WithInvalidUserId_ReturnsNotFoundResult()
+        {
+            // Arrange
+            string userId = "invalid-user-id";
+            _userManagerMock.Setup(mgr => mgr.FindByIdAsync(userId)).ReturnsAsync((User)null);
+
+            // Act
+            var result = await _authController.BlockUser(userId);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
+
+            _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.UpdateAsync(It.IsAny<User>()), Times.Never);
+        }
+        [TestMethod]
+        public async Task ChangePassword_InvalidUserId_ReturnsNotFound()
+        {
+            // Arrange
+            var userId = "1";
+            var changePasswordDto = new ChangePasswordDto("oldPassword", "newPassword");
+
+            _userManagerMock.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync((User)null);
+
+            // Act
+            var result = await _authController.ChangePassword(userId, changePasswordDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
+        }
+
+        [TestMethod]
+        public async Task ChangePassword_InvalidCurrentPassword_ReturnsBadRequest()
+        {
+            // Arrange
+            var userId = "1";
+            var changePasswordDto = new ChangePasswordDto("wrongPassword", "newPassword");
+
+            var user = new User { Id = userId };
+            _userManagerMock.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync(user);
+            _userManagerMock.Setup(u => u.CheckPasswordAsync(user, changePasswordDto.Password)).ReturnsAsync(false);
+
+            // Act
+            var result = await _authController.ChangePassword(userId, changePasswordDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
+            var badRequestResult = result as BadRequestObjectResult;
+            Assert.AreEqual("Invalid current password.", badRequestResult.Value);
+        }
+        [TestMethod]
+        public async Task Login_UserIsNotBlocked_ReturnsOkResult()
+        {
+            // Arrange
+            var loginDto = new LoginDto("testuser", "password");
+            var user = new User { UserName = "testuser", LockoutEnd = null };
+            _userManagerMock.Setup(mgr => mgr.FindByNameAsync(loginDto.Username)).ReturnsAsync(user);
+            _userManagerMock.Setup(mgr => mgr.CheckPasswordAsync(user, loginDto.Password)).ReturnsAsync(true);
+            _userManagerMock.Setup(mgr => mgr.GetRolesAsync(user)).ReturnsAsync(new List<string>());
+
+            var accessToken = "sample-access-token"; // Set a sample access token
+            _jwtTokenServiceMock.Setup(service => service.CreateAccessToken(user.UserName, user.Id, It.IsAny<List<string>>())).Returns(accessToken);
+
+            // Act
+            var result = await _authController.Login(loginDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+            var okResult = result as OkObjectResult;
+            Assert.IsNotNull(okResult);
+            Assert.IsInstanceOfType(okResult.Value, typeof(SuccessfullLoginDto));
+            var successfulLoginDto = okResult.Value as SuccessfullLoginDto;
+            Assert.IsNotNull(successfulLoginDto);
+            Assert.AreEqual(accessToken, successfulLoginDto.AccessToken);
+
+            _userManagerMock.Verify(mgr => mgr.FindByNameAsync(loginDto.Username), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.CheckPasswordAsync(user, loginDto.Password), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.GetRolesAsync(user), Times.Once);
+            _jwtTokenServiceMock.Verify(service => service.CreateAccessToken(user.UserName, user.Id, It.IsAny<List<string>>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task Login_UserIsBlocked_ReturnsBadRequestResult()
+        {
+            // Arrange
+            var loginDto = new LoginDto("testuser", "password");
+            var user = new User { UserName = "testuser", LockoutEnd = DateTimeOffset.MaxValue };
+            _userManagerMock.Setup(mgr => mgr.FindByNameAsync(loginDto.Username)).ReturnsAsync(user);
+
+            // Act
+            var result = await _authController.Login(loginDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
+            var badRequestResult = result as BadRequestObjectResult;
+            Assert.IsNotNull(badRequestResult);
+            Assert.AreEqual("Naudotojas yra uþblokuotas", badRequestResult.Value);
+
+            _userManagerMock.Verify(mgr => mgr.FindByNameAsync(loginDto.Username), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.CheckPasswordAsync(It.IsAny<User>(), It.IsAny<string>()), Times.Never);
+            _userManagerMock.Verify(mgr => mgr.GetRolesAsync(It.IsAny<User>()), Times.Never);
+        }
+        [TestMethod]
+        public async Task UnblockUser_ValidUserId_ReturnsOkResult()
+        {
+            // Arrange
+            var userId = "1";
+            var pastDate = DateTimeOffset.Now.AddDays(-1);
+            var user = new User { Id = userId, UserName = "testuser", LockoutEnd = pastDate };
+            _userManagerMock.Setup(mgr => mgr.FindByIdAsync(userId)).ReturnsAsync(user);
+            _userManagerMock.Setup(mgr => mgr.SetLockoutEndDateAsync(user, null)).ReturnsAsync(IdentityResult.Success);
+
+            // Act
+            var result = await _authController.UnblockUser(userId);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(OkObjectResult));
+            var okResult = result as OkObjectResult;
+            Assert.IsNotNull(okResult);
+            Assert.IsInstanceOfType(okResult.Value, typeof(UserDto));
+            var userDto = okResult.Value as UserDto;
+            Assert.IsNotNull(userDto);
+            Assert.AreEqual(userId, userDto.Id);
+            Assert.AreEqual(user.UserName, userDto.Username);
+            Assert.AreEqual(user.Email, userDto.Email);
+            Assert.AreEqual(user.PasswordHash, userDto.Password);
+            Assert.AreEqual(user.Name, userDto.Name);
+            Assert.AreEqual(user.Surname, userDto.Surname);
+            Assert.IsTrue(userDto.LockoutEnd == null || userDto.LockoutEnd <= DateTimeOffset.Now);
+            Assert.AreEqual(user.LockoutEnabled, userDto.LockoutEnabled);
+
+            _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.SetLockoutEndDateAsync(user, null), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task UnblockUser_InvalidUserId_ReturnsNotFoundResult()
+        {
+            // Arrange
+            var userId = "1";
+            _userManagerMock.Setup(mgr => mgr.FindByIdAsync(userId)).ReturnsAsync((User)null);
+
+            // Act
+            var result = await _authController.UnblockUser(userId);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(NotFoundResult));
+
+            _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.SetLockoutEndDateAsync(It.IsAny<User>(), It.IsAny<DateTimeOffset?>()), Times.Never);
+        }
+        [TestMethod]
+        public async Task ChangePassword_InvalidNewPassword_ReturnsBadRequestResult()
+        {
+            // Arrange
+            var userId = "1";
+            var changePasswordDto = new ChangePasswordDto("currentPassword", "weak");
+
+            var user = new User { Id = userId, UserName = "testuser" };
+            _userManagerMock.Setup(mgr => mgr.FindByIdAsync(userId)).ReturnsAsync(user);
+            _userManagerMock.Setup(mgr => mgr.CheckPasswordAsync(user, changePasswordDto.Password)).ReturnsAsync(true);
+            _userManagerMock.Setup(mgr => mgr.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword))
+                .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "The new password is too weak." }));
+
+            // Act
+            var result = await _authController.ChangePassword(userId, changePasswordDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
+            var badRequestResult = result as BadRequestObjectResult;
+            Assert.IsNotNull(badRequestResult);
+            var errorList = badRequestResult.Value as List<IdentityError>;
+            Assert.IsNotNull(errorList);
+            Assert.AreEqual(1, errorList.Count);
+            Assert.AreEqual("The new password is too weak.", errorList[0].Description);
+
+            _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.CheckPasswordAsync(user, changePasswordDto.Password), Times.Once);
+            _userManagerMock.Verify(mgr => mgr.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword), Times.Once);
+        }
+        [TestMethod]
+        public async Task ChangePassword_ValidData_ReturnsNoContent()
+        {
+            // Arrange
+            var userId = "testUserId";
+            var changePasswordDto = new ChangePasswordDto("currentPassword", "newPassword");
+
+
+            var user = new User { Id = userId };
+            _userManagerMock.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync(user);
+            _userManagerMock.Setup(u => u.CheckPasswordAsync(user, changePasswordDto.Password)).ReturnsAsync(true);
+            _userManagerMock.Setup(u => u.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword))
+                .ReturnsAsync(IdentityResult.Success);
+
+            // Act
+            var result = await _authController.ChangePassword(userId, changePasswordDto);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(NoContentResult));
         }
     }
 }
