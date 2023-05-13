@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pjzHqaGTnq8b+L8fLfLzHVXW2GEAuTlZvz9XVvuStWw=",
+  "Hash": "DwYDM2KpCqSdvCRWgiw7kgV57NzHJaIQuurnM10aHe8=",
   "Source": "eventRadar",
   "BasePath": "_content/eventRadar",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\bundle\\eventRadar.styles.css",
-      "SourceId": "eventRadar",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/eventRadar",
-      "RelativePath": "eventRadar.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\bundle\\eventRadar.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\eventRadar.bundle.scp.css",
-      "SourceId": "eventRadar",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/eventRadar",
-      "RelativePath": "eventRadar.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\eventRadar.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\wwwroot\\css\\site.css",
       "SourceId": "eventRadar",

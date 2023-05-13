@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\eventRadar.bundle.scp.css",
-      "PackagePath": "staticwebassets\\eventRadar.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\p4t0s\\Desktop\\eventRadar\\eventRadar\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
