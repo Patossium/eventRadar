@@ -63,9 +63,118 @@ namespace eventRadar.Controllers
 
             return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
+        [HttpGet(Name = "GetPastEvents")]
+        [Route("allPast")]
+        public async Task<IEnumerable<EventDto>> GetManyPastPaging([FromQuery] EventSearchParameters searchParameters)
+        {
+            var events = await _eventRepository.GetManyPastPagedAsync(searchParameters);
+
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
         [HttpGet(Name = "GetFilteredEvents")]
         [Route("filtered/{Category}")]
         public async Task<IEnumerable<EventDto>> GetManyFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
+        {
+            var events = await _eventRepository.GetManyFilteredAsync(Category, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetFilteredEvents")]
+        [Route("filteredSearch/{Category}/{search}")]
+        public async Task<IEnumerable<EventDto>> GetManyFilteredSearchPaging([FromQuery] EventSearchParameters searchParameters, string Category, string search)
+        {
+            var events = await _eventRepository.GetManyFilteredSearchAsync(search, Category, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetPastFilteredEvents")]
+        [Route("pastFilteredSearch/{Category}/{search}")]
+        public async Task<IEnumerable<EventDto>> GetManyPastFilteredSearchPaging([FromQuery] EventSearchParameters searchParameters, string Category, string search)
+        {
+            var events = await _eventRepository.GetManyPastFilteredSearchAsync(search, Category, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetFilteredEvents")]
+        [Route("pastFiltered/{Category}")]
+        public async Task<IEnumerable<EventDto>> GetManyPastFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
         {
             var events = await _eventRepository.GetManyFilteredAsync(Category, searchParameters);
             var previousPageLink = events.HasPrevious ?
@@ -95,6 +204,33 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<EventDto>> GetManySearchedPaging([FromQuery] EventSearchParameters searchParameters, string search)
         {
             var events = await _eventRepository.GetManySearchedAsync(search, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetSearchedEvents")]
+        [Route("pastSearch/{search}")]
+        public async Task<IEnumerable<EventDto>> GetManyPastSearchedPaging([FromQuery] EventSearchParameters searchParameters, string search)
+        {
+            var events = await _eventRepository.GetManyPastSearchedAsync(search, searchParameters);
             var previousPageLink = events.HasPrevious ?
                 CreateEventResourceUri(searchParameters,
                 ResourceUriType.PreviousPage) : null;
