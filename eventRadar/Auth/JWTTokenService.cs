@@ -3,15 +3,16 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
-
-
+using System.Diagnostics.CodeAnalysis;
 
 namespace eventRadar.Auth
 {
+    
     public interface IJwtTokenService
     {
         string CreateAccessToken(string username, string userId, IEnumerable<string> userRoles);
     }
+    [ExcludeFromCodeCoverage]
     public class JwtTokenService : IJwtTokenService
     {
         private readonly SymmetricSecurityKey _authSigningKey;

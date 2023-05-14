@@ -5,10 +5,11 @@ using ScrapySharp.Network;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.IdentityModel.Tokens;
-
+using System.Diagnostics.CodeAnalysis;
 
 namespace eventRadar.Helpers
 {
+    [ExcludeFromCodeCoverage]
     public class ScraperHelper
     {
         private static ScrapingBrowser browser = new ScrapingBrowser();

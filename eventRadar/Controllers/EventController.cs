@@ -16,6 +16,7 @@ using HtmlAgilityPack.CssSelectors.NetCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System;
 using eventRadar.Helpers;
+using System.Diagnostics.CodeAnalysis;
 
 [assembly: InternalsVisibleTo("eventRadarUnitTests")]
 
@@ -110,7 +111,7 @@ namespace eventRadar.Controllers
         [Route("allUpcoming")]
         public async Task<IEnumerable<EventDto>> GetManyUpcomingPaging([FromQuery] EventSearchParameters searchParameters)
         {
-            var events = await _eventRepository.GetManyPastPagedAsync(searchParameters);
+            var events = await _eventRepository.GetManyUpcomingPagedAsync(searchParameters);
 
             var previousPageLink = events.HasPrevious ?
                 CreateEventResourceUri(searchParameters,
@@ -139,6 +140,60 @@ namespace eventRadar.Controllers
         public async Task<IEnumerable<EventDto>> GetManyFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
         {
             var events = await _eventRepository.GetManyFilteredAsync(Category, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetPastFilteredEvents")]
+        [Route("pastFiltered/{Category}")]
+        public async Task<IEnumerable<EventDto>> GetManyPastFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
+        {
+            var events = await _eventRepository.GetManyPastFilteredAsync(Category, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetUpcomingFilteredEvents")]
+        [Route("upcomingFiltered/{Category}")]
+        public async Task<IEnumerable<EventDto>> GetManyUpcomingFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
+        {
+            var events = await _eventRepository.GetManyUpcomingFilteredAsync(Category, searchParameters);
             var previousPageLink = events.HasPrevious ?
                 CreateEventResourceUri(searchParameters,
                 ResourceUriType.PreviousPage) : null;
@@ -215,11 +270,11 @@ namespace eventRadar.Controllers
 
             return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
-        [HttpGet(Name = "GetFilteredEvents")]
-        [Route("pastFiltered/{Category}")]
-        public async Task<IEnumerable<EventDto>> GetManyPastFilteredPaging([FromQuery] EventSearchParameters searchParameters, string Category)
+        [HttpGet(Name = "GetPastFilteredEvents")]
+        [Route("upcomingFilteredSearch/{Category}/{search}")]
+        public async Task<IEnumerable<EventDto>> GetManyUpcomingFilteredSearchPaging([FromQuery] EventSearchParameters searchParameters, string Category, string search)
         {
-            var events = await _eventRepository.GetManyFilteredAsync(Category, searchParameters);
+            var events = await _eventRepository.GetManyUpcomingFilteredSearchAsync(search, Category, searchParameters);
             var previousPageLink = events.HasPrevious ?
                 CreateEventResourceUri(searchParameters,
                 ResourceUriType.PreviousPage) : null;
@@ -296,7 +351,33 @@ namespace eventRadar.Controllers
 
             return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
+        [HttpGet(Name = "GetSearchedEvents")]
+        [Route("upcomingSearch/{search}")]
+        public async Task<IEnumerable<EventDto>> GetManyUpcomingSearchedPaging([FromQuery] EventSearchParameters searchParameters, string search)
+        {
+            var events = await _eventRepository.GetManyUpcomingSearchedAsync(search, searchParameters);
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
 
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
         [HttpGet()]
         [Route("{eventId}", Name = "GetEvent")]
         public async Task<ActionResult<EventDto>> Get(int eventId)
@@ -415,7 +496,8 @@ namespace eventRadar.Controllers
         }
 
         private static ScrapingBrowser browser = new ScrapingBrowser();
-        
+
+        [ExcludeFromCodeCoverage]
         [HttpGet("event-details")]
         [Route("GetDetails/{websiteId}")]
         [Authorize(Roles = SystemRoles.Administrator)]
@@ -438,6 +520,7 @@ namespace eventRadar.Controllers
             var categoryList = ScraperHelper.GetCategories(website.Url, listBlacklistedCategoryNames, website);
             for(int i = 0; i < categoryList.Count; i++)
             {
+                
                 string firstLink = "";
                 var html = ScraperHelper.GetHtml(categoryList[i].SourceUrl);
                 var links = html.OwnerDocument.QuerySelectorAll(website.EventLink);
@@ -447,32 +530,35 @@ namespace eventRadar.Controllers
                     if (!blacklistedPages.Contains(UrlString))
                     {
                         firstLink = UrlString;
-                        break;
+                        if (html.OwnerDocument.DocumentNode.SelectSingleNode(website.LocationPath) != null)
+                        {
+                            break;
+                        }
                     }
                 }
                 var EventList = new List<Event>();
                 var EventObject = new Event();
+                var newHtml = ScraperHelper.GetHtml(firstLink);
                 Location location = ScraperHelper.GetLocationInfo(firstLink, website);
                 EventObject.Location = location.Address + ", " + location.City + ", " + location.Country;
-                EventObject.Location = "Test";
-                EventObject.ImageLink = html.OwnerDocument.DocumentNode.SelectSingleNode(website.ImagePath).Attributes["src"].Value;
+                EventObject.ImageLink = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.ImagePath).Attributes["src"].Value;
                 EventObject.Url = categoryList[i].SourceUrl;
-                string TempTitle = html.OwnerDocument.DocumentNode.SelectSingleNode(website.TitlePath).InnerText;
+                string TempTitle = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TitlePath).InnerText;
                 TempTitle = Regex.Replace(TempTitle, @"^\s+|\s+$", "");
                 TempTitle = Regex.Replace(TempTitle, "&quot;", "\"");
                 TempTitle = Regex.Replace(TempTitle, "&amp;", "&");
                 EventObject.Title = Regex.Replace(TempTitle, "&#039;", "'");
                 EventObject.Category = categoryList[i].Name;
-                if (html.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath) == null)
+                if (newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath) == null)
                 {
                     EventObject.Price = "Tickets are not being sold";
                 }
                 else
                 {
-                    EventObject.Price = html.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath).InnerText;
+                    EventObject.Price = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath).InnerText;
 
                 }
-                string TempDate = html.OwnerDocument.DocumentNode.SelectSingleNode(website.DatePath).InnerText;
+                string TempDate = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.DatePath).InnerText;
                 TempDate = Regex.Replace(TempDate, "[a-zA-Z]+", "");
                 TempDate = Regex.Replace(TempDate, "&#32;", " ");
                 TempDate = Regex.Replace(TempDate, @"^\s+|\s+$", "");
@@ -492,13 +578,13 @@ namespace eventRadar.Controllers
                     EventObject.DateEnd = DateTime.Parse(TempDate);
                 }
 
-                if (html.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath) == null)
+                if (newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath) == null)
                 {
                     EventObject.TicketLink = "";
                 }
                 else
                 {
-                    EventObject.TicketLink = html.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath).Attributes[website.TicketLinkType].Value;
+                    EventObject.TicketLink = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath).Attributes[website.TicketLinkType].Value;
                 }
                 if (EventObject.Location != null)
                     listEventDetails.Add(EventObject);

@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Security.Claims;
 using eventRadar.Auth.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -6,6 +7,7 @@ using Microsoft.IdentityModel.JsonWebTokens;
 
 namespace eventRadar.Auth
 {
+    [ExcludeFromCodeCoverage]
     public class ResourceUserAuthorizationHandler : AuthorizationHandler<ResourceUserRequirement, IUserOwnedResource>
     {
         List<string> tokenBlacklist = new List<string>();

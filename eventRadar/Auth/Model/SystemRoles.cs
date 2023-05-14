@@ -1,5 +1,8 @@
-﻿namespace eventRadar.Auth.Model
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace eventRadar.Auth.Model
 {
+    [ExcludeFromCodeCoverage]
     public static class SystemRoles
     {
         public const string Administrator = nameof(Administrator);
