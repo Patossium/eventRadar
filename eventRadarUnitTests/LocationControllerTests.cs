@@ -26,7 +26,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task GetMany_ReturnsListOfLocationDtos()
         {
-            // Arrange
             var locations = new List<Location>
         {
             new Location { Id = 1, Name = "Location 1", City = "City 1", Country = "Country 1", Address = "Address 1" },
@@ -35,10 +34,8 @@ namespace eventRadar.Tests
 
             _locationRepositoryMock.Setup(repo => repo.GetManyAsync()).ReturnsAsync(locations);
 
-            // Act
             var result = await _controller.GetMany();
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count());
         }
@@ -46,16 +43,13 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Get_ReturnsLocationDto_WhenLocationExists()
         {
-            // Arrange
             var locationId = 1;
             var location = new Location { Id = locationId, Name = "Location 1", City = "City 1", Country = "Country 1", Address = "Address 1" };
 
             _locationRepositoryMock.Setup(repo => repo.GetAsync(locationId)).ReturnsAsync(location);
 
-            // Act
             var result = await _controller.Get(locationId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Value, typeof(LocationDto));
             Assert.AreEqual(locationId, result.Value.Id);
@@ -63,29 +57,23 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Get_ReturnsNotFound_WhenLocationDoesNotExist()
         {
-            // Arrange
             var locationId = 1;
             _locationRepositoryMock.Setup(repo => repo.GetAsync(locationId)).ReturnsAsync((Location)null);
 
-            // Act
             var result = await _controller.Get(locationId);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
 
         [TestMethod]
         public async Task Create_ReturnsCreatedLocationDto()
         {
-            // Arrange
             var createLocationDto = new CreateLocationDto ("Location 1","City 1", "Country 1",  "Address 1");
 
             _locationRepositoryMock.Setup(repo => repo.CreateAsync(It.IsAny<Location>())).Callback<Location>(l => l.Id = 1);
 
-            // Act
             var result = await _controller.Create(createLocationDto);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(CreatedResult));
             Assert.IsInstanceOfType(((CreatedResult)result.Result).Value, typeof(LocationDto));
             Assert.AreEqual(1, ((LocationDto)((CreatedResult)result.Result).Value).Id);
@@ -94,7 +82,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Update_ReturnsOk_WhenLocationIsUpdated()
         {
-            // Arrange
             int locationId = 1;
             var location = new Location
             {
@@ -111,10 +98,8 @@ namespace eventRadar.Tests
                 .ReturnsAsync(location);
             _locationRepositoryMock.Setup(repo => repo.UpdateAsync(It.IsAny<Location>()));
 
-            // Act
             var result = await _controller.Update(locationId, updateLocationDto);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(ActionResult<LocationDto>));
             Assert.IsNotNull(result);
@@ -129,22 +114,18 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Remove_ReturnsNotFound_WhenLocationNotFound()
         {
-            // Arrange
             int locationId = 1;
             _locationRepositoryMock.Setup(repo => repo.GetAsync(locationId))
                 .ReturnsAsync((Location)null);
 
-            // Act
             var result = await _controller.Remove(locationId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         [TestMethod]
         public async Task Remove_ReturnsNoContent_WhenLocationRemoved()
         {
-            // Arrange
             int locationId = 1;
             var location = new Location
             {
@@ -160,26 +141,21 @@ namespace eventRadar.Tests
             _locationRepositoryMock.Setup(repo => repo.DeleteAsync(location))
                 .Returns(Task.CompletedTask);
 
-            // Act
             var result = await _controller.Remove(locationId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NoContentResult));
         }
         [TestMethod]
         public async Task Update_ReturnsNotFound_WhenLocationNotFound()
         {
-            // Arrange
             int locationId = 1;
             var updateLocationDto = new UpdateLocationDto("Updated Name", "Updated City", "Updated Country", "Updated Address");
 
             _locationRepositoryMock.Setup(repo => repo.GetAsync(locationId))
                 .ReturnsAsync((Location)null);
 
-            // Act
             var result = await _controller.Update(locationId, updateLocationDto);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(ActionResult<LocationDto>));
             var actionResult = result as ActionResult<LocationDto>;
             Assert.IsNotNull(actionResult.Result);

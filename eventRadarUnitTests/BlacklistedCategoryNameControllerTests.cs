@@ -36,7 +36,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task GetMany_ReturnsListOfBlacklistedCategoryNameDtos()
         {
-            // Arrange
             var blacklistedCategories = new List<BlacklistedCategoryName>
             {
                 new BlacklistedCategoryName { Id = 1, Name = "Category1" },
@@ -44,37 +43,29 @@ namespace eventRadar.Tests
             };
             _repositoryMock.Setup(x => x.GetManyAsync()).ReturnsAsync(blacklistedCategories);
 
-            // Act
             var result = await _controller.GetMany();
 
-            // Assert
             Assert.AreEqual(2, result.Count());
             CollectionAssert.AllItemsAreInstancesOfType(result.ToList(), typeof(BlacklistedCategoryNameDto));
         }
         [TestMethod]
         public async Task Get_ReturnsNotFoundResult_WhenBlacklistedCategoryNameDoesNotExist()
         {
-            // Arrange
             int nonExistentCategoryId = 99;
             _repositoryMock.Setup(x => x.GetAsync(nonExistentCategoryId)).ReturnsAsync((BlacklistedCategoryName)null);
 
-            // Act
             var result = await _controller.Get(nonExistentCategoryId);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task Get_ReturnsBlacklistedCategoryNameDto_WhenBlacklistedCategoryNameExists()
         {
-            // Arrange
             var blacklistedCategory = new BlacklistedCategoryName { Id = 1, Name = "Category1" };
             _repositoryMock.Setup(x => x.GetAsync(blacklistedCategory.Id)).ReturnsAsync(blacklistedCategory);
 
-            // Act
             var result = await _controller.Get(blacklistedCategory.Id);
 
-            // Assert
             Assert.IsNotNull(result.Value);
             Assert.AreEqual(blacklistedCategory.Id, result.Value.Id);
             Assert.AreEqual(blacklistedCategory.Name, result.Value.Name);
@@ -82,15 +73,12 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_ReturnsCreatedAtActionResult_WhenBlacklistedCategoryNameIsCreated()
         {
-            // Arrange
             var createDto = new CreateBlacklistedCategoryNameDto ("Category1");
             var createdCategory = new BlacklistedCategoryName { Id = 1, Name = createDto.Name };
             _repositoryMock.Setup(x => x.CreateAsync(It.IsAny<BlacklistedCategoryName>())).Callback<BlacklistedCategoryName>(c => c.Id = 1);
 
-            // Act
             var result = await _controller.Create(createDto);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(CreatedResult));
             var createdAtResult = result.Result as CreatedResult;
             var createdDto = createdAtResult.Value as BlacklistedCategoryNameDto;
@@ -100,29 +88,23 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Updated_ReturnsNotFoundResult_WhenBlacklistedCategoryNameDoesNotExist()
         {
-            // Arrange
             int nonExistentCategoryId = 99;
             var updateDto = new UpdateBlacklistedCategoryNameDto("Category1");
             _repositoryMock.Setup(x => x.GetAsync(nonExistentCategoryId)).ReturnsAsync((BlacklistedCategoryName)null);
 
-            // Act
             var result = await _controller.Updated(nonExistentCategoryId, updateDto);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task Updated_ReturnsOkObjectResult_WhenBlacklistedCategoryNameIsUpdated()
         {
-            // Arrange
             var existingCategory = new BlacklistedCategoryName { Id = 1, Name = "Category1" };
             var updateDto = new UpdateBlacklistedCategoryNameDto("Category1");
             _repositoryMock.Setup(x => x.GetAsync(existingCategory.Id)).ReturnsAsync(existingCategory);
 
-            // Act
             var result = await _controller.Updated(existingCategory.Id, updateDto);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
             var okResult = result.Result as OkObjectResult;
             var updatedDto = okResult.Value as BlacklistedCategoryNameDto;
@@ -132,27 +114,21 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Remove_ReturnsNotFoundResult_WhenBlacklistedCategoryNameDoesNotExist()
         {
-            // Arrange
             int nonExistentCategoryId = 99;
             _repositoryMock.Setup(x => x.GetAsync(nonExistentCategoryId)).ReturnsAsync((BlacklistedCategoryName)null);
 
-            // Act
             var result = await _controller.Remove(nonExistentCategoryId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task Remove_ReturnsNoContentResult_WhenBlacklistedCategoryNameIsDeleted()
         {
-            // Arrange
             var existingCategory = new BlacklistedCategoryName { Id = 1, Name = "Category1" };
             _repositoryMock.Setup(x => x.GetAsync(existingCategory.Id)).ReturnsAsync(existingCategory);
 
-            // Act
             var result = await _controller.Remove(existingCategory.Id);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NoContentResult));
         }
     }

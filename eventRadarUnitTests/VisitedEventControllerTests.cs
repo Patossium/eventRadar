@@ -34,7 +34,7 @@ namespace eventRadar.Tests
                 _authorizationServiceMock.Object,
                 _VisitedEventRepositoryMock.Object,
                 _userRepositoryMock.Object);
-            // Set the User identity for the controller
+
             var userIdentity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Name, "testuser"),
@@ -53,7 +53,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_ReturnsCreatedAtActionResult_WhenVisitedEventIsCreated()
         {
-            // Arrange
             int eventId = 1;
             var user = new User { Id = "testuserid" };
             var eventObject = new Event { Id = eventId };
@@ -67,10 +66,8 @@ namespace eventRadar.Tests
                     fe.Id = 1;
                 });
 
-            // Act
             var result = await _controller.Create(eventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Result, typeof(CreatedResult));
             var createdResult = result.Result as CreatedResult;
@@ -87,16 +84,13 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_ReturnsNotFound_WhenUserNotFound()
         {
-            // Arrange
             var userId = "nonexistentUserId";
             var eventId = 1;
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId))
                 .ReturnsAsync((User)null);
 
-            // Act
             var result = await _controller.Create(eventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
@@ -104,7 +98,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_ReturnsNotFound_WhenEventNotFound()
         {
-            // Arrange
             var userId = "existingUserId";
             var eventId = 1;
             var user = new User { Id = userId };
@@ -113,7 +106,6 @@ namespace eventRadar.Tests
             _eventRepositoryMock.Setup(repo => repo.GetAsync(eventId))
                 .ReturnsAsync((Event)null);
 
-            // Act
             var result = await _controller.Create(eventId);
 
             Assert.IsNotNull(result);
@@ -122,7 +114,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_CallsVisitedEventRepositoryCreateAsync()
         {
-            // Arrange
             var eventId = 1;
             var user = new User { Id = "testuserid" };
             var eventObject = new Event { Id = eventId };
@@ -135,10 +126,8 @@ namespace eventRadar.Tests
                 .Callback((VisitedEvent fe) => VisitedEvent = fe)
                 .Returns(Task.CompletedTask);
 
-            // Act
             var result = await _controller.Create(eventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Result, typeof(CreatedResult));
             var createdResult = result.Result as CreatedResult;
@@ -155,7 +144,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_ReturnsInternalServerError_WhenVisitedEventCreationFails()
         {
-            // Arrange
             var userId = "existingUserId";
             var eventId = 1;
             var user = new User { Id = userId };
@@ -167,10 +155,8 @@ namespace eventRadar.Tests
             _VisitedEventRepositoryMock.Setup(repo => repo.CreateAsync(It.IsAny<VisitedEvent>()))
                 .ThrowsAsync(new Exception("Failed to create followed event"));
 
-            // Act
             var result = await _controller.Create(eventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(ActionResult<VisitedEventDto>));
             var objectResult = result.Result;
@@ -179,14 +165,11 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Create_ReturnsBadRequest_WhenModelStateIsInvalid()
         {
-            // Arrange
             var eventId = 1;
             _controller.ModelState.AddModelError("EventId", "The EventId field is required.");
 
-            // Act
             var result = await _controller.Create(eventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
             var notFoundResult = result.Result as NotFoundResult;
@@ -195,7 +178,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task GetMany_ReturnsOkObjectResult_WhenUserHasVisitedEvents()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var VisitedEvents = new List<VisitedEvent>
@@ -207,10 +189,8 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetManyAsync(user)).ReturnsAsync(VisitedEvents);
 
-            // Act
             var result = await _controller.GetMany();
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
             var okResult = result.Result as OkObjectResult;
             var VisitedEventsDto = okResult.Value as IEnumerable<VisitedEventDto>;
@@ -220,7 +200,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task GetMany_ReturnsOkObjectResult_WhenUserHasNoVisitedEvents()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var VisitedEvents = new List<VisitedEvent>();
@@ -228,10 +207,8 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetManyAsync(user)).ReturnsAsync(VisitedEvents);
 
-            // Act
             var result = await _controller.GetMany();
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(OkObjectResult));
             var okResult = result.Result as OkObjectResult;
             var VisitedEventsDto = okResult.Value as IEnumerable<VisitedEventDto>;
@@ -241,20 +218,16 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task GetMany_ReturnsNotFound_WhenUserNotFound()
         {
-            // Arrange
             var userId = "nonexistentUserId";
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync((User)null);
 
-            // Act
             var result = await _controller.GetMany();
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task Get_ReturnsVisitedEventDto_WhenVisitedEventExists()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var VisitedEventId = 1;
@@ -263,10 +236,8 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetAsync(user, VisitedEventId)).ReturnsAsync(VisitedEvent);
 
-            // Act
             var result = await _controller.Get(VisitedEventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Value, typeof(VisitedEventDto));
             var VisitedEventDto = result.Value;
@@ -276,7 +247,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task Get_ReturnsNotFound_WhenVisitedEventNotFound()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var VisitedEventId = 1;
@@ -284,32 +254,26 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetAsync(user, VisitedEventId)).ReturnsAsync((VisitedEvent)null);
 
-            // Act
             var result = await _controller.Get(VisitedEventId);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
 
         [TestMethod]
         public async Task Get_ReturnsNotFound_WhenUserNotFound()
         {
-            // Arrange
             var userId = "nonexistentUserId";
             var VisitedEventId = 1;
 
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync((User)null);
 
-            // Act
             var result = await _controller.Get(VisitedEventId);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task GetCheck_ReturnsVisitedEventDto_WhenVisitedEventExists()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var eventId = 1;
@@ -318,10 +282,8 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetCheckAsync(user, eventId)).ReturnsAsync(VisitedEvent);
 
-            // Act
             var result = await _controller.GetCheck(eventId);
 
-            // Assert
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result.Value, typeof(VisitedEventDto));
             var VisitedEventDto = result.Value;
@@ -331,7 +293,6 @@ namespace eventRadar.Tests
         [TestMethod]
         public async Task GetCheck_ReturnsNotFound_WhenVisitedEventNotFound()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var eventId = 1;
@@ -339,32 +300,26 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetCheckAsync(user, eventId)).ReturnsAsync((VisitedEvent)null);
 
-            // Act
             var result = await _controller.GetCheck(eventId);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
 
         [TestMethod]
         public async Task GetCheck_ReturnsNotFound_WhenUserNotFound()
         {
-            // Arrange
             var userId = "nonexistentUserId";
             var eventId = 1;
 
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync((User)null);
 
-            // Act
             var result = await _controller.GetCheck(eventId);
 
-            // Assert
             Assert.IsInstanceOfType(result.Result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task Remove_ReturnsNoContent_WhenVisitedEventDeleted()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var VisitedEventId = 1;
@@ -374,17 +329,14 @@ namespace eventRadar.Tests
             _VisitedEventRepositoryMock.Setup(repo => repo.GetAsync(user, VisitedEventId)).ReturnsAsync(VisitedEvent);
             _VisitedEventRepositoryMock.Setup(repo => repo.DeleteAsync(VisitedEvent));
 
-            // Act
             var result = await _controller.Remove(VisitedEventId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NoContentResult));
         }
 
         [TestMethod]
         public async Task Remove_ReturnsNotFound_WhenVisitedEventNotFound()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var VisitedEventId = 1;
@@ -392,32 +344,26 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetAsync(user, VisitedEventId)).ReturnsAsync((VisitedEvent)null);
 
-            // Act
             var result = await _controller.Remove(VisitedEventId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         [TestMethod]
         public async Task Remove_ReturnsNotFound_WhenUserNotFound()
         {
-            // Arrange
             var userId = "nonexistentUserId";
             var VisitedEventId = 1;
 
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync((User)null);
 
-            // Act
             var result = await _controller.Remove(VisitedEventId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
         [TestMethod]
         public async Task RemoveByEvent_ReturnsNoContent_WhenVisitedEventDeleted()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var eventId = 1;
@@ -427,17 +373,14 @@ namespace eventRadar.Tests
             _VisitedEventRepositoryMock.Setup(repo => repo.GetCheckAsync(user, eventId)).ReturnsAsync(VisitedEvent);
             _VisitedEventRepositoryMock.Setup(repo => repo.DeleteAsync(VisitedEvent));
 
-            // Act
             var result = await _controller.RemoveByEvent(eventId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NoContentResult));
         }
 
         [TestMethod]
         public async Task RemoveByEvent_ReturnsNotFound_WhenVisitedEventNotFound()
         {
-            // Arrange
             var userId = "testuserid";
             var user = new User { Id = userId };
             var eventId = 1;
@@ -445,26 +388,21 @@ namespace eventRadar.Tests
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync(user);
             _VisitedEventRepositoryMock.Setup(repo => repo.GetCheckAsync(user, eventId)).ReturnsAsync((VisitedEvent)null);
 
-            // Act
             var result = await _controller.RemoveByEvent(eventId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
         [TestMethod]
         public async Task RemoveByEvent_ReturnsNotFound_WhenUserNotFound()
         {
-            // Arrange
             var userId = "nonexistentUserId";
             var eventId = 1;
 
             _userRepositoryMock.Setup(repo => repo.GetAsync(userId)).ReturnsAsync((User)null);
 
-            // Act
             var result = await _controller.RemoveByEvent(eventId);
 
-            // Assert
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
     }
