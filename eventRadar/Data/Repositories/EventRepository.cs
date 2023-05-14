@@ -48,7 +48,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var queryable = _webDbContext.Events
-                .Where(e => e.DateStart < today)
+                .Where(e => e.DateStart < today && e.DateEnd < today)
                 .OrderBy(o => o.DateStart)
                 .AsQueryable();
 
@@ -58,7 +58,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var queryable = _webDbContext.Events
-                .Where(e => e.DateStart >= today)
+                .Where(e => e.DateStart >= today && e.DateEnd >= today)
                 .OrderBy(o => o.DateStart)
                 .AsQueryable();
 
@@ -86,7 +86,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var filteredEvents = _webDbContext.Events
-                .Where(e => e.Category == Category && e.DateStart > today)
+                .Where(e => e.Category == Category && e.DateStart >= today && e.DateEnd >= today)
                 .OrderBy(e => e.DateStart)
                 .AsQueryable();
 
@@ -115,7 +115,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var filteredEvents = _webDbContext.Events
-                .Where(e => e.Category == Category && (e.Title.Contains(search) || e.Location.Contains(search)) && e.DateStart >= today)
+                .Where(e => e.Category == Category && (e.Title.Contains(search) || e.Location.Contains(search)) && e.DateStart >= today && e.DateEnd >= today)
                 .OrderBy(e => e.DateStart)
                 .AsQueryable();
 
@@ -132,7 +132,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var searchedEvents = _webDbContext.Events
-                .Where(e => (e.Title.Contains(search) || e.Location.Contains(search)) && e.DateStart < today)
+                .Where(e => (e.Title.Contains(search) || e.Location.Contains(search)) && e.DateStart < today && e.DateEnd < today)
                 .OrderBy(e => e.DateStart)
                 .AsQueryable();
 
@@ -142,7 +142,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var searchedEvents = _webDbContext.Events
-                .Where(e => (e.Title.Contains(search) || e.Location.Contains(search)) && e.DateStart >= today)
+                .Where(e => (e.Title.Contains(search) || e.Location.Contains(search)) && e.DateStart >= today && e.DateEnd >= today)
                 .OrderBy(e => e.DateStart)
                 .AsQueryable();
 
