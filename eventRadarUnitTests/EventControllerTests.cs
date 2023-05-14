@@ -462,6 +462,132 @@ namespace eventRadar.Tests
             Assert.AreEqual(events.Count(), eventDtos.Count);
         }
         [TestMethod]
+        public async Task GetManyFilteredSearchPaging_ReturnsFilteredEventsWithPaginationMetadata()
+        {
+            var searchParameters = new EventSearchParameters();
+            var category = "TestCategory";
+            var search = "Test";
+            var events = new PagedList<Event>(GetMockedEvents(), 1, 10, 100);
+            _eventRepositoryMock.Setup(r => r.GetManyFilteredSearchAsync(search, category, searchParameters)).ReturnsAsync(events);
+
+            var expectedPaginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink = (string)null,
+                nextPageLink = (string)null
+            };
+
+            _controller.ControllerContext = new ControllerContext();
+            _controller.ControllerContext.HttpContext = new DefaultHttpContext();
+
+            var urlHelperMock = new Mock<IUrlHelper>();
+            _controller.Url = urlHelperMock.Object;
+
+            urlHelperMock.Setup(x => x.Link("GetFilteredEvents", It.IsAny<object>())).Returns("testUrl");
+
+            var result = await _controller.GetManyFilteredSearchPaging(searchParameters, category, search);
+
+            Assert.IsTrue(_controller.Response.Headers.ContainsKey("Pagination"));
+            var paginationHeaderValue = _controller.Response.Headers["Pagination"].ToString();
+            var paginationMetadata = JsonSerializer.Deserialize<JsonElement>(paginationHeaderValue);
+            Assert.AreEqual(expectedPaginationMetadata.totalCount, paginationMetadata.GetProperty("totalCount").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.pageSize, paginationMetadata.GetProperty("pageSize").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.currentPage, paginationMetadata.GetProperty("currentPage").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.totalPages, paginationMetadata.GetProperty("totalPages").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.previousPageLink, paginationMetadata.GetProperty("previousPageLink").GetString());
+            Assert.AreEqual(expectedPaginationMetadata.nextPageLink, paginationMetadata.GetProperty("nextPageLink").GetString());
+
+            var eventDtos = result.ToList();
+            Assert.AreEqual(events.Count(), eventDtos.Count);
+        }
+        [TestMethod]
+        public async Task GetManyPastFilteredSearchPaging_ReturnsFilteredEventsWithPaginationMetadata()
+        {
+            var searchParameters = new EventSearchParameters();
+            var category = "TestCategory";
+            var search = "Test";
+            var events = new PagedList<Event>(GetMockedEvents(), 1, 10, 100);
+            _eventRepositoryMock.Setup(r => r.GetManyPastFilteredSearchAsync(search, category, searchParameters)).ReturnsAsync(events);
+
+            var expectedPaginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink = (string)null,
+                nextPageLink = (string)null
+            };
+
+            _controller.ControllerContext = new ControllerContext();
+            _controller.ControllerContext.HttpContext = new DefaultHttpContext();
+
+            var urlHelperMock = new Mock<IUrlHelper>();
+            _controller.Url = urlHelperMock.Object;
+
+            urlHelperMock.Setup(x => x.Link("GetFilteredEvents", It.IsAny<object>())).Returns("testUrl");
+
+            var result = await _controller.GetManyPastFilteredSearchPaging(searchParameters, category, search);
+
+            Assert.IsTrue(_controller.Response.Headers.ContainsKey("Pagination"));
+            var paginationHeaderValue = _controller.Response.Headers["Pagination"].ToString();
+            var paginationMetadata = JsonSerializer.Deserialize<JsonElement>(paginationHeaderValue);
+            Assert.AreEqual(expectedPaginationMetadata.totalCount, paginationMetadata.GetProperty("totalCount").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.pageSize, paginationMetadata.GetProperty("pageSize").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.currentPage, paginationMetadata.GetProperty("currentPage").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.totalPages, paginationMetadata.GetProperty("totalPages").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.previousPageLink, paginationMetadata.GetProperty("previousPageLink").GetString());
+            Assert.AreEqual(expectedPaginationMetadata.nextPageLink, paginationMetadata.GetProperty("nextPageLink").GetString());
+
+            var eventDtos = result.ToList();
+            Assert.AreEqual(events.Count(), eventDtos.Count);
+        }
+        [TestMethod]
+        public async Task GetManyUpcomingFilteredSearchPaging_ReturnsFilteredEventsWithPaginationMetadata()
+        {
+            var searchParameters = new EventSearchParameters();
+            var category = "TestCategory";
+            var search = "Test";
+            var events = new PagedList<Event>(GetMockedEvents(), 1, 10, 100);
+            _eventRepositoryMock.Setup(r => r.GetManyUpcomingFilteredSearchAsync(search, category, searchParameters)).ReturnsAsync(events);
+
+            var expectedPaginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink = (string)null,
+                nextPageLink = (string)null
+            };
+
+            _controller.ControllerContext = new ControllerContext();
+            _controller.ControllerContext.HttpContext = new DefaultHttpContext();
+
+            var urlHelperMock = new Mock<IUrlHelper>();
+            _controller.Url = urlHelperMock.Object;
+
+            urlHelperMock.Setup(x => x.Link("GetFilteredEvents", It.IsAny<object>())).Returns("testUrl");
+
+            var result = await _controller.GetManyUpcomingFilteredSearchPaging(searchParameters, category, search);
+
+            Assert.IsTrue(_controller.Response.Headers.ContainsKey("Pagination"));
+            var paginationHeaderValue = _controller.Response.Headers["Pagination"].ToString();
+            var paginationMetadata = JsonSerializer.Deserialize<JsonElement>(paginationHeaderValue);
+            Assert.AreEqual(expectedPaginationMetadata.totalCount, paginationMetadata.GetProperty("totalCount").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.pageSize, paginationMetadata.GetProperty("pageSize").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.currentPage, paginationMetadata.GetProperty("currentPage").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.totalPages, paginationMetadata.GetProperty("totalPages").GetInt32());
+            Assert.AreEqual(expectedPaginationMetadata.previousPageLink, paginationMetadata.GetProperty("previousPageLink").GetString());
+            Assert.AreEqual(expectedPaginationMetadata.nextPageLink, paginationMetadata.GetProperty("nextPageLink").GetString());
+
+            var eventDtos = result.ToList();
+            Assert.AreEqual(events.Count(), eventDtos.Count);
+        }
+        [TestMethod]
         public async Task GetManyPastFilteredPaging_ReturnsFilteredEventsWithPaginationMetadata()
         {
             var searchParameters = new EventSearchParameters();
@@ -585,42 +711,7 @@ namespace eventRadar.Tests
             Assert.AreEqual(expectedPaginationMetadata.previousPageLink, paginationMetadata.GetProperty("previousPageLink").GetString());
             Assert.AreEqual(expectedPaginationMetadata.nextPageLink, paginationMetadata.GetProperty("nextPageLink").GetString());
         }
-       [TestMethod]
-        public async Task GetManyFilteredSearchPaging_ReturnsFilteredEvents()
-        {
-            try
-            {
-                // Arrange
-                var searchParameters = new EventSearchParameters();
-                var category = "Event 1 Category";
-                var search = "TestSearch";
-                var events = new List<Event>()
-                {
-                    new Event { Id = 1, Title = "Event 1" },
-                    new Event { Id = 2, Title = "Event 2" },
-                };
-
-                _eventRepositoryMock.Setup(repo => repo.GetManyFilteredSearchAsync(search, category, searchParameters))
-                    .ReturnsAsync(new PagedList<Event>(events, events.Count, searchParameters.PageSize, 1));
-
-                // Act
-                var result = await _controller.GetManyFilteredSearchPaging(searchParameters, category, search);
-
-                // Assert
-                Assert.IsNotNull(result);
-                var eventDtos = result.ToList();
-                Assert.AreEqual(2, eventDtos.Count);
-                Assert.AreEqual(1, eventDtos[0].Id);
-                Assert.AreEqual("Event 1", eventDtos[0].Title);
-                Assert.AreEqual(2, eventDtos[1].Id);
-                Assert.AreEqual("Event 2", eventDtos[1].Title);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"Test failed with exception: {ex.Message}\nStack Trace: {ex.StackTrace}");
-            }
-        }
-
+        
         [TestMethod]
         public async Task GetManyPastSearchedPaging_ReturnsSearchedEventsWithPaginationMetadata()
         {
@@ -708,34 +799,34 @@ namespace eventRadar.Tests
         private List<Event> GetMockedEvents()
         {
             var events = new List<Event>
-    {
-        new Event
-        {
-            Id = 1,
-            Url = "https://example.com/event1",
-            Title = "Event 1 test",
-            DateStart = DateTime.UtcNow,
-            DateEnd = DateTime.UtcNow.AddDays(1),
-            ImageLink = "https://example.com/event1-image.jpg",
-            Price = "10.99",
-            TicketLink = "https://example.com/event1-tickets",
-            Location = "Event 1 Location",
-            Category = "Event 1 Category"
-        },
-        new Event
-        {
-            Id = 2,
-            Url = "https://example.com/event2",
-            Title = "Event 2 test",
-            DateStart = DateTime.UtcNow.AddDays(2),
-            DateEnd = DateTime.UtcNow.AddDays(3),
-            ImageLink = "https://example.com/event2-image.jpg",
-            Price = "15.99",
-            TicketLink = "https://example.com/event2-tickets",
-            Location = "Event 2 Location",
-            Category = "Event 2 Category"
-        },
-        };
+            {
+                new Event
+                {
+                    Id = 1,
+                    Url = "https://example.com/event1",
+                    Title = "Event 1 test",
+                    DateStart = DateTime.UtcNow,
+                    DateEnd = DateTime.UtcNow.AddDays(1),
+                    ImageLink = "https://example.com/event1-image.jpg",
+                    Price = "10.99",
+                    TicketLink = "https://example.com/event1-tickets",
+                    Location = "Event 1 Location",
+                    Category = "Event 1 Category"
+                },
+                new Event
+                {
+                    Id = 2,
+                    Url = "https://example.com/event2",
+                    Title = "Event 2 test",
+                    DateStart = DateTime.UtcNow.AddDays(2),
+                    DateEnd = DateTime.UtcNow.AddDays(3),
+                    ImageLink = "https://example.com/event2-image.jpg",
+                    Price = "15.99",
+                    TicketLink = "https://example.com/event2-tickets",
+                    Location = "Event 2 Location",
+                    Category = "Event 2 Category"
+                },
+            };
 
             return events;
         }

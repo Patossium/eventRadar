@@ -12,110 +12,88 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace eventRadar.Controllers
 {
     [ApiController]
-    [Route("api/user/visitedEvent")]
+    [Route("api/user/VisitedEvent")]
     public class VisitedEventController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
         private readonly IEventRepository _eventRepository;
         private readonly IAuthorizationService _authorizationService;
         private readonly IVisitedEventRepository _visitedEventRepository;
+        private readonly IUserRepository _userRepository;
 
-        public VisitedEventController(IUserRepository userRepository, IEventRepository eventRepository, IAuthorizationService authorizationService, IVisitedEventRepository visitedEventRepository)
+        public VisitedEventController(IEventRepository eventRepository, IAuthorizationService authorizationService, IVisitedEventRepository visitedEventRepository, IUserRepository userRepository)
         {
-            _userRepository = userRepository;
             _eventRepository = eventRepository;
             _authorizationService = authorizationService;
             _visitedEventRepository = visitedEventRepository;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<VisitedEventDto>>> GetMany(string userId, int eventId)
-        {
-            var user = await _userRepository.GetAsync(userId);
-            if (user == null)
-                return NotFound();
-
-            var eventObject = await _eventRepository.GetAsync(eventId);
-            if(eventObject == null) 
-                return NotFound();
-
-            var visitedEvent = await _visitedEventRepository.GetManyAsync(user);
-
-            return Ok(visitedEvent.Select(o => new VisitedEventDto(o.Id, o.UserId, o.User, o.Event, o.EventId)));
-        }
-
-        [HttpGet()]
-        [Route("{visitedEventId}", Name = "GetVisitedEvent")]
-        public async Task<ActionResult<VisitedEventDto>> Get(string userId, int eventId, int visitedEventId)
-        {
-            var user = await _userRepository.GetAsync(userId);
-            if(user == null)
-                return NotFound();
-
-            var eventObject = await _eventRepository.GetAsync(eventId);
-            if(eventObject == null)
-                return NotFound();
-
-            var visitedEvent = await _visitedEventRepository.GetAsync(user, visitedEventId);
-            if(visitedEvent == null) 
-                return NotFound();
-
-            return new VisitedEventDto(visitedEvent.Id, visitedEvent.UserId, visitedEvent.User, visitedEvent.Event, visitedEvent.EventId);
+            _userRepository = userRepository;
         }
 
         [HttpPost]
-        public async Task<ActionResult<VisitedEventDto>> Create(string userId, int eventId, CreateVisitedEventDto createVisitedEventDto)
-        {
-            var user = _userRepository.GetAsync(userId);
-            if(user == null || user.Result == null) 
-                return NotFound();
-
-            var eventObject = _eventRepository.GetAsync(eventId);
-            if(eventObject == null || eventObject.Result == null)
-                return NotFound();
-
-            var visitedEvent = new VisitedEvent
-            {
-                UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub),
-                Event = eventObject.Result,
-                User = user.Result,
-                EventId = eventId
-            };
-
-            await _visitedEventRepository.CreateAsync(visitedEvent);
-
-            return Created("", new VisitedEventDto(visitedEvent.Id, visitedEvent.UserId, visitedEvent.User, visitedEvent.Event, visitedEvent.EventId));
-        }
-        [HttpGet()]
-        [Route("{eventId}/check", Name = "CheckIfVisited")]
-        public async Task<ActionResult<FollowedEventDto>> GetCheck(int eventId)
+        [Route("{eventId}")]
+        public async Task<ActionResult<VisitedEventDto>> Create(int eventId)
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             var user = await _userRepository.GetAsync(userId);
-            var visitedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
-            if (visitedEvent == null)
-                return NotFound();
-
-            return new FollowedEventDto(visitedEvent.Id, visitedEvent.UserId, visitedEvent.User, visitedEvent.Event, visitedEvent.EventId);
-        }
-
-        [HttpDelete]
-        [Route("{visitedEventId}")]
-        public async Task<ActionResult> Remove(string userId, int eventId, int visitedEventId)
-        {
-            var user = await _userRepository.GetAsync(userId);
-            if(user == null)
+            if (user == null)
                 return NotFound();
 
             var eventObject = await _eventRepository.GetAsync(eventId);
             if (eventObject == null)
                 return NotFound();
 
-            var visitedEvent = await _visitedEventRepository.GetAsync(user, visitedEventId);
-            if(visitedEvent == null) 
+            var VisitedEvent = new VisitedEvent { Event = eventObject, EventId = eventId, User = user, UserId = userId };
+
+            await _visitedEventRepository.CreateAsync(VisitedEvent);
+
+            return Created("", new VisitedEventDto(VisitedEvent.Id, VisitedEvent.UserId, VisitedEvent.User, VisitedEvent.Event, VisitedEvent.EventId));
+        }
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<VisitedEventDto>>> GetMany()
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            if (user == null)
                 return NotFound();
 
-            await _visitedEventRepository.DeleteAsync(visitedEvent);
+            var VisitedEvents = await _visitedEventRepository.GetManyAsync(user);
+
+            return Ok(VisitedEvents.Select(o => new VisitedEventDto(o.Id, o.UserId, o.User, o.Event, o.EventId)));
+        }
+        [HttpGet()]
+        [Route("{VisitedEventId}", Name = "GetVisitedEvent")]
+        public async Task<ActionResult<VisitedEventDto>> Get(int VisitedEventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var VisitedEvent = await _visitedEventRepository.GetAsync(user, VisitedEventId);
+            if (VisitedEvent == null)
+                return NotFound();
+
+            return new VisitedEventDto(VisitedEvent.Id, VisitedEvent.UserId, VisitedEvent.User, VisitedEvent.Event, VisitedEvent.EventId);
+        }
+        [HttpGet()]
+        [Route("{eventId}/check", Name = "CheckIfFollowed")]
+        public async Task<ActionResult<VisitedEventDto>> GetCheck(int eventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var VisitedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
+            if (VisitedEvent == null)
+                return NotFound();
+
+            return new VisitedEventDto(VisitedEvent.Id, VisitedEvent.UserId, VisitedEvent.User, VisitedEvent.Event, VisitedEvent.EventId);
+        }
+        [HttpDelete]
+        [Route("{VisitedEventId}")]
+        public async Task<ActionResult> Remove(int VisitedEventId)
+        {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            var user = await _userRepository.GetAsync(userId);
+            var VisitedEvent = await _visitedEventRepository.GetAsync(user, VisitedEventId);
+            if (VisitedEvent == null)
+                return NotFound();
+
+            await _visitedEventRepository.DeleteAsync(VisitedEvent);
 
             return NoContent();
         }
@@ -125,11 +103,11 @@ namespace eventRadar.Controllers
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             var user = await _userRepository.GetAsync(userId);
-            var followedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
-            if (followedEvent == null)
+            var VisitedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
+            if (VisitedEvent == null)
                 return NotFound();
 
-            await _visitedEventRepository.DeleteAsync(followedEvent);
+            await _visitedEventRepository.DeleteAsync(VisitedEvent);
 
             return NoContent();
         }
