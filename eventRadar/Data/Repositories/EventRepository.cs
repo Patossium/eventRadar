@@ -75,7 +75,7 @@ namespace eventRadar.Data.Repositories
         {
             var today = DateTime.Today;
             var filteredEvents = _webDbContext.Events
-                .Where(e => e.Category == Category && e.DateStart < today)
+                .Where(e => e.Category == Category && e.DateStart < today && e.DateEnd < today)
                 .OrderBy(e => e.DateStart)
                 .AsQueryable();
 

@@ -72,7 +72,7 @@ namespace eventRadar.Controllers
             return new VisitedEventDto(VisitedEvent.Id, VisitedEvent.UserId, VisitedEvent.User, VisitedEvent.Event, VisitedEvent.EventId);
         }
         [HttpGet()]
-        [Route("{eventId}/check", Name = "CheckIfFollowed")]
+        [Route("{eventId}/check", Name = "CheckIfVisited")]
         public async Task<ActionResult<VisitedEventDto>> GetCheck(int eventId)
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
