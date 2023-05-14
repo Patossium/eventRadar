@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Update.Internal;
 using Microsoft.AspNetCore.Authorization;
 using eventRadar.Models;
 using eventRadar.Data.Dtos;
@@ -7,8 +6,16 @@ using eventRadar.Data.Repositories;
 using eventRadar.Auth.Model;
 using eventRadar.Data;
 using System.Text.Json;
-using Microsoft.IdentityModel.JsonWebTokens;
 using System.Runtime.CompilerServices;
+using Microsoft.IdentityModel.Tokens;
+using ScrapySharp.Network;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
+using System.Text;
+using HtmlAgilityPack.CssSelectors.NetCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System;
+using eventRadar.Helpers;
 
 [assembly: InternalsVisibleTo("eventRadarUnitTests")]
 
@@ -18,15 +25,22 @@ namespace eventRadar.Controllers
     [Route("api/events")]
     public class EventController : ControllerBase
     {
-        
+
         private readonly IEventRepository _eventRepository;
         private readonly ILocationRepository _locationRepository;
         private readonly ICategoryRepository _categoryRepository;
-        public EventController(IEventRepository eventRepository, ILocationRepository locationRepository, ICategoryRepository categoryRepository)
+        private readonly IWebsiteRepository _websiteRepository;
+        private readonly IBlacklistedCategoryNameRepository _blacklistedCategoryNameRepository;
+        private readonly IBlacklistedPageRepository _blacklistedPageRepository;
+        public EventController(IEventRepository eventRepository, ILocationRepository locationRepository, ICategoryRepository categoryRepository, IWebsiteRepository websiteRepository,
+            IBlacklistedCategoryNameRepository blacklistedCategoryNameRepository, IBlacklistedPageRepository blacklistedPageRepository)
         {
             _eventRepository = eventRepository;
             _locationRepository = locationRepository;
             _categoryRepository = categoryRepository;
+            _websiteRepository = websiteRepository;
+            _blacklistedPageRepository = blacklistedPageRepository;
+            _blacklistedCategoryNameRepository = blacklistedCategoryNameRepository;
         }
         [HttpGet]
         [Route("all")]
@@ -36,7 +50,8 @@ namespace eventRadar.Controllers
             return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
         [HttpGet(Name = "GetEvents")]
-        [Route("visi")]
+        [Route("completeList")]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<IEnumerable<EventDto>> GetManyPaging([FromQuery] EventSearchParameters searchParameters)
         {
             var events = await _eventRepository.GetManyPagedAsync(searchParameters);
@@ -66,6 +81,34 @@ namespace eventRadar.Controllers
         [HttpGet(Name = "GetPastEvents")]
         [Route("allPast")]
         public async Task<IEnumerable<EventDto>> GetManyPastPaging([FromQuery] EventSearchParameters searchParameters)
+        {
+            var events = await _eventRepository.GetManyPastPagedAsync(searchParameters);
+
+            var previousPageLink = events.HasPrevious ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = events.HasNext ?
+                CreateEventResourceUri(searchParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = events.TotalCount,
+                pageSize = events.PageSize,
+                currentPage = events.CurrentPage,
+                totalPages = events.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
+
+            return events.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
+        }
+        [HttpGet(Name = "GetPastEvents")]
+        [Route("allUpcoming")]
+        public async Task<IEnumerable<EventDto>> GetManyUpcomingPaging([FromQuery] EventSearchParameters searchParameters)
         {
             var events = await _eventRepository.GetManyPastPagedAsync(searchParameters);
 
@@ -319,7 +362,7 @@ namespace eventRadar.Controllers
 
             await _eventRepository.UpdateAsync(eventObject);
 
-            return Ok(new EventDto(eventID, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink, 
+            return Ok(new EventDto(eventID, eventObject.Url, eventObject.Title, eventObject.DateStart, eventObject.DateEnd, eventObject.ImageLink,
                 eventObject.Price, eventObject.TicketLink, eventObject.Location, eventObject.Category));
         }
         [HttpDelete]
@@ -369,6 +412,97 @@ namespace eventRadar.Controllers
                     pageSize = eventSearchParametersDto.PageSize,
                 })
             };
+        }
+
+        private static ScrapingBrowser browser = new ScrapingBrowser();
+        
+        [HttpGet("event-details")]
+        [Route("GetDetails/{websiteId}")]
+        [Authorize(Roles = SystemRoles.Administrator)]
+        public async Task<IEnumerable<EventDto>> GetEventDetails(int websiteId)
+        {
+            Website website = await _websiteRepository.GetAsync(websiteId);
+            var listEventDetails = new List<Event>();
+            var listBlacklistedCategory = await _blacklistedCategoryNameRepository.GetManyAsync();
+            var listBlacklistedPages = await _blacklistedPageRepository.GetManyAsync();
+            var blacklistedPages = new List<string>();
+            foreach(var page in listBlacklistedPages)
+            {
+                blacklistedPages.Add(page.Url);
+            }
+            var listBlacklistedCategoryNames = new List<string>();
+            foreach(var category in listBlacklistedCategory)
+            {
+                listBlacklistedCategoryNames.Add(category.Name);
+            }
+            var categoryList = ScraperHelper.GetCategories(website.Url, listBlacklistedCategoryNames, website);
+            for(int i = 0; i < categoryList.Count; i++)
+            {
+                string firstLink = "";
+                var html = ScraperHelper.GetHtml(categoryList[i].SourceUrl);
+                var links = html.OwnerDocument.QuerySelectorAll(website.EventLink);
+                foreach(var link in links)
+                {
+                    string UrlString = link.Attributes["href"].Value;
+                    if (!blacklistedPages.Contains(UrlString))
+                    {
+                        firstLink = UrlString;
+                        break;
+                    }
+                }
+                var EventList = new List<Event>();
+                var EventObject = new Event();
+                Location location = ScraperHelper.GetLocationInfo(website.EventLink, website);
+                EventObject.Location = location.Address + ", " + location.City + ", " + location.Country;
+                EventObject.ImageLink = html.OwnerDocument.DocumentNode.SelectSingleNode(website.ImagePath).Attributes["src"].Value;
+                EventObject.Url = categoryList[i].SourceUrl;
+                string TempTitle = html.OwnerDocument.DocumentNode.SelectSingleNode(website.TitlePath).InnerText;
+                TempTitle = Regex.Replace(TempTitle, @"^\s+|\s+$", "");
+                TempTitle = Regex.Replace(TempTitle, "&quot;", "\"");
+                TempTitle = Regex.Replace(TempTitle, "&amp;", "&");
+                EventObject.Title = Regex.Replace(TempTitle, "&#039;", "'");
+                EventObject.Category = categoryList[i].Name;
+                if (html.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath) == null)
+                {
+                    EventObject.Price = "Tickets are not being sold";
+                }
+                else
+                {
+                    EventObject.Price = html.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath).InnerText;
+
+                }
+                string TempDate = html.OwnerDocument.DocumentNode.SelectSingleNode(website.DatePath).InnerText;
+                TempDate = Regex.Replace(TempDate, "[a-zA-Z]+", "");
+                TempDate = Regex.Replace(TempDate, "&#32;", " ");
+                TempDate = Regex.Replace(TempDate, @"^\s+|\s+$", "");
+                TempDate = Regex.Replace(TempDate, "[ąčęėįšųūžĄČĘĖĮŠŲŪŽ]", "");
+                TempDate = Regex.Replace(TempDate, "  ", " ");
+
+                if (TempDate.Contains(" - "))
+                {
+                    string[] dates = Regex.Split(TempDate, @"\s-\s");
+                    EventObject.DateStart = DateTime.Parse(dates[0]);
+                    EventObject.DateEnd = DateTime.Parse(dates[1]);
+
+                }
+                else
+                {
+                    EventObject.DateStart = DateTime.Parse(TempDate);
+                    EventObject.DateEnd = DateTime.Parse(TempDate);
+                }
+
+                if (html.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath) == null)
+                {
+                    EventObject.TicketLink = "";
+                }
+                else
+                {
+                    EventObject.TicketLink = html.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath).Attributes[website.TicketLinkType].Value;
+                }
+                if (EventObject.Location != null)
+                    listEventDetails.Add(EventObject);
+            }
+            return listEventDetails.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
     }
 }

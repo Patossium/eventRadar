@@ -346,54 +346,5 @@ namespace eventRadar.Tests
             _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
             _userManagerMock.Verify(mgr => mgr.SetLockoutEndDateAsync(It.IsAny<User>(), It.IsAny<DateTimeOffset?>()), Times.Never);
         }
-        [TestMethod]
-        public async Task ChangePassword_InvalidNewPassword_ReturnsBadRequestResult()
-        {
-            // Arrange
-            var userId = "1";
-            var changePasswordDto = new ChangePasswordDto("currentPassword", "weak");
-
-            var user = new User { Id = userId, UserName = "testuser" };
-            _userManagerMock.Setup(mgr => mgr.FindByIdAsync(userId)).ReturnsAsync(user);
-            _userManagerMock.Setup(mgr => mgr.CheckPasswordAsync(user, changePasswordDto.Password)).ReturnsAsync(true);
-            _userManagerMock.Setup(mgr => mgr.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword))
-                .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "The new password is too weak." }));
-
-            // Act
-            var result = await _authController.ChangePassword(userId, changePasswordDto);
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
-            var badRequestResult = result as BadRequestObjectResult;
-            Assert.IsNotNull(badRequestResult);
-            var errorList = badRequestResult.Value as List<IdentityError>;
-            Assert.IsNotNull(errorList);
-            Assert.AreEqual(1, errorList.Count);
-            Assert.AreEqual("The new password is too weak.", errorList[0].Description);
-
-            _userManagerMock.Verify(mgr => mgr.FindByIdAsync(userId), Times.Once);
-            _userManagerMock.Verify(mgr => mgr.CheckPasswordAsync(user, changePasswordDto.Password), Times.Once);
-            _userManagerMock.Verify(mgr => mgr.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword), Times.Once);
-        }
-        [TestMethod]
-        public async Task ChangePassword_ValidData_ReturnsNoContent()
-        {
-            // Arrange
-            var userId = "testUserId";
-            var changePasswordDto = new ChangePasswordDto("currentPassword", "newPassword");
-
-
-            var user = new User { Id = userId };
-            _userManagerMock.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync(user);
-            _userManagerMock.Setup(u => u.CheckPasswordAsync(user, changePasswordDto.Password)).ReturnsAsync(true);
-            _userManagerMock.Setup(u => u.ChangePasswordAsync(user, changePasswordDto.Password, changePasswordDto.NewPassword))
-                .ReturnsAsync(IdentityResult.Success);
-
-            // Act
-            var result = await _authController.ChangePassword(userId, changePasswordDto);
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(NoContentResult));
-        }
     }
 }

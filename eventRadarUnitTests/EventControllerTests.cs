@@ -24,6 +24,9 @@ namespace eventRadar.Tests
         private readonly Mock<IEventRepository> _eventRepositoryMock;
         private readonly Mock<ILocationRepository> _locationRepositoryMock;
         private readonly Mock<ICategoryRepository> _categoryRepositoryMock;
+        private readonly Mock<IWebsiteRepository> _websiteRepositoryMock;
+        private readonly Mock<IBlacklistedCategoryNameRepository> _blacklistedCategoryNameRepositoryMock;
+        private readonly Mock<IBlacklistedPageRepository> _blacklistedPageRepositoryMock;
         private readonly EventController _controller;
 
         public EventControllerTests()
@@ -31,7 +34,10 @@ namespace eventRadar.Tests
             _eventRepositoryMock = new Mock<IEventRepository>();
             _locationRepositoryMock = new Mock<ILocationRepository>();
             _categoryRepositoryMock = new Mock<ICategoryRepository>();
-            _controller = new EventController(_eventRepositoryMock.Object, _locationRepositoryMock.Object, _categoryRepositoryMock.Object);
+            _websiteRepositoryMock = new Mock<IWebsiteRepository>();
+            _blacklistedCategoryNameRepositoryMock = new Mock<IBlacklistedCategoryNameRepository>();
+            _blacklistedPageRepositoryMock = new Mock<IBlacklistedPageRepository>();
+            _controller = new EventController(_eventRepositoryMock.Object, _locationRepositoryMock.Object, _categoryRepositoryMock.Object, _websiteRepositoryMock.Object, _blacklistedCategoryNameRepositoryMock.Object, _blacklistedPageRepositoryMock.Object);
         }
 
         [TestMethod]

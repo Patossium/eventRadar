@@ -22,7 +22,7 @@ namespace eventRadarUnitTests
         public void Setup()
         {
             _eventRepositoryMock = new Mock<IEventRepository>();
-            _controller = new EventController(_eventRepositoryMock.Object, null, null);
+            _controller = new EventController(_eventRepositoryMock.Object, null, null, null, null, null);
         }
         private WebsiteController SetupControllerWithMockRepo(Mock<IWebsiteRepository> mockRepo)
         {
