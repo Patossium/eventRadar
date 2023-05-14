@@ -452,8 +452,9 @@ namespace eventRadar.Controllers
                 }
                 var EventList = new List<Event>();
                 var EventObject = new Event();
-                Location location = ScraperHelper.GetLocationInfo(website.EventLink, website);
+                Location location = ScraperHelper.GetLocationInfo(firstLink, website);
                 EventObject.Location = location.Address + ", " + location.City + ", " + location.Country;
+                EventObject.Location = "Test";
                 EventObject.ImageLink = html.OwnerDocument.DocumentNode.SelectSingleNode(website.ImagePath).Attributes["src"].Value;
                 EventObject.Url = categoryList[i].SourceUrl;
                 string TempTitle = html.OwnerDocument.DocumentNode.SelectSingleNode(website.TitlePath).InnerText;

@@ -452,5 +452,57 @@ namespace eventRadar.Tests
 
             return events;
         }
+        [TestMethod]
+        public async Task GetManyPastPaging_ReturnsEvents_WithPaginationMetadata()
+        {
+            // Arrange
+            var searchParameters = new EventSearchParameters();
+
+            var events = new List<Event>
+            {
+                new Event { Id = 1, Title = "Event 1" },
+                new Event { Id = 2, Title = "Event 2" },
+                new Event { Id = 3, Title = "Event 3" }
+            };
+
+            var expectedEvents = events.Select(e => new EventDto(e.Id, e.Url, e.Title, e.DateStart, e.DateEnd, e.ImageLink, e.Price, e.TicketLink, e.Location, e.Category));
+
+            var paginationMetadata = new
+            {
+                totalCount = events.Count,
+                pageSize = searchParameters.PageSize,
+                currentPage = searchParameters.PageNumber,
+                totalPages = 1,  // Assuming there's only one page of results
+                previousPageLink = (string)null,  // Set the expected previous page link
+                nextPageLink = (string)null  // Set the expected next page link
+            };
+
+            _eventRepositoryMock.Setup(r => r.GetManyPastPagedAsync(searchParameters))
+                .ReturnsAsync(new PagedList<Event>(events, events.Count, searchParameters.PageNumber, searchParameters.PageSize));
+
+            // Act
+            var result = await _controller.GetManyPastPaging(searchParameters);
+
+            // Assert
+            Assert.IsNotNull(result);
+
+            var actualResult = result;
+            Assert.IsNotNull(actualResult);
+            Assert.AreEqual(200, actualResult.StatusCode);
+
+            var actualEvents = actualResult.Value as IEnumerable<EventDto>;
+            Assert.IsNotNull(actualEvents);
+            Assert.AreEqual(expectedEvents.Count(), actualEvents.Count());
+            Assert.IsTrue(expectedEvents.SequenceEqual(actualEvents));
+
+            Assert.IsTrue(_controller.Response.Headers.ContainsKey("Pagination"));
+            var actualPaginationMetadata = JsonSerializer.Deserialize<dynamic>(_controller.Response.Headers["Pagination"]);
+            Assert.AreEqual(paginationMetadata.totalCount, actualPaginationMetadata.totalCount);
+            Assert.AreEqual(paginationMetadata.pageSize, actualPaginationMetadata.pageSize);
+            Assert.AreEqual(paginationMetadata.currentPage, actualPaginationMetadata.currentPage);
+            Assert.AreEqual(paginationMetadata.totalPages, actualPaginationMetadata.totalPages);
+            Assert.AreEqual(paginationMetadata.previousPageLink, actualPaginationMetadata.previousPageLink);
+            Assert.AreEqual(paginationMetadata.nextPageLink, actualPaginationMetadata.nextPageLink);
+        }
     }
 }

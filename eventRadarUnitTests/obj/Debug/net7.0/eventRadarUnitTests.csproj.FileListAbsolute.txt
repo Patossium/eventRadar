@@ -356,3 +356,5 @@ C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\obj\Debug\net7.0\
 C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\obj\Debug\net7.0\eventRadarUnitTests.pdb
 C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\obj\Debug\net7.0\eventRadarUnitTests.genruntimeconfig.cache
 C:\Users\37069\Documents\GitHub\eventRadar\eventRadarUnitTests\obj\Debug\net7.0\ref\eventRadarUnitTests.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadarUnitTests\bin\Debug\net7.0\CsQuery.dll
+C:\Users\p4t0s\Desktop\eventRadar\eventRadarUnitTests\bin\Debug\net7.0\HtmlAgilityPack.CssSelectors.NetCore.dll
