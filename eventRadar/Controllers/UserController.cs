@@ -28,6 +28,7 @@ namespace eventRadar.Controllers
             return users.Select(o => new UserDto(o.Id, o.UserName, o.Email, o.PasswordHash, o.Name, o.Surname, o.LockoutEnd, o.LockoutEnabled));
         }
         [HttpGet()]
+        [Route("getData")]
         [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<UserDto>> Get()
         {
