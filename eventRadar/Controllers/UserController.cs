@@ -6,6 +6,8 @@ using eventRadar.Data.Dtos;
 using eventRadar.Data.Repositories;
 using eventRadar.Auth.Model;
 using Microsoft.AspNetCore.Identity;
+using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
+using System.Security.Claims;
 
 namespace eventRadar.Controllers
 {
@@ -26,10 +28,10 @@ namespace eventRadar.Controllers
             return users.Select(o => new UserDto(o.Id, o.UserName, o.Email, o.PasswordHash, o.Name, o.Surname, o.LockoutEnd, o.LockoutEnabled));
         }
         [HttpGet()]
-        [Route("{userId}", Name ="GetUser")]
         [Authorize(Roles = SystemRoles.Administrator)]
-        public async Task<ActionResult<UserDto>> Get(string userId)
+        public async Task<ActionResult<UserDto>> Get()
         {
+            var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             var user = await _userRepository.GetAsync(userId);
 
             if(user == null)
