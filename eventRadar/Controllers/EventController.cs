@@ -518,13 +518,13 @@ namespace eventRadar.Controllers
                 listBlacklistedCategoryNames.Add(category.Name);
             }
             var categoryList = ScraperHelper.GetCategories(website.Url, listBlacklistedCategoryNames, website);
-            for(int i = 0; i < categoryList.Count; i++)
+            for (int i = 0; i < categoryList.Count; i++)
             {
-                
+
                 string firstLink = "";
                 var html = ScraperHelper.GetHtml(categoryList[i].SourceUrl);
                 var links = html.OwnerDocument.QuerySelectorAll(website.EventLink);
-                foreach(var link in links)
+                foreach (var link in links)
                 {
                     string UrlString = link.Attributes["href"].Value;
                     if (!blacklistedPages.Contains(UrlString))
@@ -536,58 +536,66 @@ namespace eventRadar.Controllers
                         }
                     }
                 }
-                var EventList = new List<Event>();
-                var EventObject = new Event();
-                var newHtml = ScraperHelper.GetHtml(firstLink);
-                Location location = ScraperHelper.GetLocationInfo(firstLink, website);
-                EventObject.Location = location.Address + ", " + location.City + ", " + location.Country;
-                EventObject.ImageLink = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.ImagePath).Attributes["src"].Value;
-                EventObject.Url = categoryList[i].SourceUrl;
-                string TempTitle = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TitlePath).InnerText;
-                TempTitle = Regex.Replace(TempTitle, @"^\s+|\s+$", "");
-                TempTitle = Regex.Replace(TempTitle, "&quot;", "\"");
-                TempTitle = Regex.Replace(TempTitle, "&amp;", "&");
-                EventObject.Title = Regex.Replace(TempTitle, "&#039;", "'");
-                EventObject.Category = categoryList[i].Name;
-                if (newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath) == null)
+                try
                 {
-                    EventObject.Price = "Tickets are not being sold";
-                }
-                else
-                {
-                    EventObject.Price = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath).InnerText;
+                    var EventList = new List<Event>();
+                    var EventObject = new Event();
+                    var newHtml = ScraperHelper.GetHtml(firstLink);
+                    Location location = ScraperHelper.GetLocationInfo(firstLink, website);
+                    EventObject.Location = location.Address + ", " + location.City + ", " + location.Country;
+                    EventObject.ImageLink = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.ImagePath).Attributes["src"].Value;
+                    EventObject.Url = categoryList[i].SourceUrl;
+                    string TempTitle = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TitlePath).InnerText;
+                    TempTitle = Regex.Replace(TempTitle, @"^\s+|\s+$", "");
+                    TempTitle = Regex.Replace(TempTitle, "&quot;", "\"");
+                    TempTitle = Regex.Replace(TempTitle, "&amp;", "&");
+                    EventObject.Title = Regex.Replace(TempTitle, "&#039;", "'");
+                    EventObject.Category = categoryList[i].Name;
+                    if (newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath) == null)
+                    {
+                        EventObject.Price = "Tickets are not being sold";
+                    }
+                    else
+                    {
+                        EventObject.Price = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.PricePath).InnerText;
+
+                    }
+                    string TempDate = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.DatePath).InnerText;
+                    TempDate = Regex.Replace(TempDate, "[a-zA-Z]+", "");
+                    TempDate = Regex.Replace(TempDate, "&#32;", " ");
+                    TempDate = Regex.Replace(TempDate, @"^\s+|\s+$", "");
+                    TempDate = Regex.Replace(TempDate, "[ąčęėįšųūžĄČĘĖĮŠŲŪŽ]", "");
+                    TempDate = Regex.Replace(TempDate, "  ", " ");
+
+                    if (TempDate.Contains(" - "))
+                    {
+                        string[] dates = Regex.Split(TempDate, @"\s-\s");
+                        EventObject.DateStart = DateTime.Parse(dates[0]);
+                        EventObject.DateEnd = DateTime.Parse(dates[1]);
+
+                    }
+                    else
+                    {
+                        EventObject.DateStart = DateTime.Parse(TempDate);
+                        EventObject.DateEnd = DateTime.Parse(TempDate);
+                    }
+
+                    if (newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath) == null)
+                    {
+                        EventObject.TicketLink = "";
+                    }
+                    else
+                    {
+                        EventObject.TicketLink = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath).Attributes[website.TicketLinkType].Value;
+                    }
+                    if (EventObject.Location != null)
+                        listEventDetails.Add(EventObject);
 
                 }
-                string TempDate = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.DatePath).InnerText;
-                TempDate = Regex.Replace(TempDate, "[a-zA-Z]+", "");
-                TempDate = Regex.Replace(TempDate, "&#32;", " ");
-                TempDate = Regex.Replace(TempDate, @"^\s+|\s+$", "");
-                TempDate = Regex.Replace(TempDate, "[ąčęėįšųūžĄČĘĖĮŠŲŪŽ]", "");
-                TempDate = Regex.Replace(TempDate, "  ", " ");
-
-                if (TempDate.Contains(" - "))
+                catch (System.FormatException)
                 {
-                    string[] dates = Regex.Split(TempDate, @"\s-\s");
-                    EventObject.DateStart = DateTime.Parse(dates[0]);
-                    EventObject.DateEnd = DateTime.Parse(dates[1]);
-
+                    continue;
                 }
-                else
-                {
-                    EventObject.DateStart = DateTime.Parse(TempDate);
-                    EventObject.DateEnd = DateTime.Parse(TempDate);
-                }
-
-                if (newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath) == null)
-                {
-                    EventObject.TicketLink = "";
-                }
-                else
-                {
-                    EventObject.TicketLink = newHtml.OwnerDocument.DocumentNode.SelectSingleNode(website.TicketPath).Attributes[website.TicketLinkType].Value;
-                }
-                if (EventObject.Location != null)
-                    listEventDetails.Add(EventObject);
             }
             return listEventDetails.Select(o => new EventDto(o.Id, o.Url, o.Title, o.DateStart, o.DateEnd, o.ImageLink, o.Price, o.TicketLink, o.Location, o.Category));
         }
