@@ -29,7 +29,6 @@ namespace eventRadar.Controllers
         }
         [HttpGet()]
         [Route("getData")]
-        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<UserDto>> Get()
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
