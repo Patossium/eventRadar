@@ -77,11 +77,11 @@ namespace eventRadar.Controllers
         {
             var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
             var user = await _userRepository.GetAsync(userId);
-            var VisitedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
-            if (VisitedEvent == null)
+            var visitedEvent = await _visitedEventRepository.GetCheckAsync(user, eventId);
+            if (visitedEvent == null)
                 return NotFound();
 
-            return new VisitedEventDto(VisitedEvent.Id, VisitedEvent.UserId, VisitedEvent.User, VisitedEvent.Event, VisitedEvent.EventId);
+            return new VisitedEventDto(visitedEvent.Id, visitedEvent.UserId, visitedEvent.User, visitedEvent.Event, visitedEvent.EventId);
         }
         [HttpDelete]
         [Route("{VisitedEventId}")]

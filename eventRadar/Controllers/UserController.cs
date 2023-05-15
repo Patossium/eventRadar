@@ -19,6 +19,7 @@ namespace eventRadar.Controllers
             _userRepository = userRepository;
         }
         [HttpGet]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<IEnumerable<UserDto>> GetMany()
         {
             var users = await _userRepository.GetManyAsync();
@@ -26,6 +27,7 @@ namespace eventRadar.Controllers
         }
         [HttpGet()]
         [Route("{userId}", Name ="GetUser")]
+        [Authorize(Roles = SystemRoles.Administrator)]
         public async Task<ActionResult<UserDto>> Get(string userId)
         {
             var user = await _userRepository.GetAsync(userId);
